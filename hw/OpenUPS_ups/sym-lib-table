@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "OpenUPS_ups")(type "KiCad")(uri "${KIPRJMOD}/OpenUPS_ups.kicad_sym")(options "")(descr ""))
+)
