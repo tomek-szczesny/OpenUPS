@@ -346,6 +346,10 @@
       "5V Buck"
     ],
     [
+      "dfbaaed0-e564-4e21-900d-d5a65c0f1694",
+      "Adj_Buck_Boost"
+    ],
+    [
       "09fcd86a-cc7e-4bce-97cb-42a94055ba63",
       "12V Buck_Boost"
     ]

@@ -744,7 +744,7 @@
   (symbol (lib_id "Regulator_Switching:AP63200WU") (at 138.43 104.14 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 059ab654-3cf6-4242-ba2a-240f1e7fe5f9)
-    (property "Reference" "U?" (at 138.43 95.3602 0)
+    (property "Reference" "U201" (at 138.43 95.3602 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "AP63300WU" (at 138.43 97.8971 0)
@@ -765,7 +765,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/a63ff227-b011-4ab9-8dd7-be9c5c5497e5"
-          (reference "U?") (unit 1)
+          (reference "U201") (unit 1)
         )
       )
     )
@@ -774,7 +774,7 @@
   (symbol (lib_id "Device:R_Small") (at 113.03 116.84 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 33ca5e70-f256-4a7e-a725-fccbad0db41d)
-    (property "Reference" "R?" (at 115.57 116.84 90)
+    (property "Reference" "R202" (at 115.57 116.84 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "NM" (at 110.49 116.84 90)
@@ -791,7 +791,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/a63ff227-b011-4ab9-8dd7-be9c5c5497e5"
-          (reference "R?") (unit 1)
+          (reference "R202") (unit 1)
         )
       )
     )
@@ -800,7 +800,7 @@
   (symbol (lib_id "power:GND") (at 113.03 120.65 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5d97e00e-0fc2-47a5-acd0-5ad58c8b2b32)
-    (property "Reference" "#PWR?" (at 113.03 127 0)
+    (property "Reference" "#PWR0104" (at 113.03 127 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 113.03 124.46 0)
@@ -816,7 +816,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/a63ff227-b011-4ab9-8dd7-be9c5c5497e5"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0104") (unit 1)
         )
       )
     )
@@ -825,7 +825,7 @@
   (symbol (lib_id "Device:L") (at 172.72 95.25 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8be73c97-c63f-4187-aa28-d552cd5ca874)
-    (property "Reference" "L?" (at 172.72 90.424 90)
+    (property "Reference" "L201" (at 172.72 90.424 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "SRN1060-100M" (at 172.72 92.7354 90)
@@ -845,7 +845,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/a63ff227-b011-4ab9-8dd7-be9c5c5497e5"
-          (reference "L?") (unit 1)
+          (reference "L201") (unit 1)
         )
       )
     )
@@ -854,7 +854,7 @@
   (symbol (lib_id "power:GND") (at 217.17 107.95 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ad6dc435-7f40-49f7-b882-0374da4b676a)
-    (property "Reference" "#PWR?" (at 217.17 114.3 0)
+    (property "Reference" "#PWR0105" (at 217.17 114.3 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 217.17 111.76 0)
@@ -870,7 +870,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/a63ff227-b011-4ab9-8dd7-be9c5c5497e5"
-          (reference "#PWR?") (unit 1)
+          (reference "#PWR0105") (unit 1)
         )
       )
     )
@@ -879,7 +879,7 @@
   (symbol (lib_id "Device:C") (at 217.17 101.6 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b1097209-5d5f-47e5-837b-ec4bdd01b395)
-    (property "Reference" "C?" (at 218.44 99.06 0)
+    (property "Reference" "C201" (at 218.44 99.06 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "22u 25V" (at 213.36 97.79 90)
@@ -896,7 +896,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/a63ff227-b011-4ab9-8dd7-be9c5c5497e5"
-          (reference "C?") (unit 1)
+          (reference "C201") (unit 1)
         )
       )
     )
@@ -905,7 +905,7 @@
   (symbol (lib_id "Device:R_Small") (at 113.03 106.68 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ced0efe3-739f-4cb0-937e-468447e56f1a)
-    (property "Reference" "R?" (at 115.57 106.68 90)
+    (property "Reference" "R201" (at 115.57 106.68 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "10k" (at 110.49 106.68 90)
@@ -922,7 +922,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/a63ff227-b011-4ab9-8dd7-be9c5c5497e5"
-          (reference "R?") (unit 1)
+          (reference "R201") (unit 1)
         )
       )
     )
