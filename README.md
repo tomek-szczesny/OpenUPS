@@ -6,7 +6,9 @@ A universal and versatile high power SBC UPS
 
 **This is a work in progress repository**
 
-More up-to-date information available on Odroid forum: 
+More up-to-date information available on Odroid forum:
+
+[Open source UPS design - ODROID](https://forum.odroid.com/viewtopic.php?f=55&t=46481)
 
 License:
 
@@ -31,9 +33,3 @@ License:
    - Drive Bay Case Mount
    - Standalone Case
 -  Easy Battery Maintenance
-
-### Base Case Designs:
-- Shell - complete
-- Panel - complete
-- Stacked - complete
-[Open source UPS design - ODROID](https://forum.odroid.com/viewtopic.php?f=55&t=46481)
