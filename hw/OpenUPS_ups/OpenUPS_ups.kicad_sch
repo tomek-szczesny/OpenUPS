@@ -9,7 +9,7 @@
       (property "Reference" "#PWR0108" (at 0 -3.81 0)
         (effects (font (size 1.27 1.27)) hide)
       )
-      (property "Value" "+12V_1" (at 0 3.5019 0)
+      (property "Value" "+AdjV" (at 0 3.5019 0)
         (effects (font (size 1.27 1.27)))
       )
       (property "Footprint" "" (at 0 0 0)
@@ -52,7 +52,7 @@
       )
       (symbol "+12V_1_1_1"
         (pin power_in line (at 0 0 90) (length 0) hide
-          (name "+12V" (effects (font (size 1.27 1.27))))
+          (name "+AdjV" (effects (font (size 1.27 1.27))))
           (number "1" (effects (font (size 1.27 1.27))))
         )
       )
@@ -1152,6 +1152,23 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502" (page "7"))
+      )
+    )
+  )
+
+  (sheet (at 52.07 62.23) (size 21.59 12.7) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 0bd99307-a15c-41e8-997b-077d576f806c)
+    (property "Sheetname" "Bat_Charger" (at 52.07 61.5184 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "Bat_Charger.kicad_sch" (at 52.07 75.5146 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "OpenUPS_ups"
+        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502" (page "6"))
       )
     )
   )
