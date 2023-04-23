@@ -16,7 +16,8 @@
 
     202304xx version 0.9 OpenUPS Case
     
-    hdd35_ups_bottom(length=147,width=101.6)
+    hdd35_ups_top(length=147, width=101.6, top_height)    
+    hdd35_ups_bottom(length=147,width=101.6, bottom_height)
     ups_pcb(pcbsize, pcb_position)
     bat_pcb(batpcbsize, batpcb_position)
     battery_placement(bat_layout, bat_num, bat_space, bat_type, bat_dia, bat_len)
@@ -37,8 +38,10 @@ use <./lib/fillets.scad>;
 
 case_style = "drivebay";        //"drivebay", "standalone"
 heatsink_type = "c4_oem";       // "c4_oem", "xu4_oem"
+
 pcb_enable = true;
 top_enable = true;
+label_enable = true;
 
 // pcb size and placement
 pcbsize = [90, 62, 1.6];
@@ -64,6 +67,7 @@ if(case_style == "drivebay") {
     width = 101.6;
     top_height = 14;
     bottom_height = 12;
+    height = top_height+bottom_height;
     top_standoff = [7,25,3.5,10,4,1,0,1,0,4.5,5];
     bottom_standoff = [7,10,3.5,10,4,4,1,0,1,4.5,5];
     pcb_standoff = [7,pcb_position[2],3.5,10,4,1,1,0,0,0,0];
@@ -121,15 +125,39 @@ if(case_style == "drivebay") {
     color("dimgrey") translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+pcbsize[1]-4, 0]) standoff(pcb_standoff);
     color("dimgrey") translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+20, 0]) standoff(pcb_standoff);
     
+    // top
     if(top_enable) {
-        // top
         difference() {
-            color("dimgrey") translate([-6,147-length,top_height + bottom_height]) rotate([0,180,270]) 
+            color("dimgrey") translate([-6, 147-length, top_height+bottom_height]) rotate([0,180,270]) 
                 hdd35_ups_top(length, width, top_height);
+            // ups psb standoff holes
+//            color("dimgrey") translate([pcb_position[0]+4, pcb_position[1]+13, height-3]) cylinder(d=6.5, h=4);
+//            color("dimgrey") translate([pcb_position[0]+4, pcb_position[1]+pcbsize[1]-4, height-3]) cylinder(d=6.5, h=4);
+//            color("dimgrey") translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+pcbsize[1]-4, height-3]) 
+//                cylinder(d=6.5, h=4);
+//            color("dimgrey") translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+20, height-3]) cylinder(d=6.5, h=4);
+
             // power plug
             color("dimgrey") translate([77,-1, pcb_position[2]]) cube([10.5,14,9.5+pcbsize[2]]);
             // terminal blocks
             color("dimgrey") translate([26,-1, pcb_position[2]]) cube([34,10,10+pcbsize[2]]);
+            color("dimgrey") translate([30,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            color("dimgrey") translate([35,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            color("dimgrey") translate([41,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            color("dimgrey") translate([46,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            color("dimgrey") translate([52,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            color("dimgrey") translate([57,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            if(label_enable) {
+                color("black") translate([27.5,0,top_height+bottom_height-4]) rotate([90,0,0]) text("+5V",3);
+                color("red") translate([28.5,0,top_height+bottom_height-8]) rotate([90,0,0]) text("+",3);
+                color("black") translate([33,0,top_height+bottom_height-8.5]) rotate([90,0,0]) text("-",5);
+                color("black") translate([38,0,top_height+bottom_height-4]) rotate([90,0,0]) text("+12V",3);
+                color("red") translate([39.5,0,top_height+bottom_height-8]) rotate([90,0,0]) text("+",3);
+                color("black") translate([44,0,top_height+bottom_height-8.5]) rotate([90,0,0]) text("-",5);
+                color("black") translate([49.5,0,top_height+bottom_height-4]) rotate([90,0,0]) text("+Vin",3);
+                color("red") translate([50.5,0,top_height+bottom_height-8]) rotate([90,0,0]) text("+",3);
+                color("black") translate([55,0,top_height+bottom_height-8.5]) rotate([90,0,0]) text("-",5);
+            }
             // sata1 & sata2
             color("dimgrey") translate([2.5,-1, pcb_position[2]]) cube([23.5,10,6+pcbsize[2]]);
             // fan1 & fan2
