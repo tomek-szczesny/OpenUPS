@@ -22,7 +22,7 @@ License:
 
 ### OpenUPS Features:
 -  Multi SBC support
--  Wide Input Voltage Range: 9V - 24V
+-  Wide Input Voltage Range: 12V - 24V
 -  Multiple Output Voltages: 5V, 12V, Programmable (0-24V) or Vin repeater,
 -  Dual SATA power ports, supports 3.5" HDDs as well,
 -  Dual 12V Fan ports with PWM control and RPM monitoring,
