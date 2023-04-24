@@ -42,15 +42,10 @@ heatsink_type = "c4_oem";       // "c4_oem", "xu4_oem"
 
 pcb_enable = true;
 top_enable = true;
-label_enable = true;
+label_enable = false;
 bottom_vent = true;
 top_vent = true;
 
-// pcb size and placement
-pcbsize = [90, 62, 1.6];
-pcb_position = [6, 0, 4];
-batpcbsize = [90, 82, 1.6];
-batpcb_position = [6, 63, 1];
 
 // batteries layout and configuration
 bat_num = 3;
@@ -65,9 +60,17 @@ adj = .01;
 $fn = 90;
 if(view == "model") {
     if(case_style == "drivebay") {
-        color("dimgrey") drivebay_ups_bottom();
+        // pcb size and placement
+        pcbsize = [90, 62, 1.6];
+        pcb_position = [6, 0, 4];
+        batpcbsize = [90, 82, 1.6];
+        batpcb_position = [6, 63, 1];
+
+        color("dimgrey") drivebay_ups_bottom(147, 101.6, 12, 3, 2, 
+            pcbsize, pcb_position, batpcbsize, batpcb_position);
         if(top_enable) {
-            color("dimgrey") drivebay_ups_top();
+            color("dimgrey") drivebay_ups_top(147, 101.6, 14, 12, 2, 1, 
+                pcbsize, pcb_position, batpcbsize, batpcb_position);
         }
         if(pcb_enable) {
             ups_pcb(pcbsize, pcb_position);
@@ -88,32 +91,30 @@ if(view == "model") {
         }
     }
     if(case_style == "mini") {
-        color("dimgrey") drivebay_ups_bottom(65,101.6,12);
+        // pcb size and placement
+        pcbsize = [90, 62, 1.6];
+        pcb_position = [2.5, 0, 4];
+        batpcbsize = [90, 82, 1.6];
+        batpcb_position = [6, 63, 1];
+        wallthick = 2;
+        floorthick = 1;
+
+        color("dimgrey") drivebay_ups_bottom(65, 95, 12, 2, 2, 
+            pcbsize, pcb_position, batpcbsize, batpcb_position);
         if(top_enable) {
-            color("dimgrey") drivebay_ups_top(65, 101.6,12);
+            color("dimgrey") drivebay_ups_top(65, 95, 7, 12, 2, 2, 
+                pcbsize, pcb_position, batpcbsize, batpcb_position);
         }
         if(pcb_enable) {
             ups_pcb(pcbsize, pcb_position);
-        }
-        if(label_enable && top_enable) {
-            color("black") translate([33.5,-1,20]) rotate([90,0,0]) text("+5V",3);
-            color("red") translate([34.5,0,16]) rotate([90,0,0]) text("+",3);
-            color("black") translate([39,0,15.5]) rotate([90,0,0]) text("-",5);
-            color("black") translate([44,0,20]) rotate([90,0,0]) text("+12V",3);
-            color("red") translate([45.5,0,16]) rotate([90,0,0]) text("+",3);
-            color("black") translate([50,0,15.5]) rotate([90,0,0]) text("-",5);
-            color("black") translate([55.5,0,20]) rotate([90,0,0]) text("+Vin",3);
-            color("red") translate([56.5,0,16]) rotate([90,0,0]) text("+",3);
-            color("black") translate([61,0,15.5]) rotate([90,0,0]) text("-",5);
         }
     }
 }
 
 /* 3.5" hd bay ups holder top*/
-module drivebay_ups_top(length=147, width=101.6, top_height=14, bottom_height=12) {
-    
-    wallthick = 2;
-    floorthick = 1;
+module drivebay_ups_top(length=147, width=101.6, top_height=14, bottom_height=12, wallthick, floorthick, 
+        pcbsize, pcb_position, batpcbsize, batpcb_position) {
+                                
     height = top_height + bottom_height;
     top_standoff = [7,height-pcb_position[2]-pcbsize[2],3.5,10,4,4,0,1,0,4.5,5];
     adjust = .1;    
@@ -128,28 +129,22 @@ module drivebay_ups_top(length=147, width=101.6, top_height=14, bottom_height=12
                 vertical=[2,2,2,2], top=[0,0,0,0], bottom=[2,2,2,2], $fn=90);
         // top vents
         if(top_vent) {
-            for ( c=[15:40:length-40]) {
-                for (r=[10:4:90]) {
-                    translate ([r,c,height-1-adjust]) cube([2,35,wallthick+(adjust*2)]);
+            if(case_style == "drivebay") {
+                for ( c=[15:40:length-40]) {
+                    for (r=[10:4:90]) {
+                        translate ([r,c,height-2-adjust]) cube([2,35,floorthick+(adjust*2)]);
+                    }
+                }
+            }
+            if(case_style == "mini") {
+                for ( c=[16:40:length-40]) {
+                    for (r=[5:4:90]) {
+                        translate ([r,c,height-2-adjust]) cube([2,35,floorthick+(adjust*2)]);
+                    }
                 }
             }
         }
         translate([12.5,17,0]) fan_mask(40, 4, 2);
-        // power plug
-        color("dimgrey") translate([83,-1, pcb_position[2]]) cube([10.5,14,9.5+pcbsize[2]]);
-        // terminal blocks
-        color("dimgrey") translate([32,-1, pcb_position[2]]) cube([34,10,10+pcbsize[2]]);
-        color("dimgrey") translate([36,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
-        color("dimgrey") translate([41,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
-        color("dimgrey") translate([47,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
-        color("dimgrey") translate([52,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
-        color("dimgrey") translate([58,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
-        color("dimgrey") translate([63,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
-        // sata1 & sata2
-        color("dimgrey") translate([8.5,-1, pcb_position[2]]) cube([23.5,10,6+pcbsize[2]]);
-        // fan1 & fan2
-        color("dimgrey") translate([59,-1, pcb_position[2]]) cube([18.5,10,7+pcbsize[2]]);
-        
         // ups psb standoff holes
         color("dimgrey") translate([pcb_position[0]+4, pcb_position[1]+13, height-2]) 
             cylinder(d=6.5, h=4);
@@ -159,9 +154,42 @@ module drivebay_ups_top(length=147, width=101.6, top_height=14, bottom_height=12
             cylinder(d=6.5, h=4);
         color("dimgrey") translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+20, height-2]) 
             cylinder(d=6.5, h=4);
+        if(case_style == "drivebay") {
+            // power plug
+            color("dimgrey") translate([83,-1, pcb_position[2]]) cube([10.5,14,9.5+pcbsize[2]]);
+            // terminal blocks
+            color("dimgrey") translate([32,-1, pcb_position[2]]) cube([34,10,10+pcbsize[2]]);
+            color("dimgrey") translate([36,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            color("dimgrey") translate([41,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            color("dimgrey") translate([47,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            color("dimgrey") translate([52,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            color("dimgrey") translate([58,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            color("dimgrey") translate([63,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            // sata1 & sata2
+            color("dimgrey") translate([8.5,-1, pcb_position[2]]) cube([23.5,10,6+pcbsize[2]]);
+            // fan1 & fan2
+            color("dimgrey") translate([59,-1, pcb_position[2]]) cube([18.5,10,7+pcbsize[2]]);
+        }
         if(case_style == "mini") {
+            // power plug
+            color("dimgrey") translate([79.5, -1, pcb_position[2]]) cube([10.5, 14, 9.5+pcbsize[2]]);
+            // terminal blocks
+            color("dimgrey") translate([28.5, -1, pcb_position[2]]) cube([34, 10, 10+pcbsize[2]]);
+            color("dimgrey") translate([32,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            color("dimgrey") translate([37,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            color("dimgrey") translate([43,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            color("dimgrey") translate([48,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            color("dimgrey") translate([54,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            color("dimgrey") translate([59,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            // sata1 & sata2
+            color("dimgrey") translate([4.5, -1, pcb_position[2]]) cube([23.5, 10, 7+pcbsize[2]]);
+            // fan1 & fan2
+            color("dimgrey") translate([61.5, -1, pcb_position[2]]) cube([18.5, 10, 7+pcbsize[2]]);
+            // i2c
+            color("dimgrey") translate([63.25, -1, pcb_position[2]-2*pcbsize[2]]) cube([5.5, 10, 4]);
+            color("dimgrey") translate([72.25, -1, pcb_position[2]-2*pcbsize[2]]) cube([5.5, 10, 4]);
             // xt60 opening
-            translate([pcbsize[0]+7,pcbsize[1]-26,pcb_position[2]+pcbsize[2]]) cube([6,16,9]);            
+            translate([pcbsize[0]+2,pcbsize[1]-26,pcb_position[2]+pcbsize[2]]) cube([6,16,9]);            
         }
     }
     // ups standoffs
@@ -173,10 +201,9 @@ module drivebay_ups_top(length=147, width=101.6, top_height=14, bottom_height=12
 
 
 /* 3.5" hd bay ups holder */
-module drivebay_ups_bottom(length=147,width=101.6, bottom_height=12) {
+module drivebay_ups_bottom(length=147,width=101.6, bottom_height=12, wallthick, floorthick, 
+        pcbsize, pcb_position, batpcbsize, batpcb_position) {
     
-    wallthick = 3;
-    floorthick = 2;
     pcb_standoff = [7,pcb_position[2],3.5,10,4,1,1,0,0,0,0];
     adjust = .1;    
     $fn=90;
@@ -200,7 +227,6 @@ module drivebay_ups_bottom(length=147,width=101.6, bottom_height=12) {
                     }
                 }
             }
-
             if(case_style == "drivebay") {
                 // side nut holder support    
                 translate([wallthick-adjust+3,28.5,7]) rotate([-90,0,90]) cylinder(d=10,h=3);
@@ -241,41 +267,62 @@ module drivebay_ups_bottom(length=147,width=101.6, bottom_height=12) {
                 cylinder(d=3.5, h=4);
             color("dimgrey") translate([batpcb_position[0]+batpcbsize[0]-4, batpcb_position[1]+4, -1]) 
                 cylinder(d=3.5, h=4);
+            // ups psb standoff holes
+            color("dimgrey") translate([pcb_position[0]+4, pcb_position[1]+13, -1]) 
+                cylinder(d=6.5, h=4);
+            color("dimgrey") translate([pcb_position[0]+4, pcb_position[1]+pcbsize[1]-4, -1]) 
+                cylinder(d=6.5, h=4);
+            color("dimgrey") translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+pcbsize[1]-4, -1]) 
+                cylinder(d=6.5, h=4);
+            color("dimgrey") translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+20, -1]) 
+                cylinder(d=6.5, h=4);
+            
+            // power plug
+            color("dimgrey") translate([83, -1, pcb_position[2]]) cube([10.5, 14, 9.5+pcbsize[2]]);
+            // terminal blocks
+            color("dimgrey") translate([32, -1, pcb_position[2]]) cube([34, 10, 10+pcbsize[2]]);
+            // sata1 & sata2
+            color("dimgrey") translate([8, -1, pcb_position[2]]) cube([23.5, 10, 7+pcbsize[2]]);
+            // fan1 & fan2
+            color("dimgrey") translate([65, -1, pcb_position[2]]) cube([18.5, 10, 7+pcbsize[2]]);
+            // i2c
+            color("dimgrey") translate([66.75, -1, pcb_position[2]-2*pcbsize[2]]) cube([5.5, 10, 4]);
+            color("dimgrey") translate([75.75, -1, pcb_position[2]-2*pcbsize[2]]) cube([5.5, 10, 4]);
         }
         
-        // ups psb standoff holes
-        color("dimgrey") translate([pcb_position[0]+4, pcb_position[1]+13, -1]) 
-            cylinder(d=6.5, h=4);
-        color("dimgrey") translate([pcb_position[0]+4, pcb_position[1]+pcbsize[1]-4, -1]) 
-            cylinder(d=6.5, h=4);
-        color("dimgrey") translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+pcbsize[1]-4, -1]) 
-            cylinder(d=6.5, h=4);
-        color("dimgrey") translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+20, -1]) 
-            cylinder(d=6.5, h=4);
-        
-        // power plug
-        color("dimgrey") translate([83, -1, pcb_position[2]]) cube([10.5, 14, 9.5+pcbsize[2]]);
-        // terminal blocks
-        color("dimgrey") translate([32, -1, pcb_position[2]]) cube([34, 10, 10+pcbsize[2]]);
-        // sata1 & sata2
-        color("dimgrey") translate([8, -1, pcb_position[2]]) cube([23.5, 10, 7+pcbsize[2]]);
-        // fan1 & fan2
-        color("dimgrey") translate([65, -1, pcb_position[2]]) cube([18.5, 10, 7+pcbsize[2]]);
-        // i2c
-        color("dimgrey") translate([66.75, -1, pcb_position[2]-2*pcbsize[2]]) cube([5.5, 10, 4]);
-        color("dimgrey") translate([75.75, -1, pcb_position[2]-2*pcbsize[2]]) cube([5.5, 10, 4]);
-
         // mini case openings
         if(case_style == "mini") {
+            // ups psb standoff holes
+            color("dimgrey") translate([pcb_position[0]+4, pcb_position[1]+13, -1]) 
+                cylinder(d=6.5, h=4);
+            color("dimgrey") translate([pcb_position[0]+4, pcb_position[1]+pcbsize[1]-4, -1]) 
+                cylinder(d=6.5, h=4);
+            color("dimgrey") translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+pcbsize[1]-4, -1]) 
+                cylinder(d=6.5, h=4);
+            color("dimgrey") translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+20, -1]) 
+                cylinder(d=6.5, h=4);
+            
+            // power plug
+            color("dimgrey") translate([79.5, -1, pcb_position[2]]) cube([10.5, 14, 9.5+pcbsize[2]]);
+            // terminal blocks
+            color("dimgrey") translate([28.5, -1, pcb_position[2]]) cube([34, 10, 10+pcbsize[2]]);
+            // sata1 & sata2
+            color("dimgrey") translate([4.5, -1, pcb_position[2]]) cube([23.5, 10, 7+pcbsize[2]]);
+            // fan1 & fan2
+            color("dimgrey") translate([61.5, -1, pcb_position[2]]) cube([18.5, 10, 7+pcbsize[2]]);
+            // i2c
+            color("dimgrey") translate([63.25, -1, pcb_position[2]-2*pcbsize[2]]) cube([5.5, 10, 4]);
+            color("dimgrey") translate([72.25, -1, pcb_position[2]-2*pcbsize[2]]) cube([5.5, 10, 4]);
+
             // usb-c opening
-            translate([57,pcbsize[1]+4,pcb_position[2]+3.25]) rotate([90,0,0]) slot(3.5,6,6);
-            translate([56,pcbsize[1]+wallthick+3-wallthick/2,pcb_position[2]+3.25]) rotate([90,0,0]) slot(5,8,3);
+            translate([53.5,pcbsize[1]+4,pcb_position[2]+3.25]) rotate([90,0,0]) slot(3.5,6,6);
+            translate([52.5,pcbsize[1]+wallthick+3-wallthick/2,pcb_position[2]+3.25]) rotate([90,0,0]) slot(5,8,3);
             // led openings
-            translate([32.5,pcbsize[1]+4,pcb_position[2]+2.75]) rotate([90,0,0]) cylinder(d=3, h=6);
-            translate([37.5,pcbsize[1]+4,pcb_position[2]+2.75]) rotate([90,0,0]) cylinder(d=3, h=6);
-            translate([42.5,pcbsize[1]+4,pcb_position[2]+2.75]) rotate([90,0,0]) cylinder(d=3, h=6);
+            translate([29,pcbsize[1]+4,pcb_position[2]+2.75]) rotate([90,0,0]) cylinder(d=3, h=6);
+            translate([34,pcbsize[1]+4,pcb_position[2]+2.75]) rotate([90,0,0]) cylinder(d=3, h=6);
+            translate([39,pcbsize[1]+4,pcb_position[2]+2.75]) rotate([90,0,0]) cylinder(d=3, h=6);
             // xt60 opening
-            translate([pcbsize[0]+7,pcbsize[1]-26,pcb_position[2]+pcbsize[2]]) cube([6,16,9]);            
+            translate([pcbsize[0]+2,pcbsize[1]-26,pcb_position[2]+pcbsize[2]]) cube([6,16,9]);            
         }
     }
     // ups standoffs
@@ -291,7 +338,6 @@ module drivebay_ups_bottom(length=147,width=101.6, bottom_height=12) {
 module ups_pcb(pcbsize, pcb_position) {
     
     pcb_color = "#151515";
-    batpcb_color = "#008066";
     adj = .01;
     $fn = 90;
 
@@ -375,6 +421,7 @@ module ups_pcb(pcbsize, pcb_position) {
 /* battery pcb */
 module bat_pcb(batpcbsize, batpcb_position) {
     
+    batpcb_color = "#008066";
     adj = .01;
     $fn = 90;
 
@@ -386,7 +433,7 @@ module bat_pcb(batpcbsize, batpcb_position) {
             cylinder(d=3.5, h=4);
         color("dimgrey") translate([batpcb_position[0]+batpcbsize[0]-4, batpcb_position[1]+batpcbsize[1]-4,
             batpcb_position[2]-1]) cylinder(d=3.5, h=4);
-        color("dimgrey") translate([batpcb_position[0]+pcbsize[0]-4, batpcb_position[1]+4, batpcb_position[2]-1]) 
+        color("dimgrey") translate([batpcb_position[0]+batpcbsize[0]-4, batpcb_position[1]+4, batpcb_position[2]-1]) 
             cylinder(d=3.5, h=4);
     }
 }
