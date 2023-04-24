@@ -509,6 +509,10 @@
     [
       "8c312927-9c4e-41ad-b941-6f477a792759",
       "Aux Power Supplies"
+    ],
+    [
+      "cd9c4f35-7131-43cd-b33a-45cc202c7c37",
+      "Power ORing Diodes"
     ]
   ],
   "text_variables": {}
