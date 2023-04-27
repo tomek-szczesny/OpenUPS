@@ -28,19 +28,21 @@
     battery(type)
     jst_xh(num_pin)
     jst_sh(num_pin)
+    jst_ph(num_pin)
     standoff(standoff[radius,height,holesize,supportsize,supportheight,sink,style,i_dia,i_depth])
     slab(size, radius)
     slot(hole,length,depth)
     fan_mask(size, thick, style)
     heatsink(type,soc1size_z)xt60(style)
     xt60(style)
+    xt30(style)
     
 */
 
 use <./lib/fillets.scad>;
 
 view = "model";                 // "model", "platter", "debug"
-case_style = "drivebay";        // "drivebay", "mini", "tower"
+case_style = "mini";        // "drivebay", "mini", "tower"
 heatsink_type = "c4_oem";       // "c4_oem", "xu4_oem"
 
 pcb_enable = true;
@@ -221,7 +223,7 @@ module drivebay_ups_top(length=147, width=101.6, bottom_height=12, top_height=14
             translate([34,pcbsize[1]+4,pcb_position[2]+2.75]) rotate([90,0,0]) cylinder(d=3, h=6);
             translate([39,pcbsize[1]+4,pcb_position[2]+2.75]) rotate([90,0,0]) cylinder(d=3, h=6);
             // xt60 opening
-            translate([pcbsize[0]+2,pcbsize[1]-26,pcb_position[2]+pcbsize[2]]) cube([6,16,9]);            
+//            translate([pcbsize[0]+2,pcbsize[1]-26,pcb_position[2]+pcbsize[2]]) cube([6,16,9]);            
         }
     }
     // ups standoffs
@@ -328,8 +330,11 @@ module drivebay_ups_bottom(length=147,width=101.6, bottom_height=12, wallthick, 
             translate([29,pcbsize[1]+4,pcb_position[2]+2.75]) rotate([90,0,0]) cylinder(d=3, h=6);
             translate([34,pcbsize[1]+4,pcb_position[2]+2.75]) rotate([90,0,0]) cylinder(d=3, h=6);
             translate([39,pcbsize[1]+4,pcb_position[2]+2.75]) rotate([90,0,0]) cylinder(d=3, h=6);
-            // xt60 opening
-            translate([pcbsize[0]+2,pcbsize[1]-26,pcb_position[2]+pcbsize[2]]) cube([6,16,9]);            
+//            // xt60 opening
+//            translate([pcbsize[0]+2,pcbsize[1]-26,pcb_position[2]+pcbsize[2]]) cube([6,16,9]);            
+            // xt30 opening
+            translate([pcbsize[0]+2,pcbsize[1]-20,pcb_position[2]-pcbsize[2]-3.75]) cube([6,10.5,5.5]);            
+            translate([pcbsize[0]+4,pcbsize[1]-22,pcb_position[2]-pcbsize[2]-5.75]) cube([6,14.5,9.5]);            
         }
     }
     // ups standoffs
@@ -410,18 +415,18 @@ module ups_pcb(pcbsize, pcb_position) {
     color("black") translate([pcb_position[0]+38.5, pcb_position[1]+pcbsize[1]-4, pcb_position[2]+pcbsize[2]]) 
         rotate([0, 0, 180]) linear_extrude(height = .5) text("FULL", size=1.25);
         
-    // xt60 connector
+    // xt30 connector
     if(case_style == "mini") {
-        translate([pcb_position[0]+71, pcb_position[1]+pcbsize[1]-10, pcb_position[2]+pcbsize[2]])
-            rotate([0,0,270]) xt60("XT60PW-M");
+        translate([pcb_position[0]+81, pcb_position[1]+pcbsize[1]-20, pcb_position[2]-pcbsize[2]+1.6])
+            rotate([0,180,270]) xt30("XT30PW-M");
         // front usb-c
         translate([pcb_position[0]+54, pcb_position[1]+pcbsize[1]-9.5, pcb_position[2]+pcbsize[2]+pcbsize[2]]) 
              import("lib/usb-c.stl");
     }
+    translate([pcb_position[0]+84, pcb_position[1]+pcbsize[1]-9.5, pcb_position[2]+pcbsize[2]])
+            rotate([0,0,270]) jst_ph(4);
     // heatsink
     translate([pcb_position[0]+5,pcb_position[1]+40,pcb_position[2]+0]) heatsink(heatsink_type,2.5);
-
-
 }
 
 
@@ -639,6 +644,26 @@ module jst_sh(num_pin) {
         translate([1, 0, 0]) union() {
             for(ind=[0:num_pin-1]) {
                 color("silver") translate([(ind*1)-.125, 1, .5]) cube([.25, .25, 3.5]);
+            }
+        }
+    }
+}
+
+
+// JST-PH connector class
+module jst_ph(num_pin) {
+    size_x = 2.4+(num_pin*2);
+    size_y = 4.5;
+    
+    union() {
+        difference() {
+            color("white") cube([size_x, size_y, 6]);
+            color("white") translate([.5, .5, .5]) cube([size_x-1, size_y-1, 6]);
+            color("white") translate([size_x/2-(0.5*num_pin)/2, -.1,.5]) cube([0.5*num_pin, size_y-2, 6]);
+        }
+        translate([1.95, 0, 0]) union() {
+            for(ind=[0:num_pin-1]) {
+                color("silver") translate([ind*2, 1.4, .5]) cube([.5, .5, 4]);
             }
         }
     }
@@ -1092,9 +1117,12 @@ module xt60(style) {
                     color(concolor) translate([7.1,1.5,height-.5-adj]) cube([1, 4.5, 1]);            
                     color(concolor) translate([0,depth-adj,0]) cube([width, .5, height-7.7]);
                 }
+                // lower bevel
+                color(concolor) translate([13,-7,-adj]) rotate([0,0,45]) cube([width-4, depth-4, height+2*adj]);
+                color(concolor) translate([-6.5,2,-adj]) rotate([0,0,-45]) cube([width-4, depth-4, height+2*adj]);
                 // upper bevel
-                color(concolor) translate([-2,2,height-7.7-adj]) rotate([0,0,45]) cube([width-4, depth-4, 8]);
-                color(concolor) translate([-3.5,2,height-7.7-adj]) rotate([0,0,-45]) cube([width-4, depth-4, 8]);
+                color(concolor) translate([13.25,-3.75,height-7.7-adj]) rotate([0,0,45]) cube([width-4, depth-4, 8]);
+                color(concolor) translate([11.25,8,height-7.7-adj]) rotate([0,0,-45]) cube([width-4, depth-4, 8]);
                 // pin holes
                 color(concolor) translate([4,depth/2,3-adj]) rotate([0,0,0]) cylinder(d=4.26, h=16);
                 color(concolor) translate([11.2,depth/2,3-adj]) rotate([0,0,0]) cylinder(d=4.26, h=16);
@@ -1130,6 +1158,9 @@ module xt60(style) {
                     color(concolor) translate([-2,2,1]) rotate([0,0,45]) cube([width-4, depth-4, height]);
                     color(concolor) translate([-3.5,2,1]) rotate([0,0,-45]) cube([width-4, depth-4, height]);
                 }
+                // bevel
+                color(concolor) translate([14,-7,-adj]) rotate([0,0,45]) cube([width-4, depth-4, height+2*adj]);
+                color(concolor) translate([-7.5,2,-adj]) rotate([0,0,-45]) cube([width-4, depth-4, height+2*adj]);
                 // pin holes
                 color(concolor) translate([4,depth/2,2-adj]) rotate([0,0,0]) cylinder(d=4.26, h=16);
                 color(concolor) translate([11.2,depth/2,2-adj]) rotate([0,0,0]) cylinder(d=4.26, h=16);
@@ -1152,7 +1183,202 @@ module xt60(style) {
             // pins
             color("gold") translate([4,6.7-adj+depth/2,1.85]) rotate([90,0,0]) cylinder(d=2, h=2.5);
             color("gold") translate([11.2,6.7-adj+depth/2,1.85]) rotate([90,0,0]) cylinder(d=2, h=2.5);
+        }
+    }
+}
 
+
+//    xt30(style)
+//         style = "XT30PB-F", "XT30PB-M", "XT30PW-F", "XT30PW-M", 
+module xt30(style) {
+    
+    concolor = "orange";
+    adj = .01;
+    $fn = 90;
+    
+    if(style == "XT30PB-F") {
+        
+        width = 10.2;
+        depth = 5.2;
+        height = 9.4;
+        pin_osize = 2.1;
+        pin_isize = 1.6;
+
+        difference() {
+            union() {
+                color(concolor) cube([width, depth, 3.4]);
+                color(concolor) translate([1,1,3.4-adj]) cube([width-2, depth-2, 6]);
+            }
+            // lower bevel
+            color(concolor) translate([-1.5,2,-adj]) rotate([0,0,45]) cube([width-4, depth-2, 3.4+2*adj]);
+            color(concolor) translate([-3.5,2,-adj]) rotate([0,0,-45]) cube([width-4, depth-3, 3.4+2*adj]);
+            // upper bevel
+            color(concolor) translate([-0.25,2,3.4-adj]) rotate([0,0,45]) cube([width-4, depth-4, 7]);
+            color(concolor) translate([-0.75,2,3.4-adj]) rotate([0,0,-45]) cube([width-4, depth-4, 7]);
+            // pin holes
+            color(concolor) translate([2.6,depth/2,-adj]) cylinder(d=pin_osize, h=16);
+            color(concolor) translate([7.6,depth/2,-adj]) cylinder(d=pin_osize, h=16);
+            // cutout
+            color(concolor) translate([4,1-adj,3.4]) cube([2, .75+adj, 8+adj]);            
+            color(concolor) translate([4,3.5-adj,3.4]) cube([2, .75+adj, 8+adj]);            
+        }
+        // pins
+        difference() {
+            color("gold") translate([2.6,depth/2,0]) cylinder(d=pin_osize, h=height-.5);
+            color("gold") translate([2.6,depth/2,0-adj]) cylinder(d=pin_isize, h=height+.5);
+        }
+        color("gold") translate([2.6,depth/2,-2]) cylinder(d=pin_isize, h=2);
+        difference() {
+            color("gold") translate([7.6,depth/2,0]) cylinder(d=pin_osize, h=height-.5);
+            color("gold") translate([7.6,depth/2,0-adj]) cylinder(d=pin_isize, h=height+.5);
+        }
+        color("gold") translate([7.6,depth/2,-2]) cylinder(d=pin_isize, h=2);
+    }
+    if(style == "XT30PB-M") {
+        
+        width = 10.2;
+        depth = 5.2;
+        height = 10.7;
+        pin_osize = 2.1;
+        pin_isize = 1.6;
+
+        difference() {
+            color(concolor) cube([width, depth, height]);        
+            difference() {
+                color(concolor) translate([.5,.5,1]) cube([width-1, depth-1, height]);
+                // inner bevel
+                color(concolor) translate([-2.5,0,1]) rotate([0,0,45]) cube([width-2, depth-2, height]);
+                color(concolor) translate([-4,2,1]) rotate([0,0,-45]) cube([width-2, depth-2, height]);
+            }
+            // lower bevel
+            color(concolor) translate([-1.5,2,-adj]) rotate([0,0,45]) cube([width-4, depth-2, height+2*adj]);
+            color(concolor) translate([-3.5,2,-adj]) rotate([0,0,-45]) cube([width-4, depth-3, height+2*adj]);
+            // pin holes
+            color(concolor) translate([2.6,depth/2,-adj]) cylinder(d=pin_osize, h=16);
+            color(concolor) translate([7.6,depth/2,-adj]) cylinder(d=pin_osize, h=16);
+        }
+        // pins
+        difference() {
+            color("gold") translate([2.6,depth/2,0]) cylinder(d=pin_osize, h=height-.5);
+            color("gold") translate([2.6,depth/2,0-adj]) cylinder(d=pin_isize, h=height+.5);
+            color("gold") translate([2.6,depth/2,8-adj]) rotate([0,0,45]) cube([.5,5,height], center=true);
+            color("gold") translate([2.6,depth/2,8-adj]) rotate([0,0,-45]) cube([.5,5,height], center=true);
+        }
+        color("gold") translate([2.6,depth/2,-2]) cylinder(d=pin_isize, h=2);
+        difference() {
+            color("gold") translate([7.6,depth/2,0]) cylinder(d=pin_osize, h=height-.5);
+            color("gold") translate([7.6,depth/2,0-adj]) cylinder(d=pin_isize, h=height+.5);
+            color("gold") translate([7.6,depth/2,8-adj]) rotate([0,0,45]) cube([.5,5,height], center=true);
+            color("gold") translate([7.6,depth/2,8-adj]) rotate([0,0,-45]) cube([.5,5,height], center=true);
+        }
+        color("gold") translate([7.6,depth/2,-2]) cylinder(d=pin_isize, h=2);
+    }
+    if(style == "XT30PW-F") {
+        
+        width = 9.9;
+        depth = 5;
+        height = 9.4;
+        pin_osize = 2.1;
+        pin_isize = 1.6;
+
+        translate([0,0,depth]) rotate([270,0,0]) {
+            difference() {
+                union() {
+                    color(concolor) cube([width, depth, 3.4]);
+                    color(concolor) translate([1,1,3.4-adj]) cube([width-2, depth-2, 6]);
+                    color(concolor) translate([-0.5,1.6,.8]) rotate([270,0,0]) cylinder(d=1.6, h=3.4);
+                    color(concolor) translate([10.25,1.6,.8]) rotate([270,0,0]) cylinder(d=1.6, h=3.4);
+                }
+                // upper bevel
+                color(concolor) translate([-0.25,2,3.4-adj]) rotate([0,0,45]) cube([width-4, depth-4, 7]);
+                color(concolor) translate([-0.75,2,3.4-adj]) rotate([0,0,-45]) cube([width-4, depth-4, 7]);
+                // pin holes
+                color(concolor) translate([2.6,depth/2,-adj]) cylinder(d=pin_osize, h=16);
+                color(concolor) translate([7.6,depth/2,-adj]) cylinder(d=pin_osize, h=16);
+                // mount holes
+                color(concolor) translate([-0.5,1.5,.8]) rotate([270,0,0]) cylinder(d=.8, h=4);
+                color(concolor) translate([10.25,1.5,.8]) rotate([270,0,0]) cylinder(d=.8, h=4);
+                // cutout
+                color(concolor) translate([4,1-adj,3.4]) cube([2, .75+adj, 8+adj]);            
+                color(concolor) translate([4,3.5-adj,3.4]) cube([2, .75+adj, 8+adj]);            
+
+            }
+            // pins
+            difference() {
+                color("gold") translate([2.6,depth/2,0]) cylinder(d=pin_osize, h=height-.5);
+                color("gold") translate([2.6,depth/2,0-adj]) cylinder(d=pin_isize, h=height+.5);
+            }
+            color("gold") translate([2.6,depth/2,-2.25]) cylinder(d=pin_osize, h=2.25);
+            rotate([180,90,0]) translate([2.2,-4.5,-2.6]) color("gold") 
+                rotate_extrude(angle=90, convexity = 10) translate([2, 0, 0]) circle(d = 1.6, $fn = 100);
+            color("gold") translate([2.6,2+depth/2,-4.2]) rotate([270,0,0]) cylinder(d=pin_isize, h=2.5);
+            
+            difference() {
+                color("gold") translate([7.6,depth/2,0]) cylinder(d=pin_osize, h=height-.5);
+                color("gold") translate([7.6,depth/2,0-adj]) cylinder(d=pin_isize, h=height+.5);
+            }
+            color("gold") translate([7.6,depth/2,-2.25]) cylinder(d=pin_osize, h=2.25);
+            rotate([180,90,0]) translate([2.2,-4.5,-7.6]) color("gold") 
+                rotate_extrude(angle=90, convexity = 10) translate([2, 0, 0]) circle(d = 1.6, $fn = 100);
+            color("gold") translate([7.6,2+depth/2,-4.2]) rotate([270,0,0]) cylinder(d=pin_isize, h=2.5);
+            
+            
+            color("silver") translate([-0.5,1.5,.8]) rotate([270,0,0]) cylinder(d=.8, h=5.5);
+            color("silver") translate([10.25,1.5,.8]) rotate([270,0,0]) cylinder(d=.8, h=5.5);
+            
+        }
+    }
+    if(style == "XT30PW-M") {
+        
+        width = 10.2;
+        depth = 5.2;
+        height = 9;
+        pin_osize = 2.1;
+        pin_isize = 1.6;
+        
+        translate([width,0,0]) rotate([270,180,0]) {
+            difference() {
+                union() {
+                    color(concolor) cube([width, depth, height]);        
+                    color(concolor) translate([-0.25,0,.8]) rotate([270,0,0]) cylinder(d=1.6, h=3.4);
+                    color(concolor) translate([10.5,0,.8]) rotate([270,0,0]) cylinder(d=1.6, h=3.4);
+                }
+                difference() {
+                    color(concolor) translate([.5,.5,1]) cube([width-1, depth-1, height]);
+                    // inner bevel
+                    color(concolor) translate([-2.5,0,1]) rotate([0,0,45]) cube([width-2, depth-2, height]);
+                    color(concolor) translate([-4,2,1]) rotate([0,0,-45]) cube([width-2, depth-2, height]);
+                }
+                // lower bevel
+                color(concolor) translate([-2.5,2,-adj]) rotate([0,0,45]) cube([width-4, depth-2, height+2*adj]);
+                // pin holes
+                color(concolor) translate([2.6,depth/2,-adj]) cylinder(d=pin_osize, h=16);
+                color(concolor) translate([7.6,depth/2,-adj]) cylinder(d=pin_osize, h=16);
+            }
+            // pins
+            difference() {
+                color("gold") translate([2.6,depth/2,0]) cylinder(d=pin_osize, h=height-.5);
+                color("gold") translate([2.6,depth/2,0-adj]) cylinder(d=pin_isize, h=height+.5);
+                color("gold") translate([2.6,depth/2,8-adj]) rotate([0,0,45]) cube([.5,5,height], center=true);
+                color("gold") translate([2.6,depth/2,8-adj]) rotate([0,0,-45]) cube([.5,5,height], center=true);
+            }
+            color("gold") translate([2.6,depth/2,-2.25]) cylinder(d=pin_osize, h=2.25);
+            color("gold") translate([2.6,-2,-4.2]) rotate([270,0,0]) cylinder(d=pin_isize, h=2.7);
+            rotate([0,90,0]) translate([2.22,.6,2.6]) color("gold") 
+                rotate_extrude(angle=90, convexity = 10) translate([2, 0, 0]) circle(d = 1.6, $fn = 100);
+            difference() {
+                color("gold") translate([7.6,depth/2,0]) cylinder(d=pin_osize, h=height-.5);
+                color("gold") translate([7.6,depth/2,0-adj]) cylinder(d=pin_isize, h=height+.5);
+                color("gold") translate([7.6,depth/2,8-adj]) rotate([0,0,45]) cube([.5,5,height], center=true);
+                color("gold") translate([7.6,depth/2,8-adj]) rotate([0,0,-45]) cube([.5,5,height], center=true);
+            }
+            color("gold") translate([7.6,depth/2,-2.25]) cylinder(d=pin_osize, h=2.25);
+            color("gold") translate([7.6,-2,-4.2]) rotate([270,0,0]) cylinder(d=pin_isize, h=2.7);
+            rotate([0,90,0]) translate([2.22,.6,7.6]) color("gold") 
+                rotate_extrude(angle=90, convexity = 10) translate([2, 0, 0]) circle(d = 1.6, $fn = 100);
+            
+            color("silver") translate([-0.35,-2,.8]) rotate([270,0,0]) cylinder(d=.8, h=5.5);
+            color("silver") translate([10.65,-2,.8]) rotate([270,0,0]) cylinder(d=.8, h=5.5);
         }
     }
 }
