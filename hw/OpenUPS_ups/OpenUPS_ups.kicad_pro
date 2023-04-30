@@ -513,6 +513,10 @@
     [
       "cd9c4f35-7131-43cd-b33a-45cc202c7c37",
       "Power ORing Diodes"
+    ],
+    [
+      "8df8d962-7936-4f05-9ed7-4d48f457f001",
+      "Ext. I2C Interface"
     ]
   ],
   "text_variables": {}
