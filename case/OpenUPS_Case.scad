@@ -393,7 +393,7 @@ module drivebay_ups_bottom(length=147,width=101.6, bottom_height=12, wallthick, 
             translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+pcbsize[1]-4, -1]) cylinder(d=6.5, h=4);
             translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+20, -1]) cylinder(d=6.5, h=4);
             // fan1 & fan2
-            translate([65, -1, pcb_position[2]-8]) cube([18.5, 10, pcbsize[2]+8]);
+            translate([63, -1, pcb_position[2]-8]) cube([20.5, 10, pcbsize[2]+8]);
         }
         
         // mini case openings
@@ -407,7 +407,7 @@ module drivebay_ups_bottom(length=147,width=101.6, bottom_height=12, wallthick, 
             translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+20, -1]) cylinder(d=6.5, h=4);
 
             // fan1 & fan2
-            translate([62, -1, pcb_position[2]-7]) cube([17.5, 10, pcbsize[2]+7]);
+            translate([59.5, -1, pcb_position[2]-7]) cube([20.5, 10, pcbsize[2]+7]);
             // sata1 & sata2
             translate([4.5, -1, pcb_position[2]]) cube([24, 10, pcbsize[2]+6]);
             // i2c
@@ -504,13 +504,12 @@ module ups_pcb(pcbsize, pcb_position) {
         rotate([90, 0, 0]) jst_sh(4);
         
     // fan 1
-    translate([pcb_position[0]+pcbsize[0]-17.5, pcb_position[1]+8, pcb_position[2]-2*pcbsize[2]]) 
+    translate([pcb_position[0]+pcbsize[0]-19, pcb_position[1]+8, pcb_position[2]-2*pcbsize[2]]) 
         rotate([0, 0, 180]) import("lib/22053031.stl");
 //    color("black") translate([pcb_position[0]+pcbsize[0]-21, pcb_position[1]+1, pcb_position[2]+pcbsize[2]]) 
 //         linear_extrude(height = .5) text("FAN 1", size=2);
-
     // front fan2
-    translate([pcb_position[0]+pcbsize[0]-26.5, pcb_position[1]+8, pcb_position[2]-2*pcbsize[2]]) 
+    translate([pcb_position[0]+pcbsize[0]-28, pcb_position[1]+8, pcb_position[2]-2*pcbsize[2]]) 
         rotate([0, 0, 180]) import("lib/22053031.stl");
 //    color("black") translate([pcb_position[0]+pcbsize[0]-30, pcb_position[1]+1, pcb_position[2]+pcbsize[2]]) 
 //         linear_extrude(height = .5) text("FAN 2", size=2);
@@ -535,8 +534,8 @@ module ups_pcb(pcbsize, pcb_position) {
              import("lib/usb-c.stl");
     }
     // battery sense
-    translate([pcb_position[0]+84, pcb_position[1]+pcbsize[1]-9.5, pcb_position[2]+pcbsize[2]])
-            rotate([0,0,270]) jst_ph(4);
+    translate([pcb_position[0]+84, pcb_position[1]+pcbsize[1]-11.5, pcb_position[2]+pcbsize[2]])
+            rotate([0,0,270]) jst_ph(2);
     // heatsink
     translate([pcb_position[0]+5,pcb_position[1]+40,pcb_position[2]+0]) heatsink(heatsink_type,2.5);
 }
