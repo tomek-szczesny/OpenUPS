@@ -41,9 +41,10 @@
 
 use <./lib/fillets.scad>;
 
-view = "model";                 // "model", "platter"
-case_style = "drivebay";        // "drivebay", "mini", "3S1P", "3S2P"
-heatsink_type = "c4_oem";       // "c4_oem", "xu4_oem"
+/* [View] */
+view = "model"; // ["model", "platter"]
+case_style = "drivebay"; // ["drivebay", "mini", "3S1P", "3S2P"]
+heatsink_type = "c4_oem"; // ["c4_oem", "xu4_oem"]
 
 pcb_enable = true;
 top_enable = false;
@@ -51,16 +52,15 @@ label_enable = false;
 bottom_vent = true;
 top_vent = true;
 
-
-// batteries layout and configuration
-bat_num = 3;
-bat_type = "21700";           // "18650", "18650_convex", "21700"
-bat_layout = "3S_staggered";  // "straight", "staggered", "3S2P_staggered", "3S_staggered"
-bat_space = 3;
+bat_num = 3; // [1:6]
+bat_type = "21700"; // ["18650", "21700"]
+bat_layout = "3S_staggered"; // ["straight", "staggered", "3S2P_staggered", "3S_staggered"]
+bat_space = 3; // [3:10]
 
 bat_dia = bat_type == "21700" ? 21 : 18.4;
 bat_len = bat_type == "21700" ? 70 : 65;
 
+/* [Hidden] */
 adj = .01;
 $fn = 90;
 if(view == "model") {
