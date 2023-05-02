@@ -41,7 +41,7 @@
 
 use <./lib/fillets.scad>;
 
-/* [View] */
+/* [OpenUPS Case Configuration] */
 view = "model"; // ["model", "platter"]
 case_style = "drivebay"; // ["drivebay", "mini", "3S1P", "3S2P"]
 heatsink_type = "c4_oem"; // ["c4_oem", "xu4_oem"]
@@ -63,6 +63,7 @@ bat_len = bat_type == "21700" ? 70 : 65;
 /* [Hidden] */
 adj = .01;
 $fn = 90;
+
 if(view == "model") {
     if(case_style == "drivebay") {
         // pcb size and placement
@@ -649,7 +650,7 @@ module battery_placement(bat_layout, bat_num, bat_space, bat_type, bat_dia, bat_
                 if(b == 1 || b == 3 || b == 5) {
                     translate([13-bat_len,b*bat_dia+b*bat_space,1]) rotate([-90,0,270]) battery(bat_type);
                     color("dimgrey") translate([11,b*bat_dia+b*bat_space,1]) rotate([0,0,90]) battery_clip(bat_dia);
-                    color("dimgrey") translate([-bat_len+18,b*bat_dia+b*bat_space,1]) 
+                    color("dimgrey") translate([-bat_len+15,b*bat_dia+b*bat_space,1]) 
                         rotate([0,0,270]) battery_clip(bat_dia);
                 }
 
