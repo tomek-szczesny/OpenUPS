@@ -1875,7 +1875,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 8d02199a-5ba7-449d-a3c0-9e06311a5df0)
   )
-  (text "0V keeps the converter off\n1.3-2.5V range set current limits\nActual output voltage must be \nmonitored and regulated externally"
+  (text "0V keeps the converter off\n1.3-2.5V range set current limits\nActual output voltage and current must be \nmonitored and regulated externally"
     (at 31.75 55.88 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 9bf2aa0f-c7b6-4c5d-888b-7a87807d6c3f)
@@ -2067,7 +2067,7 @@
           (reference "R?") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
-          (reference "R?") (unit 1)
+          (reference "R430") (unit 1)
         )
       )
     )
@@ -2157,7 +2157,7 @@
           (reference "C?") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
-          (reference "C?") (unit 1)
+          (reference "C439") (unit 1)
         )
       )
     )
@@ -2215,7 +2215,7 @@
           (reference "C?") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
-          (reference "C?") (unit 1)
+          (reference "C437") (unit 1)
         )
       )
     )
@@ -2560,7 +2560,7 @@
           (reference "C?") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
-          (reference "C?") (unit 1)
+          (reference "C438") (unit 1)
         )
       )
     )
@@ -2673,7 +2673,7 @@
           (reference "C?") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
-          (reference "C?") (unit 1)
+          (reference "C429") (unit 1)
         )
       )
     )
@@ -2735,7 +2735,7 @@
           (reference "Q?") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
-          (reference "Q?") (unit 1)
+          (reference "Q405") (unit 1)
         )
       )
     )
@@ -2764,7 +2764,7 @@
           (reference "C?") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
-          (reference "C?") (unit 1)
+          (reference "C440") (unit 1)
         )
       )
     )
@@ -2824,7 +2824,7 @@
           (reference "D?") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
-          (reference "D?") (unit 1)
+          (reference "D403") (unit 1)
         )
       )
     )
@@ -3079,7 +3079,7 @@
           (reference "C?") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
-          (reference "C?") (unit 1)
+          (reference "C436") (unit 1)
         )
       )
     )
@@ -3284,7 +3284,7 @@
           (reference "R?") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
-          (reference "R?") (unit 1)
+          (reference "R429") (unit 1)
         )
       )
     )
@@ -3374,7 +3374,7 @@
           (reference "L?") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
-          (reference "L?") (unit 1)
+          (reference "L402") (unit 1)
         )
       )
     )
@@ -3677,7 +3677,7 @@
           (reference "C?") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
-          (reference "C?") (unit 1)
+          (reference "C430") (unit 1)
         )
       )
     )
@@ -3734,7 +3734,7 @@
           (reference "R?") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
-          (reference "R?") (unit 1)
+          (reference "R428") (unit 1)
         )
       )
     )
