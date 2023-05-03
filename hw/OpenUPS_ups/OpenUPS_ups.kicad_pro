@@ -517,6 +517,10 @@
     [
       "8df8d962-7936-4f05-9ed7-4d48f457f001",
       "Ext. I2C Interface"
+    ],
+    [
+      "5d533980-99bb-4871-b1d2-8a68cd48eb84",
+      "USB-C"
     ]
   ],
   "text_variables": {}
