@@ -29,7 +29,7 @@
     jst_xh(num_pin)
     jst_sh(num_pin)
     jst_ph(num_pin)
-    standoff(standoff[radius,height,holesize,supportsize,supportheight,sink,style,i_dia,i_depth])
+    standoff([radius,height,holesize,supportsize,supportheight,sink,style,i_dia,i_depth])
     slab(size, radius)
     slot(hole,length,depth)
     fan_mask(size, thick, style)
@@ -43,12 +43,13 @@ use <./lib/fillets.scad>;
 
 /* [OpenUPS Case Configuration] */
 view = "model"; // ["model", "platter"]
-case_style = "drivebay"; // ["drivebay", "mini", "3S1P", "3S2P", "3S1P-LPO", "3S2P-LPO"]
+top_enable = false;
+case_style = "drivebay"; // ["drivebay", "mini", "3S1P", "3S2P"]
 heatsink_type = "c4_oem"; // ["c4_oem", "xu4_oem"]
 
-pcb_enable = true;
-top_enable = false;
-label_enable = false;
+ups_pcb_enable = true;
+battery_pcb_enable = true;
+rear_wire_feed = false;
 bottom_vent = true;
 top_vent = true;
 
@@ -79,30 +80,21 @@ if(view == "model") {
             color("dimgrey") drivebay_ups_top(147, 101.6, 12, 14, 2, 1, 
                 pcbsize, pcb_position, batpcbsize, batpcb_position);
         }
-        if(pcb_enable) {
+        if(ups_pcb_enable) {
             ups_pcb(pcbsize, pcb_position);
+        }
+        if(battery_pcb_enable) {
             bat_pcb(batpcbsize, batpcb_position, bat_position);
             translate(bat_position) battery_placement(bat_layout, bat_num, bat_space, bat_type, bat_dia, bat_len);
         }
         // pillars
-        translate([pcb_position[0]+4, pcb_position[1]+pcbsize[1]-4, batpcb_position[2]+batpcbsize[2]]) 
+        translate([batpcb_position[0]+4, batpcb_position[1]+batpcbsize[1]-4, batpcb_position[2]+batpcbsize[2]]) 
+            pillar(5, 10, 0);
+        translate([batpcb_position[0]+batpcbsize[0]-4, batpcb_position[1]+batpcbsize[1]-4, 
+            batpcb_position[2]+batpcbsize[2]]) pillar(5, 10, 0);
+        translate([batpcb_position[0]+4, batpcb_position[1]+4,  batpcb_position[2]+batpcbsize[2]]) pillar(5, 8, 0);
+        translate([batpcb_position[0]+batpcbsize[0]-4, batpcb_position[1]+4,  batpcb_position[2]+batpcbsize[2]]) 
             pillar(5, 8, 0);
-        translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+pcbsize[1]-4, batpcb_position[2]+batpcbsize[2]])
-            pillar(5, 8, 0);
-        translate([pcb_position[0]+4, 147-4-7/2,  batpcb_position[2]+batpcbsize[2]]) pillar(5, 10, 0);
-        translate([pcb_position[0]+pcbsize[0]-4, 147-4-7/2,  batpcb_position[2]+batpcbsize[2]]) pillar(5, 10, 0);
-
-        if(label_enable && top_enable) {
-            color("black") translate([33.5,-1,20]) rotate([90,0,0]) text("+5V",3);
-            color("red") translate([34.5,0,16]) rotate([90,0,0]) text("+",3);
-            color("black") translate([39,0,15.5]) rotate([90,0,0]) text("-",5);
-            color("black") translate([44,0,20]) rotate([90,0,0]) text("+12V",3);
-            color("red") translate([45.5,0,16]) rotate([90,0,0]) text("+",3);
-            color("black") translate([50,0,15.5]) rotate([90,0,0]) text("-",5);
-            color("black") translate([55.5,0,20]) rotate([90,0,0]) text("+Vin",3);
-            color("red") translate([56.5,0,16]) rotate([90,0,0]) text("+",3);
-            color("black") translate([61,0,15.5]) rotate([90,0,0]) text("-",5);
-        }
     }
     if(case_style == "mini") {
         // pcb size and placement
@@ -119,7 +111,7 @@ if(view == "model") {
             translate([0,0,0]) color("dimgrey") drivebay_ups_top(65, 95, 12, 12, 2, 2, 
                 pcbsize, pcb_position, batpcbsize, batpcb_position);
         }
-        if(pcb_enable) {
+        if(ups_pcb_enable) {
             ups_pcb(pcbsize, pcb_position);
         }
     }
@@ -129,7 +121,7 @@ if(view == "model") {
         pcb_position = [3, 3, 4];
         batpcbsize = [90, 90, 1];
         batpcb_position = [3, 3, 4];
-        bat_position = ([batpcb_position[0]+4,batpcb_position[1]+12,batpcb_position[2]+batpcbsize[2]]);
+        bat_position = ([batpcb_position[0]+3.5,batpcb_position[1]+12,batpcb_position[2]+batpcbsize[2]]);
         wallthick = 2;
         floorthick = 2;
         gap = 1;
@@ -141,7 +133,7 @@ if(view == "model") {
             translate([0,0,]) color("dimgrey") drivebay_ups_top(batpcbsize[1]+2*(wallthick+gap), 
                 batpcbsize[0]+2*(wallthick+gap), 12, 18, 2, 2, pcbsize, pcb_position, batpcbsize, batpcb_position);
         }
-        if(pcb_enable) {
+        if(battery_pcb_enable) {
             bat_pcb(batpcbsize, batpcb_position, bat_position);
             translate(bat_position) battery_placement(bat_layout, bat_num, bat_space, bat_type, bat_dia, bat_len);
         }
@@ -152,7 +144,7 @@ if(view == "model") {
         pcb_position = [3, 3, 4];
         batpcbsize = [90, 147, 1];
         batpcb_position = [3, 3, 4];
-        bat_position = ([batpcb_position[0],batpcb_position[1],batpcb_position[2]+batpcbsize[2]]);
+        bat_position = ([batpcb_position[0]+1,batpcb_position[1]+2,batpcb_position[2]+batpcbsize[2]]);
         wallthick = 2;
         floorthick = 2;
         gap = 1;
@@ -164,33 +156,10 @@ if(view == "model") {
             translate([0,0,]) color("dimgrey") drivebay_ups_top(batpcbsize[1]+2*(wallthick+gap), 
                 batpcbsize[0]+2*(wallthick+gap), 12, 18, 2, 2, pcbsize, pcb_position, batpcbsize, batpcb_position);
         }
-        if(pcb_enable) {
+        if(battery_pcb_enable) {
             bat_pcb(batpcbsize, batpcb_position);
             translate([batpcb_position[0]+bat_position[0], batpcb_position[1]+bat_position[1], batpcb_position[2]]) 
                 battery_placement(bat_layout, bat_num, bat_space, bat_type, bat_dia, bat_len);
-        }
-    }
-    if(case_style == "3S1P-LPO") {
-        
-        pcbsize = [90, 82, 1.6];
-        pcb_position = [3, 3, 4];
-        batpcbsize = [90, 90, 1];
-        batpcb_position = [3, 3, 4];
-        bat_position = ([batpcb_position[0]+4,batpcb_position[1]+12,batpcb_position[2]+batpcbsize[2]]);
-        wallthick = 2;
-        floorthick = 2;
-        gap = 1;
-        
-        color("dimgrey") 
-        drivebay_ups_bottom(batpcbsize[1]+2*(wallthick+gap), batpcbsize[0]+2*(wallthick+gap), 12, 2, 2, 
-            pcbsize, pcb_position, batpcbsize, batpcb_position);
-        if(top_enable) {
-            translate([0,0,]) color("dimgrey") drivebay_ups_top(batpcbsize[1]+2*(wallthick+gap), 
-                batpcbsize[0]+2*(wallthick+gap), 12, 18, 2, 2, pcbsize, pcb_position, batpcbsize, batpcb_position);
-        }
-        if(pcb_enable) {
-            bat_pcb(batpcbsize, batpcb_position, bat_position);
-            translate(bat_position) battery_placement(bat_layout, bat_num, bat_space, bat_type, bat_dia, bat_len);
         }
     }
 }
@@ -356,11 +325,14 @@ module drivebay_ups_top(length=147, width=101.6, bottom_height=12, top_height=14
             translate([53.5,pcbsize[1]+4,pcb_position[2]+3.25]) rotate([90,0,0]) slot(3.5,6,6);
             translate([52.5,pcbsize[1]+wallthick+4-wallthick/2,pcb_position[2]+3.25]) rotate([90,0,0]) slot(5,8,3);
             // led openings
+            translate([19,pcbsize[1]+4,pcb_position[2]+2.75]) rotate([90,0,0]) cylinder(d=3, h=6);
+            translate([24,pcbsize[1]+4,pcb_position[2]+2.75]) rotate([90,0,0]) cylinder(d=3, h=6);
             translate([29,pcbsize[1]+4,pcb_position[2]+2.75]) rotate([90,0,0]) cylinder(d=3, h=6);
             translate([34,pcbsize[1]+4,pcb_position[2]+2.75]) rotate([90,0,0]) cylinder(d=3, h=6);
             translate([39,pcbsize[1]+4,pcb_position[2]+2.75]) rotate([90,0,0]) cylinder(d=3, h=6);
-            // xt60 opening
-//            translate([pcbsize[0]+2,pcbsize[1]-26,pcb_position[2]+pcbsize[2]]) cube([6,16,9]);            
+            // battery sense opening
+            translate([pcbsize[0]+wallthick, 29, pcb_position[2]+pcbsize[2]-adj]) cube([4, 7, 4.5]);
+            translate([pcbsize[0]+5-wallthick/2, 27.5, pcb_position[2]+pcbsize[2]-adj]) cube([6, 10, 6.5]);
         }
     }
     // ups standoffs
@@ -478,14 +450,18 @@ module drivebay_ups_bottom(length=147,width=101.6, bottom_height=12, wallthick, 
             translate([53.5,pcbsize[1]+4,pcb_position[2]+3.25]) rotate([90,0,0]) slot(3.5,6,6);
             translate([52.5,pcbsize[1]+wallthick+4-wallthick/2,pcb_position[2]+3.25]) rotate([90,0,0]) slot(5,8,3);
             // led openings
+            translate([19,pcbsize[1]+4,pcb_position[2]+2.75]) rotate([90,0,0]) cylinder(d=3, h=6);
+            translate([24,pcbsize[1]+4,pcb_position[2]+2.75]) rotate([90,0,0]) cylinder(d=3, h=6);
             translate([29,pcbsize[1]+4,pcb_position[2]+2.75]) rotate([90,0,0]) cylinder(d=3, h=6);
             translate([34,pcbsize[1]+4,pcb_position[2]+2.75]) rotate([90,0,0]) cylinder(d=3, h=6);
             translate([39,pcbsize[1]+4,pcb_position[2]+2.75]) rotate([90,0,0]) cylinder(d=3, h=6);
-//            // xt60 opening
-//            translate([pcbsize[0]+2,pcbsize[1]-26,pcb_position[2]+pcbsize[2]]) cube([6,16,9]);            
             // xt30 opening
-            translate([pcbsize[0]+2,pcbsize[1]-20,pcb_position[2]-pcbsize[2]-3.75]) cube([6,10.5,5.5]);            
-            translate([pcbsize[0]+4,pcbsize[1]-22,pcb_position[2]-pcbsize[2]-5.75]) cube([6,14.5,9.5]);            
+            translate([pcbsize[0]+2,pcbsize[1]-35,pcb_position[2]-pcbsize[2]-3.75]) cube([6,10.5,5.5]);            
+            translate([pcbsize[0]+4,pcbsize[1]-37,pcb_position[2]-pcbsize[2]-5.75]) cube([6,14.5,9.5]);            
+            // wire opening
+            if(rear_wire_feed) {
+                translate([85, -1, pcb_position[2]+pcbsize[2]-2]) rotate([0,90,90]) slot(4, 5, pcbsize[2]+7.5);
+            }
         }
         // ups psb standoff holes
         if(case_style == "3S1P" || case_style == "3S2P") {
@@ -494,12 +470,22 @@ module drivebay_ups_bottom(length=147,width=101.6, bottom_height=12, wallthick, 
             translate([batpcb_position[0]+batpcbsize[0]-4, batpcb_position[1]+4, -1]) cylinder(d=6.5, h=4);
             translate([batpcb_position[0]+4, batpcb_position[1]+batpcbsize[1]-4, -1]) cylinder(d=6.5, h=4);
             translate([batpcb_position[0]+batpcbsize[0]-4, batpcb_position[1]+batpcbsize[1]-4, -1]) cylinder(d=6.5, h=4);
-            // i2c opening
-            translate([batpcb_position[0]+89.5, batpcb_position[1]+22.5, batpcb_position[2]+batpcbsize[2]])
-                rotate([0,0,0]) cube([4,7,5]);
-            // xt30 opening
-            translate([batpcb_position[0]+89.5, batpcb_position[1]+10, batpcb_position[2]+batpcbsize[2]])
-                rotate([0,0,0]) cube([4,10,5]);
+            if(case_style == "3S1P") {
+                // i2c opening
+                translate([batpcb_position[0]+60.25, batpcb_position[1]-wallthick-2, batpcb_position[2]+batpcbsize[2]])
+                    rotate([0,0,0]) cube([7,4,5]);
+                // xt30 opening
+                translate([batpcb_position[0]+70.25, batpcb_position[1]-wallthick-2, batpcb_position[2]+batpcbsize[2]])
+                    rotate([0,0,0]) cube([10,4,5]);
+            }
+            else {
+                // i2c opening
+                translate([batpcb_position[0]+68.25, batpcb_position[1]-wallthick-2, batpcb_position[2]+batpcbsize[2]])
+                    rotate([0,0,0]) cube([7,4,5]);
+                // xt30 opening
+                translate([batpcb_position[0]+77.375, batpcb_position[1]-wallthick-2, batpcb_position[2]+batpcbsize[2]])
+                    rotate([0,0,0]) cube([10,4,5]);
+            }
         }
     }
     // ups standoffs
@@ -529,7 +515,17 @@ module ups_pcb(pcbsize, pcb_position) {
     $fn = 90;
 
     difference() {
-        color(pcb_color) translate(pcb_position) slab(pcbsize, 3);
+        union() {
+            color(pcb_color) translate(pcb_position) slab(pcbsize, 3);
+            color("gold") translate([pcb_position[0]+4, pcb_position[1]+13, pcb_position[2]+pcbsize[2]-adj]) 
+                cylinder(d=6.5, h=.125);
+            color("gold") translate([pcb_position[0]+4, pcb_position[1]+pcbsize[1]-4,pcb_position[2]+pcbsize[2]-adj]) 
+                cylinder(d=6.5, h=.125);
+            color("gold") translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+pcbsize[1]-4,
+                pcb_position[2]+pcbsize[2]-adj]) cylinder(d=6.5, h=.125);
+            color("gold") translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+20, pcb_position[2]+pcbsize[2]-adj]) 
+                cylinder(d=6.5, h=.125);
+        }
         color("dimgrey") translate([pcb_position[0]+4, pcb_position[1]+13, pcb_position[2]-1]) 
             cylinder(d=3.5, h=4);
         color("dimgrey") translate([pcb_position[0]+4, pcb_position[1]+pcbsize[1]-4,pcb_position[2]-1]) 
@@ -570,36 +566,47 @@ module ups_pcb(pcbsize, pcb_position) {
     // fan 1
     translate([pcb_position[0]+pcbsize[0]-19, pcb_position[1]+8, pcb_position[2]-2*pcbsize[2]]) 
         rotate([0, 0, 180]) import("lib/22053031.stl");
-//    color("black") translate([pcb_position[0]+pcbsize[0]-21, pcb_position[1]+1, pcb_position[2]+pcbsize[2]]) 
-//         linear_extrude(height = .5) text("FAN 1", size=2);
-    // front fan2
+    // fan2
     translate([pcb_position[0]+pcbsize[0]-28, pcb_position[1]+8, pcb_position[2]-2*pcbsize[2]]) 
         rotate([0, 0, 180]) import("lib/22053031.stl");
-//    color("black") translate([pcb_position[0]+pcbsize[0]-30, pcb_position[1]+1, pcb_position[2]+pcbsize[2]]) 
-//         linear_extrude(height = .5) text("FAN 2", size=2);
          
     // front leds
+    translate([pcb_position[0]+15, pcb_position[1]+pcbsize[1]-3, pcb_position[2]+pcbsize[2]]) led();
+    color("white") translate([pcb_position[0]+18.5, pcb_position[1]+pcbsize[1]-4, pcb_position[2]+pcbsize[2]]) 
+        rotate([0, 0, 180]) linear_extrude(height = .5) text("+Adj", size=1.25);
+    translate([pcb_position[0]+20, pcb_position[1]+pcbsize[1]-3, pcb_position[2]+pcbsize[2]]) led();
+    color("white") translate([pcb_position[0]+24, pcb_position[1]+pcbsize[1]-4, pcb_position[2]+pcbsize[2]]) 
+        rotate([0, 0, 180]) linear_extrude(height = .5) text("+12V", size=1.25);
     translate([pcb_position[0]+25, pcb_position[1]+pcbsize[1]-3, pcb_position[2]+pcbsize[2]]) led();
-    color("black") translate([pcb_position[0]+28.5, pcb_position[1]+pcbsize[1]-4, pcb_position[2]+pcbsize[2]]) 
-        rotate([0, 0, 180]) linear_extrude(height = .5) text("PWR", size=1.25);
-    translate([pcb_position[0]+30, pcb_position[1]+pcbsize[1]-3, pcb_position[2]+pcbsize[2]]) led("yellow");
-    color("black") translate([pcb_position[0]+33.5, pcb_position[1]+pcbsize[1]-4, pcb_position[2]+pcbsize[2]]) 
-        rotate([0, 0, 180]) linear_extrude(height = .5) text("CHR", size=1.25);
+    color("white") translate([pcb_position[0]+28.5, pcb_position[1]+pcbsize[1]-4, pcb_position[2]+pcbsize[2]]) 
+        rotate([0, 0, 180]) linear_extrude(height = .5) text("+5V", size=1.25);
+    translate([pcb_position[0]+30, pcb_position[1]+pcbsize[1]-3, pcb_position[2]+pcbsize[2]]) led();
+    color("white") translate([pcb_position[0]+33.5, pcb_position[1]+pcbsize[1]-4, pcb_position[2]+pcbsize[2]]) 
+        rotate([0, 0, 180]) linear_extrude(height = .5) text("DSC", size=1.25);
     translate([pcb_position[0]+35, pcb_position[1]+pcbsize[1]-3, pcb_position[2]+pcbsize[2]]) led("green");
-    color("black") translate([pcb_position[0]+38.5, pcb_position[1]+pcbsize[1]-4, pcb_position[2]+pcbsize[2]]) 
+    color("white") translate([pcb_position[0]+38.5, pcb_position[1]+pcbsize[1]-4, pcb_position[2]+pcbsize[2]]) 
         rotate([0, 0, 180]) linear_extrude(height = .5) text("FULL", size=1.25);
         
     // xt30 connector
     if(case_style == "mini") {
-        translate([pcb_position[0]+81, pcb_position[1]+pcbsize[1]-20, pcb_position[2]-pcbsize[2]+1.6])
+        // battery connection
+        translate([pcb_position[0]+81, pcb_position[1]+pcbsize[1]-35, pcb_position[2]-pcbsize[2]+1.6])
             rotate([0,180,270]) xt30("XT30PW-M");
+        // battery sense
+        translate([pcb_position[0]+84, pcb_position[1]+pcbsize[1]-26.5, pcb_position[2]+pcbsize[2]+4.5])
+                rotate([270,0,270]) jst_ph(2);
         // front usb-c
         translate([pcb_position[0]+54, pcb_position[1]+pcbsize[1]-9.5, pcb_position[2]+pcbsize[2]+pcbsize[2]]) 
              import("lib/usb-c.stl");
     }
-    // battery sense
-    translate([pcb_position[0]+84, pcb_position[1]+pcbsize[1]-11.5, pcb_position[2]+pcbsize[2]])
-            rotate([0,0,270]) jst_ph(2);
+    else {
+        // battery connection
+        translate([pcb_position[0]+82.75, pcb_position[1]+pcbsize[1]-12, pcb_position[2]-pcbsize[2]+1.6])
+            rotate([0,180,90]) xt30("XT30PW-M");
+        // battery sense
+        translate([pcb_position[0]+79, pcb_position[1]+pcbsize[1]-26.5, pcb_position[2]+pcbsize[2]])
+                rotate([0,0,270]) jst_ph(2);       
+    }
     // heatsink
     translate([pcb_position[0]+5,pcb_position[1]+40,pcb_position[2]+0]) heatsink(heatsink_type,2.5);
 }
@@ -613,41 +620,77 @@ module bat_pcb(batpcbsize, batpcb_position, bat_position) {
     $fn = 90;
 
     difference() {
-        color(batpcb_color) translate(batpcb_position) slab(batpcbsize, 3);
+        union() {
+            color(batpcb_color) translate(batpcb_position) slab(batpcbsize, 3);
+            color("gold") translate([batpcb_position[0]+4, batpcb_position[1]+4, batpcb_position[2]+batpcbsize[2]-adj]) 
+                cylinder(d=6.5, h=.125);
+            color("gold") translate([batpcb_position[0]+4, batpcb_position[1]+batpcbsize[1]-4, 
+                batpcb_position[2]+batpcbsize[2]-adj]) cylinder(d=6.5, h=.125);
+            color("gold") translate([batpcb_position[0]+batpcbsize[0]-4, batpcb_position[1]+batpcbsize[1]-4,
+                batpcb_position[2]+batpcbsize[2]-adj]) cylinder(d=6.5, h=.125);
+            if(case_style == "3S2P") {
+                color("gold") translate([batpcb_position[0]+batpcbsize[0]-4, batpcb_position[1]+18, 
+                    batpcb_position[2]+batpcbsize[2]-adj]) cylinder(d=6.5, h=.125);
+                color("gold") translate([batpcb_position[0]+4, batpcb_position[1]+73.5, 
+                    batpcb_position[2]+batpcbsize[2]-adj]) cylinder(d=6.5, h=.125);
+                }
+            else {
+                color("gold") translate([batpcb_position[0]+batpcbsize[0]-4, batpcb_position[1]+4, 
+                    batpcb_position[2]+batpcbsize[2]-adj]) cylinder(d=6.5, h=.125);
+            }
+        }
         color("dimgrey") translate([batpcb_position[0]+4, batpcb_position[1]+4, batpcb_position[2]-1]) 
             cylinder(d=3.5, h=4);
         color("dimgrey") translate([batpcb_position[0]+4, batpcb_position[1]+batpcbsize[1]-4, batpcb_position[2]-1]) 
             cylinder(d=3.5, h=4);
         color("dimgrey") translate([batpcb_position[0]+batpcbsize[0]-4, batpcb_position[1]+batpcbsize[1]-4,
             batpcb_position[2]-1]) cylinder(d=3.5, h=4);
-        color("dimgrey") translate([batpcb_position[0]+batpcbsize[0]-4, batpcb_position[1]+4, batpcb_position[2]-1]) 
+        if(case_style == "3S2P") {
+            color("dimgrey") translate([batpcb_position[0]+batpcbsize[0]-4, batpcb_position[1]+18, batpcb_position[2]-1]) 
+                cylinder(d=3.5, h=4);
+        color("dimgrey") translate([batpcb_position[0]+4, batpcb_position[1]+73.5, batpcb_position[2]-1]) 
             cylinder(d=3.5, h=4);
+        }
+        else {
+            color("dimgrey") translate([batpcb_position[0]+batpcbsize[0]-4, batpcb_position[1]+4, batpcb_position[2]-1]) 
+                cylinder(d=3.5, h=4);
+        }
     }
-    if(case_style == "3S1P" || case_style == "3S2P") {
+    if(case_style == "3S1P") {
         // battery connection
-        translate([batpcb_position[0]+83.5, batpcb_position[1]+20, batpcb_position[2]+batpcbsize[2]])
-            rotate([0,0,270]) xt30("XT30PW-F");
+        translate([batpcb_position[0]+80, batpcb_position[1]+6.5, batpcb_position[2]+batpcbsize[2]])
+            rotate([0,0,180]) xt30("XT30PW-F");
         // battery sense
-        translate([batpcb_position[0]+84, batpcb_position[1]+29, batpcb_position[2]+batpcbsize[2]+4.5])
-            rotate([270,0,270]) jst_ph(2);
+        translate([batpcb_position[0]+67, batpcb_position[1]+6.5, batpcb_position[2]+batpcbsize[2]+4.5])
+            rotate([270,0,180]) jst_ph(2);
     }
-    // battery sense
-    if(case_style == "drivebay") {
-//        translate([batpcb_position[0]+84, batpcb_position[1]+batpcbsize[1]-9.5, batpcb_position[2]+batpcbsize[2]])
-//            rotate([0,0,270]) jst_ph(4);
+    if(case_style == "3S2P") {
+        // battery connection
+//        translate([batpcb_position[0]+83.5, batpcb_position[1]+20, batpcb_position[2]+batpcbsize[2]])
+//            rotate([0,0,270]) xt30("XT30PW-F");
         // battery sense
 //        translate([batpcb_position[0]+84, batpcb_position[1]+29, batpcb_position[2]+batpcbsize[2]+4.5])
 //            rotate([270,0,270]) jst_ph(2);
+        // battery connection
+        translate([batpcb_position[0]+87.5, batpcb_position[1]+6.5, batpcb_position[2]+batpcbsize[2]])
+            rotate([0,0,180]) xt30("XT30PW-F");
         // battery sense
-        translate([batpcb_position[0]+78, batpcb_position[1]+29, batpcb_position[2]+batpcbsize[2]])
-            rotate([0,0,270]) jst_ph(2);
-//        translate([batpcb_position[0]+83.5, batpcb_position[1]+20, batpcb_position[2]+batpcbsize[2]])
-//            rotate([0,0,270]) xt30("XT30PW-F");
+        translate([batpcb_position[0]+75, batpcb_position[1]+5.5, batpcb_position[2]+batpcbsize[2]+4.5])
+            rotate([270,0,180]) jst_ph(2);
+
     }
-//    translate([batpcb_position[0]+87.5, batpcb_position[1]+25, batpcb_position[2]+batpcbsize[2]])
-//    rotate([0,0,180]) xt30("XT30PW-F");
-//    translate([batpcb_position[0]+78, batpcb_position[1]+9.5, batpcb_position[2]+batpcbsize[2]])
-//            rotate([0,0,0]) jst_ph(4);
+    // battery sense
+    if(case_style == "drivebay" || case_style == "3S1P") {
+        // battery connection
+        translate([batpcb_position[0]+78.5, batpcb_position[1]+9, batpcb_position[2]+batpcbsize[2]])
+            rotate([0,0,0]) xt30("XT30PB-F");
+    //    translate([batpcb_position[0]+78.5, batpcb_position[1]+14.125, batpcb_position[2]+batpcbsize[2]+14])
+    //        rotate([0,180,180]) xt30("XT30PB-M");
+        // battery sense
+        translate([batpcb_position[0]+88, batpcb_position[1]+22, batpcb_position[2]+batpcbsize[2]])
+            rotate([0,0,180]) jst_ph(2);
+
+    }
 }
 
 
