@@ -43,7 +43,7 @@ use <./lib/fillets.scad>;
 
 /* [OpenUPS Case Configuration] */
 view = "model"; // ["model", "platter"]
-top_enable = false;
+top_enable = true;
 bottom_enable = true;
 all_connectors = false;
 case_style = "drivebay"; // ["drivebay", "mini", "3S1P", "3S2P"]
@@ -216,6 +216,56 @@ if(view == "platter") {
     }    
     if(case_style == "3S2P") {
     }    
+}
+
+if(view == "projection") {
+
+    if(case_style == "mini") {
+        // pcb size and placement
+        pcbsize = [90, 62, 1.6];
+        pcb_position = [0, 0, 1.6];
+        batpcbsize = [90, 82, 1.6];
+        batpcb_position = [6, 63, 1];
+        wallthick = 2;
+        floorthick = 1;
+
+        translate([0,0,0]) projection(cut = true) { translate([0,0,-3.5]) 
+            ups_pcb(pcbsize, pcb_position);
+        }
+    }
+    if(case_style == "3S1P") {
+        
+        pcbsize = [90, 82, 1.6];
+        pcb_position = [3, 3, 4];
+        batpcbsize = [90, 90, 1];
+        batpcb_position = [0, 0, 0];
+        bat_position = ([batpcb_position[0]+3.5,batpcb_position[1]+12,batpcb_position[2]+batpcbsize[2]]);
+        wallthick = 2;
+        floorthick = 2;
+        gap = 1;
+        
+        translate([0,0,0]) projection(cut = true) { translate([0,0,-2]) 
+            bat_pcb(batpcbsize, batpcb_position, bat_position);
+//        translate(bat_position) battery_placement(bat_layout, bat_num, bat_space, bat_type, bat_dia, bat_len);
+        }
+    }
+    if(case_style == "3S2P") {
+        
+        pcbsize = [90, 147, 1];
+        pcb_position = [3, 3, 4];
+        batpcbsize = [90, 147, 1];
+        batpcb_position = [0, 0, 0];
+        bat_position = ([batpcb_position[0]+4,batpcb_position[1]+5,batpcb_position[2]+batpcbsize[2]]);
+        wallthick = 2;
+        floorthick = 2;
+        gap = 1;
+        
+        translate([0,0,0]) projection(cut = true) { translate([0,0,-1.25]) 
+//            bat_pcb(batpcbsize, batpcb_position);
+            translate([batpcb_position[0]+bat_position[0], batpcb_position[1]+bat_position[1], bat_position[2]]) 
+                battery_placement(bat_layout, bat_num, bat_space, bat_type, bat_dia, bat_len);
+        }
+    }
 }
 
 
@@ -599,14 +649,13 @@ module ups_pcb(pcbsize, pcb_position) {
     translate([pcb_position[0]+19, pcb_position[1]+pcbsize[1]-3, pcb_position[2]+pcbsize[2]]) led();
     color("white") translate([pcb_position[0]+22.5, pcb_position[1]+pcbsize[1]-4, pcb_position[2]+pcbsize[2]]) 
         rotate([0, 0, 180]) linear_extrude(height = .5) text("+5V", size=1.25);
-    translate([pcb_position[0]+24, pcb_position[1]+pcbsize[1]-3, pcb_position[2]+pcbsize[2]]) led();
+    translate([pcb_position[0]+24, pcb_position[1]+pcbsize[1]-3, pcb_position[2]+pcbsize[2]]) led("yellow");
     color("white") translate([pcb_position[0]+27.5, pcb_position[1]+pcbsize[1]-4, pcb_position[2]+pcbsize[2]]) 
         rotate([0, 0, 180]) linear_extrude(height = .5) text("DSC", size=1.25);
     translate([pcb_position[0]+29, pcb_position[1]+pcbsize[1]-3, pcb_position[2]+pcbsize[2]]) led("green");
     color("white") translate([pcb_position[0]+32.5, pcb_position[1]+pcbsize[1]-4, pcb_position[2]+pcbsize[2]]) 
         rotate([0, 0, 180]) linear_extrude(height = .5) text("FULL", size=1.25);
         
-    // xt30 connector
     if(case_style == "mini" || all_connectors == true) {
         // battery connection
         translate([pcb_position[0]+81, pcb_position[1]+pcbsize[1]-35, pcb_position[2]-pcbsize[2]+1.6])
@@ -623,9 +672,9 @@ module ups_pcb(pcbsize, pcb_position) {
         translate([pcb_position[0]+59.675, pcb_position[1]+pcbsize[1]-3.35, pcb_position[2]+pcbsize[2]]) 
             rotate([0,0,90]) pcb_pad(10);
         // pcb pads
-        translate([pcb_position[0]+59.675, pcb_position[1]+pcbsize[1]-5.35, pcb_position[2]-pcbsize[2]+adj]) 
+        translate([pcb_position[0]+59.675, pcb_position[1]+pcbsize[1]-5.35, pcb_position[2]-adj]) 
             rotate([0,0,90]) pcb_pad(10);
-        translate([pcb_position[0]+59.675, pcb_position[1]+pcbsize[1]-3.35, pcb_position[2]-pcbsize[2]+adj]) 
+        translate([pcb_position[0]+59.675, pcb_position[1]+pcbsize[1]-3.35, pcb_position[2]-adj]) 
             rotate([0,0,90]) pcb_pad(10);
     }
     if(case_style != "mini" || all_connectors == true) {
@@ -1703,7 +1752,7 @@ module header_f(pins, height) {
         color("black") cube([size_x, size_y, height]);
         for (i=[1:2.54:size_y]) {
             color("dimgray") translate ([1,i,height-5+adj]) cube([.64,.64,5]);
-            color("silver") translate ([1,i,-2.54]) cube([.64,.64,2.5]);
+//            color("silver") translate ([1,i,-2.54]) cube([.64,.64,2.5]);
         }
     }
 }       
