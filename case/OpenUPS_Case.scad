@@ -16,8 +16,8 @@
 
     202304xx version 0.9 OpenUPS Case
     
-    drivebay_ups_top(length=147, width=101.6, top_height=14, bottom_height=12)    
-    drivebay_ups_bottom(length=147,width=101.6, bottom_height=12)
+    hdd35_ups_top(length=147, width=101.6, top_height)    
+    hdd35_ups_bottom(length=147,width=101.6, bottom_height)
     ups_pcb(pcbsize, pcb_position)
     bat_pcb(batpcbsize, batpcb_position)
     battery_placement(bat_layout, bat_num, bat_space, bat_type, bat_dia, bat_len)
@@ -36,8 +36,7 @@
 
 use <./lib/fillets.scad>;
 
-view = "model";                 // "model", "platter", "debug"
-case_style = "drivebay";        // "drivebay", "mini", "tower"
+case_style = "drivebay";        //"drivebay", "standalone"
 heatsink_type = "c4_oem";       // "c4_oem", "xu4_oem"
 
 pcb_enable = true;
@@ -46,11 +45,10 @@ label_enable = true;
 
 // pcb size and placement
 pcbsize = [90, 62, 1.6];
-pcb_position = [6, 0, 4];
+pcb_position = [0, 0, 6];
 batpcbsize = [90, 82, 1.6];
-batpcb_position = [6, 63, 1];
-pcb_color = "#151515";
-batpcb_color = "#008066";
+batpcb_position = [0, 63, 1];
+pcb_color = "#008066";
 
 // batteries layout and configuration
 bat_num = 3;
@@ -58,132 +56,34 @@ bat_type = "21700";           // "18650", "18650_convex", "21700"
 bat_layout = "3S_staggered";  // "straight", "staggered", "3S2P_staggered", "3S_staggered"
 bat_space = 3;
 
-bat_dia = bat_type == "21700" ? 21 : 18.4;
-bat_len = bat_type == "21700" ? 70 : 65;
+bat_dia = bat_type=="21700" ? 21 : 18.4;
+bat_len = bat_type=="21700" ? 70 : 65;
 
 adj = .01;
 $fn = 90;
 
 if(case_style == "drivebay") {
-    color("dimgrey") drivebay_ups_bottom();
-    if(top_enable) {
-        color("dimgrey") drivebay_ups_top();
-    }
+    length = 147;
+    width = 101.6;
+    top_height = 14;
+    bottom_height = 12;
+    height = top_height+bottom_height;
+    top_standoff = [7,25,3.5,10,4,1,0,1,0,4.5,5];
+    bottom_standoff = [7,10,3.5,10,4,4,1,0,1,4.5,5];
+    pcb_standoff = [7,pcb_position[2],3.5,10,4,1,1,0,0,0,0];
+    support_standoff = [7,10,3.5,15,3,4,1,0,0,0,0];
+
     if(pcb_enable) {
         ups_pcb(pcbsize, pcb_position);
         bat_pcb(batpcbsize, batpcb_position);
         translate([batpcb_position[0]+4, batpcb_position[1]+6, batpcb_position[2]+batpcbsize[2]]) 
             battery_placement(bat_layout, bat_num, bat_space, bat_type, bat_dia, bat_len);
     }
-    if(label_enable && top_enable) {
-        color("black") translate([33.5,-1,20]) rotate([90,0,0]) text("+5V",3);
-        color("red") translate([34.5,0,16]) rotate([90,0,0]) text("+",3);
-        color("black") translate([39,0,15.5]) rotate([90,0,0]) text("-",5);
-        color("black") translate([44,0,20]) rotate([90,0,0]) text("+12V",3);
-        color("red") translate([45.5,0,16]) rotate([90,0,0]) text("+",3);
-        color("black") translate([50,0,15.5]) rotate([90,0,0]) text("-",5);
-        color("black") translate([55.5,0,20]) rotate([90,0,0]) text("+Vin",3);
-        color("red") translate([56.5,0,16]) rotate([90,0,0]) text("+",3);
-        color("black") translate([61,0,15.5]) rotate([90,0,0]) text("-",5);
-    }
-}
-
-
-/* 3.5" hd bay ups holder top*/
-module drivebay_ups_top(length=147, width=101.6, top_height=14, bottom_height=12) {
-    
-    wallthick = 2;
-    floorthick = 1;
-    height = top_height + bottom_height;
-    adjust = .1;    
-    $fn=90;
-    
     difference() {
-        translate([(width/2),(length/2),bottom_height+(top_height/2)])         
-            cube_fillet_inside([width,length,top_height], 
-                vertical=[3,3,3,3], top=[0,0,0,0], bottom=[0,0,0,0], $fn=90);      
-        translate([(width/2),(length/2),bottom_height+(top_height/2)-floorthick])           
-            cube_fillet_inside([width-(wallthick*2),length-(wallthick*2),top_height], 
-                vertical=[2,2,2,2], top=[0,0,0,0], bottom=[2,2,2,2], $fn=90);
-            // top vents
-        for ( c=[15:40:length-40]) {
-            for (r=[10:4:90]) {
-                translate ([r,c,height-1-adjust]) cube([2,35,wallthick+(adjust*2)]);
-            }
-        }
-        translate([12.5,17,0]) fan_mask(40, 4, 2);
-        // power plug
-        color("dimgrey") translate([83,-1, pcb_position[2]]) cube([10.5,14,9.5+pcbsize[2]]);
-        // terminal blocks
-        color("dimgrey") translate([32,-1, pcb_position[2]]) cube([34,10,10+pcbsize[2]]);
-        color("dimgrey") translate([36,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
-        color("dimgrey") translate([41,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
-        color("dimgrey") translate([47,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
-        color("dimgrey") translate([52,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
-        color("dimgrey") translate([58,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
-        color("dimgrey") translate([63,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
-        // sata1 & sata2
-        color("dimgrey") translate([8.5,-1, pcb_position[2]]) cube([23.5,10,6+pcbsize[2]]);
-        // fan1 & fan2
-        color("dimgrey") translate([59,-1, pcb_position[2]]) cube([18.5,10,7+pcbsize[2]]);
-    }
-}
-
-
-/* 3.5" hd bay ups holder */
-module drivebay_ups_bottom(length=147,width=101.6, bottom_height=12) {
-    
-    wallthick = 3;
-    floorthick = 2;
-    pcb_standoff = [7,pcb_position[2],3.5,10,4,1,1,0,0,0,0];
-    adjust = .1;    
-    $fn=90;
-    
-    difference() {
-        union() {
-            difference() {
-                translate([(width/2),(length/2),(bottom_height/2)])         
-                    cube_fillet_inside([width,length,bottom_height], 
-                        vertical=[3,3,3,3], top=[0,0,0,0], bottom=[0,0,0,0], $fn=90);      
-                translate([(width/2),(length/2),(bottom_height/2)+floorthick])           
-                    cube_fillet_inside([width-(wallthick*2),length-(wallthick*2),bottom_height], 
-                        vertical=[2,2,2,2], top=[0,0,0,0], bottom=[2,2,2,2], $fn=90);
-                   
-                // bottom vents
-                for ( r=[15:40:length-40]) {
-                    for (c=[20:4:80]) {
-                        translate ([c,r,-adjust]) cube([2,35,wallthick+(adjust*2)]);
-                    }
-                }       
-            }
-
-            // side nut holder support    
-            translate([wallthick-adjust+3,28.5,7]) rotate([-90,0,90]) cylinder(d=10,h=3);
-            translate([wallthick-adjust+3,70.5,7]) rotate([-90,0,90])  cylinder(d=10,h=3);
-            translate([wallthick-adjust+3,130.17,7]) rotate([-90,0,90])  cylinder(d=10,h=3);
-            translate([width-wallthick+adjust-3,130.1,7]) rotate([90,0,90])  cylinder(d=10,h=3);
-            translate([width-wallthick+adjust-3,70.5,7]) rotate([90,0,90])  cylinder(d=10,h=3);
-            translate([width-wallthick+adjust-3,28.5,7]) rotate([90,0,90])  cylinder(d=10,h=3);  
-        }
-        // side screw holes
-        translate([wallthick-adjust+3,28.5,7]) rotate([-90,0,90]) cylinder(d=3.6,h=7);
-        translate([wallthick-adjust+3,70.5,7]) rotate([-90,0,90])  cylinder(d=3.6,h=7);
-        translate([wallthick-adjust+3,130.17,7]) rotate([-90,0,90])  cylinder(d=3.6,h=7);
-        translate([width-wallthick+adjust-3,130.1,7]) rotate([90,0,90])  cylinder(d=3.6,h=7);
-        translate([width-wallthick+adjust-3,70.5,7]) rotate([90,0,90])  cylinder(d=3.6,h=7);
-        translate([width-wallthick+adjust-3,28.5,7]) rotate([90,0,90])  cylinder(d=3.6,h=7);
-        
-        // side nut trap    
-        translate([wallthick+adjust+3,28.5,7]) rotate([-90,0,90]) cylinder(r=3.30,h=4,$fn=6);
-        translate([wallthick+adjust+3,70.5,7]) rotate([-90,0,90])  cylinder(r=3.30,h=4,$fn=6);
-        translate([wallthick+adjust+3,130.17,7]) rotate([-90,0,90])  cylinder(r=3.30,h=4,$fn=6);
-        translate([width-wallthick+adjust-3,130.1,7]) rotate([90,0,90])  cylinder(r=3.30,h=4,$fn=6);
-        translate([width-wallthick+adjust-3,70.5,7]) rotate([90,0,90])  cylinder(r=3.30,h=4,$fn=6);
-        translate([width-wallthick+adjust-3,28.5,7]) rotate([90,0,90])  cylinder(r=3.30,h=4,$fn=6);
-        
-        color("dimgrey") translate([pcb_position[0],-.01+pcb_position[1]+(147-length)/2,pcb_position[2]]) 
+        color("dimgrey") translate([-6,length,0]) rotate([0,0,270]) hdd35_ups_bottom(length, width, bottom_height);
+        color("dimgrey") translate([pcb_position[0],adj+pcb_position[1]+(147-length)/2,pcb_position[2]]) 
             slab([pcbsize[0],pcbsize[1],20], 3);
-        color("dimgrey") translate([batpcb_position[0],batpcb_position[1]+(147-length)/2,batpcb_position[2]]) 
+        color("dimgrey") translate([batpcb_position[0],adj+batpcb_position[1]+(147-length)/2,batpcb_position[2]]) 
             slab([batpcbsize[0],batpcbsize[1],20], 3);
         
         // ups psb standoff holes
@@ -207,16 +107,16 @@ module drivebay_ups_bottom(length=147,width=101.6, bottom_height=12) {
             cylinder(d=3.5, h=4);
             
         // power plug
-        color("dimgrey") translate([83, -1, pcb_position[2]]) cube([10.5, 14, 9.5+pcbsize[2]]);
+        color("dimgrey") translate([77,-1, pcb_position[2]]) cube([10.5,14,9.5+pcbsize[2]]);
         // terminal blocks
-        color("dimgrey") translate([32, -1, pcb_position[2]]) cube([34, 10, 10+pcbsize[2]]);
+        color("dimgrey") translate([26,-1, pcb_position[2]]) cube([34,10,10+pcbsize[2]]);
         // sata1 & sata2
-        color("dimgrey") translate([8, -1, pcb_position[2]]) cube([23.5, 10, 7+pcbsize[2]]);
+        color("dimgrey") translate([2.5,-1, pcb_position[2]]) cube([23.5,10,6+pcbsize[2]]);
         // fan1 & fan2
-        color("dimgrey") translate([65, -1, pcb_position[2]]) cube([18.5, 10, 7+pcbsize[2]]);
+        color("dimgrey") translate([59,-1, pcb_position[2]]) cube([18.5,10,7+pcbsize[2]]);
         // i2c
-        color("dimgrey") translate([66.75, -1, pcb_position[2]-2*pcbsize[2]]) cube([5.5, 10, 4]);
-        color("dimgrey") translate([75.75, -1, pcb_position[2]-2*pcbsize[2]]) cube([5.5, 10, 4]);
+        color("dimgrey") translate([61,-1,pcb_position[2]-2*pcbsize[2]]) cube([5.25,10,4]);
+        color("dimgrey") translate([70,-1,pcb_position[2]-2*pcbsize[2]]) cube([5.25,10,4]);
 
     }
     // ups standoffs
@@ -224,7 +124,156 @@ module drivebay_ups_bottom(length=147,width=101.6, bottom_height=12) {
     color("dimgrey") translate([pcb_position[0]+4, pcb_position[1]+pcbsize[1]-4, 0]) standoff(pcb_standoff);
     color("dimgrey") translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+pcbsize[1]-4, 0]) standoff(pcb_standoff);
     color("dimgrey") translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+20, 0]) standoff(pcb_standoff);
+    
+    // top
+    if(top_enable) {
+        difference() {
+            color("dimgrey") translate([-6, 147-length, top_height+bottom_height]) rotate([0,180,270]) 
+                hdd35_ups_top(length, width, top_height);
+            // ups psb standoff holes
+//            color("dimgrey") translate([pcb_position[0]+4, pcb_position[1]+13, height-3]) cylinder(d=6.5, h=4);
+//            color("dimgrey") translate([pcb_position[0]+4, pcb_position[1]+pcbsize[1]-4, height-3]) cylinder(d=6.5, h=4);
+//            color("dimgrey") translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+pcbsize[1]-4, height-3]) 
+//                cylinder(d=6.5, h=4);
+//            color("dimgrey") translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+20, height-3]) cylinder(d=6.5, h=4);
 
+            // power plug
+            color("dimgrey") translate([77,-1, pcb_position[2]]) cube([10.5,14,9.5+pcbsize[2]]);
+            // terminal blocks
+            color("dimgrey") translate([26,-1, pcb_position[2]]) cube([34,10,10+pcbsize[2]]);
+            color("dimgrey") translate([30,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            color("dimgrey") translate([35,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            color("dimgrey") translate([41,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            color("dimgrey") translate([46,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            color("dimgrey") translate([52,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            color("dimgrey") translate([57,4, top_height+bottom_height-3]) cylinder(d=4, h=4);
+            if(label_enable) {
+                color("black") translate([27.5,0,top_height+bottom_height-4]) rotate([90,0,0]) text("+5V",3);
+                color("red") translate([28.5,0,top_height+bottom_height-8]) rotate([90,0,0]) text("+",3);
+                color("black") translate([33,0,top_height+bottom_height-8.5]) rotate([90,0,0]) text("-",5);
+                color("black") translate([38,0,top_height+bottom_height-4]) rotate([90,0,0]) text("+12V",3);
+                color("red") translate([39.5,0,top_height+bottom_height-8]) rotate([90,0,0]) text("+",3);
+                color("black") translate([44,0,top_height+bottom_height-8.5]) rotate([90,0,0]) text("-",5);
+                color("black") translate([49.5,0,top_height+bottom_height-4]) rotate([90,0,0]) text("+Vin",3);
+                color("red") translate([50.5,0,top_height+bottom_height-8]) rotate([90,0,0]) text("+",3);
+                color("black") translate([55,0,top_height+bottom_height-8.5]) rotate([90,0,0]) text("-",5);
+            }
+            // sata1 & sata2
+            color("dimgrey") translate([2.5,-1, pcb_position[2]]) cube([23.5,10,6+pcbsize[2]]);
+            // fan1 & fan2
+            color("dimgrey") translate([59,-1, pcb_position[2]]) cube([18.5,10,7+pcbsize[2]]);
+            
+        }
+    }
+}
+
+
+/* 3.5" hd bay ups holder top*/
+module hdd35_ups_top(length=147, width=101.6, top_height) {
+    
+    wallthick = 2;
+    floorthick = 1;
+    height = top_height;
+    hd35_x = length;                    // 145mm for 3.5" drive
+    hd35_y = width;
+    adjust = .1;    
+    $fn=90;
+    
+    difference() {
+        union() {
+            difference() {
+                translate([(hd35_x/2),(hd35_y/2),(height/2)])         
+                    cube_fillet_inside([hd35_x,hd35_y,height], 
+                        vertical=[3,3,3,3], top=[0,0,0,0], bottom=[0,0,0,0], $fn=90);      
+                translate([(hd35_x/2),(hd35_y/2),(height/2)+floorthick])           
+                    cube_fillet_inside([hd35_x-(wallthick*2),hd35_y-(wallthick*2),height], 
+                        vertical=[2,2,2,2], top=[0,0,0,0], bottom=[2,2,2,2], $fn=90);
+                if(case_style != "drivebay") {
+                    // bottom vents
+                    for ( r=[15:40:hd35_x-40]) {
+                        for (c=[hd35_y-76:4:75]) {
+                            translate ([r,c,-adjust]) cube([35,2,wallthick+(adjust*2)]);
+                        }
+                    }
+                }
+                else {
+                    // bottom vents
+                    for ( r=[60:40:hd35_x-40]) {
+                        for (c=[hd35_y-90:4:90]) {
+                            translate ([r,c,-adjust]) cube([35,2,wallthick+(adjust*2)]);
+                        }
+                    }
+                    translate([10,-20+width/2,0]) fan_mask(40, 4, 2);
+                }
+            }
+            if(bat_layout == "3S_staggered") {
+                translate([length-wallthick,4,17-adjust]) cube([wallthick,94,7+adjust]);
+            }
+        }
+    }
+}
+
+
+/* 3.5" hd bay ups holder */
+module hdd35_ups_bottom(length=147,width=101.6, bottom_height) {
+    
+    wallthick = 3;
+    floorthick = 2;
+    hd35_x = length;                    // 147mm for 3.5" drive
+    hd35_y = width;
+    hd35_z = bottom_height;
+    adjust = .1;    
+    $fn=90;
+    
+    difference() {
+        union() {
+            difference() {
+                translate([(hd35_x/2),(hd35_y/2),(hd35_z/2)])         
+                    cube_fillet_inside([hd35_x,hd35_y,hd35_z], 
+                        vertical=[3,3,3,3], top=[0,0,0,0], bottom=[0,0,0,0], $fn=90);      
+                translate([(hd35_x/2),(hd35_y/2),(hd35_z/2)+floorthick])           
+                    cube_fillet_inside([hd35_x-(wallthick*2),hd35_y-(wallthick*2),hd35_z], 
+                        vertical=[2,2,2,2], top=[0,0,0,0], bottom=[2,2,2,2], $fn=90);
+                   
+                // bottom vents
+                for ( r=[15:40:hd35_x-40]) {
+                    for (c=[hd35_y-76:4:75]) {
+                        translate ([r,c,-adjust]) cube([35,2,wallthick+(adjust*2)]);
+                    }
+                }       
+            }
+
+        // side nut holder support    
+        translate([16,wallthick-adjust,7]) rotate([-90,0,0]) cylinder(d=10,h=3);
+        translate([76,wallthick-adjust,7]) rotate([-90,0,0])  cylinder(d=10,h=3);
+            if(length >= 120) {
+                translate([117.5,wallthick-adjust,7]) rotate([-90,0,0])  cylinder(d=10,h=3);
+                translate([117.5,hd35_y-wallthick+adjust,7]) rotate([90,0,0])  cylinder(d=10,h=3);
+            }
+        translate([76,hd35_y-wallthick+adjust,7]) rotate([90,0,0])  cylinder(d=10,h=3);
+        translate([16,hd35_y-wallthick+adjust,7]) rotate([90,0,0])  cylinder(d=10,h=3);
+        
+        // bottom-side support
+//        translate([wallthick,wallthick,floorthick-2]) rotate([45,0,0]) cube([hd35_x-(wallthick*2),3,3]);
+//        translate([wallthick,hd35_y-wallthick+adjust,floorthick-2]) rotate([45,0,0]) cube([hd35_x-(wallthick*2),3,3]);
+         
+        }
+        // side screw holes
+        translate([16,-adjust,7]) rotate([-90,0,0]) cylinder(d=3.6,h=7);
+        translate([76,-adjust,7]) rotate([-90,0,0])  cylinder(d=3.6,h=7);
+        translate([117.5,-adjust,7]) rotate([-90,0,0])  cylinder(d=3.6,h=7);
+        translate([117.5,hd35_y+adjust,7]) rotate([90,0,0])  cylinder(d=3.6,h=7);
+        translate([76,hd35_y+adjust,7]) rotate([90,0,0])  cylinder(d=3.6,h=7);
+        translate([16,hd35_y+adjust,7]) rotate([90,0,0])  cylinder(d=3.6,h=7);
+        
+        // side nut trap    
+        translate([16,wallthick-adjust,7]) rotate([-90,0,0]) cylinder(r=3.30,h=5,$fn=6);
+        translate([76,wallthick-adjust,7]) rotate([-90,0,0])  cylinder(r=3.30,h=5,$fn=6);
+        translate([117.5,wallthick-adjust,7]) rotate([-90,0,0])  cylinder(r=3.30,h=5,$fn=6);
+        translate([117.5,hd35_y-wallthick-adjust,7]) rotate([90,0,0])  cylinder(r=3.30,h=5,$fn=6);
+        translate([76,hd35_y-wallthick-adjust,7]) rotate([90,0,0])  cylinder(r=3.30,h=5,$fn=6);
+        translate([16,hd35_y-wallthick-adjust,7]) rotate([90,0,0])  cylinder(r=3.30,h=5,$fn=6);
+    }
 }
 
 
@@ -244,9 +293,8 @@ module ups_pcb(pcbsize, pcb_position) {
             pcb_position[2]-1]) cylinder(d=3.5, h=4);
         color("dimgrey") translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+20, pcb_position[2]-1]) 
             cylinder(d=3.5, h=4);
-        // heatsink holes
-        color("dimgrey") translate([pcb_position[0]+5, pcb_position[1]+40, pcb_position[2]-1]) cylinder(d=3.5, h=4);
-        color("dimgrey") translate([pcb_position[0]+56, pcb_position[1]+20, pcb_position[2]-1]) cylinder(d=3.5, h=4);
+        color("dimgrey") translate([pcb_position[0]+20, pcb_position[1]+40, pcb_position[2]-1]) cylinder(d=3.5, h=4);
+        color("dimgrey") translate([pcb_position[0]+71, pcb_position[1]+20, pcb_position[2]-1]) cylinder(d=3.5, h=4);
     }
     /// power jack
     color("grey") translate([pcb_position[0]+pcbsize[0]-13, pcb_position[1]+13, pcb_position[2]+pcbsize[2]-3])
@@ -297,13 +345,10 @@ module ups_pcb(pcbsize, pcb_position) {
         rotate([0, 0, 180]) linear_extrude(height = .5) text("FULL", size=1.25);
         
     // front usb-c
-    translate([pcb_position[0]+54, pcb_position[1]+pcbsize[1]-9.5, pcb_position[2]+pcbsize[2]+pcbsize[2]]) 
+    translate([pcb_position[0]+54, pcb_position[1]+pcbsize[1]-9.5, pcb_position[2]+pcbsize[2]+2]) 
          import("lib/usb-c.stl");
-    // xt60 connector
-    translate([pcb_position[0]+64, pcb_position[1]+pcbsize[1]-18, pcb_position[2]+pcbsize[2]])
-        xt60("XT60PW-M");
     // heatsink
-    translate([pcb_position[0]+5,pcb_position[1]+40,pcb_position[2]+0]) heatsink(heatsink_type,2.5);
+    translate([pcb_position[0]+20,pcb_position[1]+40,pcb_position[2]+0]) heatsink(heatsink_type,1.6);
 
 
 }
@@ -316,7 +361,7 @@ module bat_pcb(batpcbsize, batpcb_position) {
     $fn = 90;
 
     difference() {
-        color(batpcb_color) translate(batpcb_position) slab(batpcbsize, 3);
+        color(pcb_color) translate(batpcb_position) slab(batpcbsize, 3);
         color("dimgrey") translate([batpcb_position[0]+4, batpcb_position[1]+4, batpcb_position[2]-1]) 
             cylinder(d=3.5, h=4);
         color("dimgrey") translate([batpcb_position[0]+4, batpcb_position[1]+batpcbsize[1]-4, batpcb_position[2]-1]) 
@@ -847,7 +892,7 @@ module heatsink(type,soc1size_z) {
         }
     }
     if(type == "xu4_oem") {
-        $fn = 60;
+        $fn=60;
         translate([5.5,-30,soc1size_z])
         difference() {
             union() {
@@ -879,163 +924,6 @@ module heatsink(type,soc1size_z) {
             // holes
             color("DeepSkyBlue",.6) translate([45.5,10,-1]) cylinder(d=3, h=4);
             color("DeepSkyBlue",.6) translate([-5.5,30,-1]) cylinder(d=3, h=4);
-        }
-    }
-}
-
-//    xt60(style)
-//         style = "XT60UPB-F", "XT60UPB-M", "XT60PW-F", "XT60PW-M", 
-module xt60(style) {
-    
-    concolor = "orange";
-    adj = .01;
-    $fn = 90;
-    
-    if(style == "XT60UPB-F") {
-        
-        width = 15.5;
-        depth = 7.9;
-        height = 15.7;
-
-        difference() {
-            union() {
-                color(concolor) cube([width, depth, 8]);
-                color(concolor) translate([1,1,8-adj]) cube([width-2, depth-2, 7.7]);
-                color(concolor) translate([7.1,2,height-adj]) cube([1, 4.5, 1]);            
-            }
-            // lower bevel
-            color(concolor) translate([-3,2,-adj]) rotate([0,0,45]) cube([width-4, depth-4, 8+adj]);
-            color(concolor) translate([-4.5,2,-adj]) rotate([0,0,-45]) cube([width-4, depth-4, 8+adj]);
-            // upper bevel
-            color(concolor) translate([-2,2,8-adj]) rotate([0,0,45]) cube([width-4, depth-4, 8]);
-            color(concolor) translate([-3.5,2,8-adj]) rotate([0,0,-45]) cube([width-4, depth-4, 8]);
-            // pin holes
-            color(concolor) translate([4,depth/2,-adj]) rotate([0,0,0]) cylinder(d=4.26, h=16);
-            color(concolor) translate([11.2,depth/2,-adj]) rotate([0,0,0]) cylinder(d=4.26, h=16);
-            // guide
-            color(concolor) translate([6.6,1-adj,8]) cube([2, .5+adj, 8+adj]);            
-        }
-        // pins
-        difference() {
-            color("gold") translate([4,depth/2,-3]) rotate([0,0,0]) cylinder(d=4.26, h=height+2.8);
-            color("gold") translate([4,depth/2,-3-adj]) rotate([0,0,0]) cylinder(d=3.26, h=height+3);
-        }
-        difference() {
-            color("gold") translate([11.2,depth/2,-3]) rotate([0,0,0]) cylinder(d=4.26, h=height+2.8);
-            color("gold") translate([11.2,depth/2,-3-adj]) rotate([0,0,0]) cylinder(d=3.26, h=height+3);
-        }
-    }
-    if(style == "XT60UPB-M") {
-        
-        width = 15.4;
-        depth = 8;
-        height = 15.9;
-
-        difference() {
-            color(concolor) cube([width, depth, height]);        
-            difference() {
-                color(concolor) translate([1,1,1]) cube([width-2, depth-2, height]);
-                // inner bevel
-                color(concolor) translate([-2,2,1]) rotate([0,0,45]) cube([width-4, depth-4, height]);
-                color(concolor) translate([-3.5,2,1]) rotate([0,0,-45]) cube([width-4, depth-4, height]);
-            }
-            // lower bevel
-            color(concolor) translate([-3,2,-adj]) rotate([0,0,45]) cube([width-4, depth-4, height+2*adj]);
-            color(concolor) translate([-4.5,2,-adj]) rotate([0,0,-45]) cube([width-4, depth-4, height+2*adj]);
-            // pin holes
-            color(concolor) translate([4,depth/2,-adj]) rotate([0,0,0]) cylinder(d=4.26, h=16);
-            color(concolor) translate([11.2,depth/2,-adj]) rotate([0,0,0]) cylinder(d=4.26, h=16);
-        }
-        // guide
-        color(concolor) translate([6.6,6.5-adj,7]) cube([2, .5+adj, 8+adj]);
-        // pins
-        difference() {
-            color("gold") translate([4,depth/2,-3]) rotate([0,0,0]) cylinder(d=4.26, h=height+1.8);
-            color("gold") translate([4,depth/2,-3-adj]) rotate([0,0,0]) cylinder(d=3.26, h=height+3);
-            color("gold") translate([4,depth/2,8-adj]) rotate([0,0,45]) cube([.5,5,height], center=true);
-            color("gold") translate([4,depth/2,8-adj]) rotate([0,0,-45]) cube([.5,5,height], center=true);
-        }
-        difference() {
-            color("gold") translate([11.2,depth/2,-3]) rotate([0,0,0]) cylinder(d=4.26, h=height+1.8);
-            color("gold") translate([11.2,depth/2,-3-adj]) rotate([0,0,0]) cylinder(d=3.26, h=height+3);
-            color("gold") translate([11.2,depth/2,8-adj]) rotate([0,0,45]) cube([.5,5,height], center=true);
-            color("gold") translate([11.2,depth/2,8-adj]) rotate([0,0,-45]) cube([.5,5,height], center=true);
-        }
-    }
-    if(style == "XT60PW-F") {
-        
-        width = 15.5;
-        depth = 7.9;
-        height = 17.2;
-        translate([0,0,depth+.5]) rotate([270,0,0]) {
-            difference() {
-                union() {
-                    color(concolor) cube([width, depth, height-7.7]);
-                    color(concolor) translate([1,1,height-7.7-adj]) cube([width-2, depth-2.5, 7.7]);
-                    color(concolor) translate([7.1,1.5,height-.5-adj]) cube([1, 4.5, 1]);            
-                    color(concolor) translate([0,depth-adj,0]) cube([width, .5, height-7.7]);
-                }
-                // upper bevel
-                color(concolor) translate([-2,2,height-7.7-adj]) rotate([0,0,45]) cube([width-4, depth-4, 8]);
-                color(concolor) translate([-3.5,2,height-7.7-adj]) rotate([0,0,-45]) cube([width-4, depth-4, 8]);
-                // pin holes
-                color(concolor) translate([4,depth/2,3-adj]) rotate([0,0,0]) cylinder(d=4.26, h=16);
-                color(concolor) translate([11.2,depth/2,3-adj]) rotate([0,0,0]) cylinder(d=4.26, h=16);
-                // guide
-                color(concolor) translate([6.6,6-adj,height-7.7]) cube([2, .5+adj, 8+adj]);            
-            }
-            // pins
-            difference() {
-                color("gold") translate([4,depth/2,3]) rotate([0,0,0]) cylinder(d=4.26, h=height-3.2);
-                color("gold") translate([4,depth/2,3-adj]) rotate([0,0,0]) cylinder(d=3.26, h=height-3);
-            }
-            difference() {
-                color("gold") translate([11.2,depth/2,3]) rotate([0,0,0]) cylinder(d=4.26, h=height-3.2);
-                color("gold") translate([11.2,depth/2,3-adj]) rotate([0,0,0]) cylinder(d=3.26, h=height-3);
-            }
-            // pins
-            color("gold") translate([4,6.9-adj+depth/2,1.85]) rotate([90,0,0]) cylinder(d=2, h=2.5);
-            color("gold") translate([11.2,6.9-adj+depth/2,1.85]) rotate([90,0,0]) cylinder(d=2, h=2.5);
-        }
-    }
-    if(style == "XT60PW-M") {
-        
-        width = 15.5;
-        depth = 8.4;
-        height = 18.2;
-        
-        translate([0,0,depth]) rotate([270,0,0]) {
-            difference() {
-                color(concolor) cube([width, depth, height]);        
-                difference() {
-                    color(concolor) translate([1,1,1]) cube([width-2, depth-2, height]);
-                    // inner bevel
-                    color(concolor) translate([-2,2,1]) rotate([0,0,45]) cube([width-4, depth-4, height]);
-                    color(concolor) translate([-3.5,2,1]) rotate([0,0,-45]) cube([width-4, depth-4, height]);
-                }
-                // pin holes
-                color(concolor) translate([4,depth/2,2-adj]) rotate([0,0,0]) cylinder(d=4.26, h=16);
-                color(concolor) translate([11.2,depth/2,2-adj]) rotate([0,0,0]) cylinder(d=4.26, h=16);
-            }
-            // guide
-            color(concolor) translate([6.6,6.5-adj,7]) cube([2, .5+adj, 8+adj]);
-            // pins
-            difference() {
-                color("gold") translate([4,depth/2,3]) rotate([0,0,0]) cylinder(d=4.26, h=height-4.2);
-                color("gold") translate([4,depth/2,-adj]) rotate([0,0,0]) cylinder(d=3.26, h=height);
-                color("gold") translate([4,depth/2,8-adj]) rotate([0,0,45]) cube([.5,5,height], center=true);
-                color("gold") translate([4,depth/2,8-adj]) rotate([0,0,-45]) cube([.5,5,height], center=true);
-            }
-            difference() {
-                color("gold") translate([11.2,depth/2,3]) rotate([0,0,0]) cylinder(d=4.26, h=height-4.2);
-                color("gold") translate([11.2,depth/2,-adj]) rotate([0,0,0]) cylinder(d=3.26, h=height);
-                color("gold") translate([11.2,depth/2,8-adj]) rotate([0,0,45]) cube([.5,5,height], center=true);
-                color("gold") translate([11.2,depth/2,8-adj]) rotate([0,0,-45]) cube([.5,5,height], center=true);
-            }
-            // pins
-            color("gold") translate([4,6.7-adj+depth/2,1.85]) rotate([90,0,0]) cylinder(d=2, h=2.5);
-            color("gold") translate([11.2,6.7-adj+depth/2,1.85]) rotate([90,0,0]) cylinder(d=2, h=2.5);
-
         }
     }
 }
