@@ -37,7 +37,7 @@
 use <./lib/fillets.scad>;
 
 view = "model";                 // "model", "platter", "debug"
-case_style = "drivebay";        // "drivebay", "mini", "tower"
+case_style = "mini";        // "drivebay", "mini", "tower"
 heatsink_type = "c4_oem";       // "c4_oem", "xu4_oem"
 
 pcb_enable = true;
@@ -132,7 +132,7 @@ module drivebay_ups_top(length=147, width=101.6, top_height=14, bottom_height=12
             if(case_style == "drivebay") {
                 for ( c=[15:40:length-40]) {
                     for (r=[10:4:90]) {
-                        translate ([r,c,height-1-adjust]) cube([2,35,floorthick+(adjust*2)]);
+                        translate ([r,c,height-2-adjust]) cube([2,35,floorthick+(adjust*2)]);
                     }
                 }
             }
