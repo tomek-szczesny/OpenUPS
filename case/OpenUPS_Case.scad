@@ -41,8 +41,8 @@
 
 use <./lib/fillets.scad>;
 
-view = "model";                 // "model", "platter"
-case_style = "3S1P";        // "drivebay", "mini", "3S1P"
+view = "model";                 // "model", "platter", "debug"
+case_style = "mini";        // "drivebay", "mini", "tower"
 heatsink_type = "c4_oem";       // "c4_oem", "xu4_oem"
 
 pcb_enable = true;
@@ -114,29 +114,6 @@ if(view == "model") {
             ups_pcb(pcbsize, pcb_position);
         }
     }
-    if(case_style == "3S1P") {
-        
-        pcbsize = [90, 82, 1];
-        pcb_position = [3, 3, 4];
-        batpcbsize = [90, 82, 1];
-        batpcb_position = [3, 3, 4];
-        wallthick = 2;
-        floorthick = 2;
-        gap = 1;
-        
-        color("dimgrey") 
-        drivebay_ups_bottom(batpcbsize[1]+2*(wallthick+gap), batpcbsize[0]+2*(wallthick+gap), 12, 2, 2, 
-            pcbsize, pcb_position, batpcbsize, batpcb_position);
-        if(top_enable) {
-            translate([0,0,]) color("dimgrey") drivebay_ups_top(batpcbsize[1]+2*(wallthick+gap), 
-                batpcbsize[0]+2*(wallthick+gap), 12, 18, 2, 2, pcbsize, pcb_position, batpcbsize, batpcb_position);
-        }
-        if(pcb_enable) {
-            bat_pcb(batpcbsize, batpcb_position);
-            translate([batpcb_position[0]+4, batpcb_position[1]+6, batpcb_position[2]+batpcbsize[2]]) 
-                battery_placement(bat_layout, bat_num, bat_space, bat_type, bat_dia, bat_len);
-        }
-    }
 }
 
 if(view == "platter") {
@@ -167,24 +144,14 @@ if(view == "platter") {
             pcbsize, pcb_position, batpcbsize, batpcb_position);
     }    
 }
-if(view == "debug") {
-        batpcbsize = [90, 82, 1];
-        batpcb_position = [3, 3, 4];
-        wallthick = 2;
-        floorthick = 2;
-        gap = 1;
-        
-        bat_pcb(batpcbsize, batpcb_position);
-        translate([batpcb_position[0]+4, batpcb_position[1]+6, batpcb_position[2]+batpcbsize[2]]) 
-            battery_placement(bat_layout, bat_num, bat_space, bat_type, bat_dia, bat_len);
-}
+
 
 /* 3.5" hd bay ups holder top*/
 module drivebay_ups_top(length=147, width=101.6, bottom_height=12, top_height=14, wallthick, floorthick, 
         pcbsize, pcb_position, batpcbsize, batpcb_position) {
                                 
     height = top_height + bottom_height;
-    top_standoff = [7,top_height+(bottom_height-pcb_position[2]),3.5,10,4,4,0,1,0,4.5,5];
+    top_standoff = [7,top_height,3.5,10,4,4,0,1,0,4.5,5];
     adjust = .1;    
     $fn=90;
     
@@ -206,13 +173,6 @@ module drivebay_ups_top(length=147, width=101.6, bottom_height=12, top_height=14
             }
             if(case_style == "mini") {
                 for ( c=[16:40:length-40]) {
-                    for (r=[5:4:90]) {
-                        translate ([r,c,height-2-adjust]) cube([2,35,floorthick+(adjust*2)]);
-                    }
-                }
-            }
-            if(case_style == "3S1P") {
-                for ( c=[7:40:length-10]) {
                     for (r=[5:4:90]) {
                         translate ([r,c,height-2-adjust]) cube([2,35,floorthick+(adjust*2)]);
                     }
@@ -293,7 +253,7 @@ module drivebay_ups_bottom(length=147,width=101.6, bottom_height=12, wallthick, 
                         vertical=[2,2,2,2], top=[0,0,0,0], bottom=[2,2,2,2], $fn=90);
                    
                 // bottom vents
-                if(bottom_vent == true && case_style != "3S1P") {
+                if(bottom_vent) {
                     for ( r=[15:40:length-40]) {
                         for (c=[20:4:80]) {
                             translate ([c,r,-adjust]) cube([2,35,wallthick+(adjust*2)]);
@@ -351,12 +311,12 @@ module drivebay_ups_bottom(length=147,width=101.6, bottom_height=12, wallthick, 
         if(case_style == "mini") {
             // ups psb
             translate([pcb_position[0], pcb_position[1]-.01, pcb_position[2]]) slab([pcbsize[0], pcbsize[1], 20], 3);
-
+            // ups psb standoff holes
             translate([pcb_position[0]+4, pcb_position[1]+13, -1]) cylinder(d=6.5, h=4);
             translate([pcb_position[0]+4, pcb_position[1]+pcbsize[1]-4, -1]) cylinder(d=6.5, h=4);
             translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+pcbsize[1]-4, -1]) cylinder(d=6.5, h=4);
             translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+20, -1]) cylinder(d=6.5, h=4);
-
+            
             // fan1 & fan2
             translate([62, -1, pcb_position[2]-7]) cube([17.5, 10, pcbsize[2]+7]);
             // sata1 & sata2
@@ -376,35 +336,13 @@ module drivebay_ups_bottom(length=147,width=101.6, bottom_height=12, wallthick, 
             translate([pcbsize[0]+2,pcbsize[1]-20,pcb_position[2]-pcbsize[2]-3.75]) cube([6,10.5,5.5]);            
             translate([pcbsize[0]+4,pcbsize[1]-22,pcb_position[2]-pcbsize[2]-5.75]) cube([6,14.5,9.5]);            
         }
-        // ups psb standoff holes
-        if(case_style == "3S1P") {
-            // battery psb standoff holes
-            translate([batpcb_position[0]+4, batpcb_position[1]+4, -1]) cylinder(d=6.5, h=4);
-            translate([batpcb_position[0]+4, batpcb_position[1]+batpcbsize[1]-4, -1]) cylinder(d=6.5, h=4);
-            translate([batpcb_position[0]+batpcbsize[0]-4, batpcb_position[1]+batpcbsize[1]-4, -1]) cylinder(d=6.5, h=4);
-            translate([batpcb_position[0]+batpcbsize[0]-4, batpcb_position[1]+4, -1]) cylinder(d=6.5, h=4);
-            // i2c opening
-            translate([batpcb_position[0]+89.5, batpcb_position[1]+22.5, batpcb_position[2]+batpcbsize[2]])
-                rotate([0,0,0]) cube([4,7,5]);
-            // xt30 opening
-            translate([batpcb_position[0]+89.5, batpcb_position[1]+10, batpcb_position[2]+batpcbsize[2]])
-                rotate([0,0,0]) cube([4,10,5]);
-        }
     }
     // ups standoffs
-    if(case_style == "3S1P") {
-        // battery psb standoff holes
-        translate([pcb_position[0]+4, pcb_position[1]+4, 0]) standoff(pcb_standoff);
-        translate([pcb_position[0]+4, pcb_position[1]+pcbsize[1]-4, 0]) standoff(pcb_standoff);
-        translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+pcbsize[1]-4, 0]) standoff(pcb_standoff);
-        translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+4, 0]) standoff(pcb_standoff);
-    }
-    else {
-        translate([pcb_position[0]+4, pcb_position[1]+13, 0]) standoff(pcb_standoff);
-        translate([pcb_position[0]+4, pcb_position[1]+pcbsize[1]-4, 0]) standoff(pcb_standoff);
-        translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+pcbsize[1]-4, 0]) standoff(pcb_standoff);
-        translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+20, 0]) standoff(pcb_standoff);
-    }
+    translate([pcb_position[0]+4, pcb_position[1]+13, 0]) standoff(pcb_standoff);
+    translate([pcb_position[0]+4, pcb_position[1]+pcbsize[1]-4, 0]) standoff(pcb_standoff);
+    translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+pcbsize[1]-4, 0]) standoff(pcb_standoff);
+    translate([pcb_position[0]+pcbsize[0]-4, pcb_position[1]+20, 0]) standoff(pcb_standoff);
+
 }
 
 
@@ -485,7 +423,6 @@ module ups_pcb(pcbsize, pcb_position) {
         translate([pcb_position[0]+54, pcb_position[1]+pcbsize[1]-9.5, pcb_position[2]+pcbsize[2]+pcbsize[2]]) 
              import("lib/usb-c.stl");
     }
-    // battery sense
     translate([pcb_position[0]+84, pcb_position[1]+pcbsize[1]-9.5, pcb_position[2]+pcbsize[2]])
             rotate([0,0,270]) jst_ph(4);
     // heatsink
@@ -511,20 +448,6 @@ module bat_pcb(batpcbsize, batpcb_position) {
         color("dimgrey") translate([batpcb_position[0]+batpcbsize[0]-4, batpcb_position[1]+4, batpcb_position[2]-1]) 
             cylinder(d=3.5, h=4);
     }
-    // battery connection
-//    translate([batpcb_position[0]+87.5, batpcb_position[1]+25, batpcb_position[2]+batpcbsize[2]])
-//    rotate([0,0,180]) xt30("XT30PW-F");
-    translate([batpcb_position[0]+83.5, batpcb_position[1]+20, batpcb_position[2]+batpcbsize[2]])
-    rotate([0,0,270]) xt30("XT30PW-F");
-
-    // battery sense
-    translate([batpcb_position[0]+84, batpcb_position[1]+batpcbsize[1]-9.5, batpcb_position[2]+batpcbsize[2]])
-            rotate([0,0,270]) jst_ph(4);
-    translate([batpcb_position[0]+84, batpcb_position[1]+29, batpcb_position[2]+batpcbsize[2]+4.5])
-            rotate([270,0,270]) jst_ph(2);
-    // battery sense
-//    translate([batpcb_position[0]+78, batpcb_position[1]+9.5, batpcb_position[2]+batpcbsize[2]])
-//            rotate([0,0,0]) jst_ph(4);
 }
 
 
@@ -675,7 +598,7 @@ module battery(type) {
 }
 
 
-// JST-XH connector class
+// JST-PH connector class
 module jst_xh(num_pin) {
     
     size_x = 2.4+(num_pin*2);
