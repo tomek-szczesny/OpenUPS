@@ -22,14 +22,14 @@ License:
 
 ### OpenUPS Features:
 -  Multi SBC support
--  Wide Input Voltage Range: 9V - 24V
--  Multiple Output Voltages: 5V, 12V, Programmable (0-24V) or Vin repeater,
--  Dual SATA power ports, supports 3.5" HDDs as well,
--  Dual 12V Fan ports with PWM control and RPM monitoring,
--  I2C Configuration and Reporting, incl. Battery Voltage, Current
--  3D-printable Custom Cases
+-  Variable Input Voltage 7v-24v
+-  Multiple Output Voltage 5v, 12v, Vin mirrored
+-  Dual SATA power ports
+-  Dual 12v Fan ports
+-  Expanable 3S1P Battery Capacity
+-  21700 and 18650 Battery Support
+-  I2C Power, Temperature and Battery Status Reporting
+-  Custom Cases
    - Drive Bay Case Mount
    - Standalone Case
--  Expandable 3S1P Battery Capacity
--  18650, 20700 or 21700 Cell Support
 -  Easy Battery Maintenance
