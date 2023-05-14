@@ -1,4 +1,4 @@
-21603410258911885
+21605096304666329
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -90068,6 +90068,13 @@ varistor
 0
 2
 2
+footprints
+DFN 3x3 MOSFET
+
+
+0
+0
+0
 footprints
 Molex-22-05-3031-MFG
 

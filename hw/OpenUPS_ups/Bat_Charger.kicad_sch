@@ -387,151 +387,6 @@
         )
       )
     )
-    (symbol "Device:Q_NMOS_GDS" (pin_names (offset 0) hide) (in_bom yes) (on_board yes)
-      (property "Reference" "Q" (at 5.08 1.27 0)
-        (effects (font (size 1.27 1.27)) (justify left))
-      )
-      (property "Value" "Q_NMOS_GDS" (at 5.08 -1.27 0)
-        (effects (font (size 1.27 1.27)) (justify left))
-      )
-      (property "Footprint" "" (at 5.08 2.54 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "~" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_keywords" "transistor NMOS N-MOS N-MOSFET" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "N-MOSFET transistor, gate/drain/source" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "Q_NMOS_GDS_0_1"
-        (polyline
-          (pts
-            (xy 0.254 0)
-            (xy -2.54 0)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0.254 1.905)
-            (xy 0.254 -1.905)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0.762 -1.27)
-            (xy 0.762 -2.286)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0.762 0.508)
-            (xy 0.762 -0.508)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0.762 2.286)
-            (xy 0.762 1.27)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 2.54 2.54)
-            (xy 2.54 1.778)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 2.54 -2.54)
-            (xy 2.54 0)
-            (xy 0.762 0)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0.762 -1.778)
-            (xy 3.302 -1.778)
-            (xy 3.302 1.778)
-            (xy 0.762 1.778)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 1.016 0)
-            (xy 2.032 0.381)
-            (xy 2.032 -0.381)
-            (xy 1.016 0)
-          )
-          (stroke (width 0) (type default))
-          (fill (type outline))
-        )
-        (polyline
-          (pts
-            (xy 2.794 0.508)
-            (xy 2.921 0.381)
-            (xy 3.683 0.381)
-            (xy 3.81 0.254)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 3.302 0.381)
-            (xy 2.921 -0.254)
-            (xy 3.683 -0.254)
-            (xy 3.302 0.381)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (circle (center 1.651 0) (radius 2.794)
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-        (circle (center 2.54 -1.778) (radius 0.254)
-          (stroke (width 0) (type default))
-          (fill (type outline))
-        )
-        (circle (center 2.54 1.778) (radius 0.254)
-          (stroke (width 0) (type default))
-          (fill (type outline))
-        )
-      )
-      (symbol "Q_NMOS_GDS_1_1"
-        (pin input line (at -5.08 0 0) (length 2.54)
-          (name "G" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 2.54 5.08 270) (length 2.54)
-          (name "D" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 2.54 -5.08 90) (length 2.54)
-          (name "S" (effects (font (size 1.27 1.27))))
-          (number "3" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
     (symbol "Device:R" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
       (property "Reference" "R" (at 2.032 0 90)
         (effects (font (size 1.27 1.27)))
@@ -919,6 +774,171 @@
         (pin input line (at -5.08 2.54 270) (length 2.54)
           (name "D" (effects (font (size 1.27 1.27))))
           (number "6" (effects (font (size 1.27 1.27))))
+        )
+      )
+    )
+    (symbol "Q_NMOS_GDS_1" (pin_names (offset 0) hide) (in_bom yes) (on_board yes)
+      (property "Reference" "Q406" (at 5.207 0.8347 0)
+        (effects (font (size 1.27 1.27)) (justify left))
+      )
+      (property "Value" "AON7534" (at 5.207 -1.7022 0)
+        (effects (font (size 1.27 1.27)) (justify left))
+      )
+      (property "Footprint" "footprints:DFN 3x3 MOSFET" (at 5.08 2.54 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "Datasheet" "~" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_keywords" "transistor NMOS N-MOS N-MOSFET" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (property "ki_description" "N-MOSFET transistor, gate/drain/source" (at 0 0 0)
+        (effects (font (size 1.27 1.27)) hide)
+      )
+      (symbol "Q_NMOS_GDS_1_0_1"
+        (polyline
+          (pts
+            (xy 0.254 0)
+            (xy -2.54 0)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy 0.254 1.905)
+            (xy 0.254 -1.905)
+          )
+          (stroke (width 0.254) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy 0.762 -1.27)
+            (xy 0.762 -2.286)
+          )
+          (stroke (width 0.254) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy 0.762 0.508)
+            (xy 0.762 -0.508)
+          )
+          (stroke (width 0.254) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy 0.762 2.286)
+            (xy 0.762 1.27)
+          )
+          (stroke (width 0.254) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy 2.54 2.54)
+            (xy 2.54 1.778)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy 2.54 -2.54)
+            (xy 2.54 0)
+            (xy 0.762 0)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy 0.762 -1.778)
+            (xy 3.302 -1.778)
+            (xy 3.302 1.778)
+            (xy 0.762 1.778)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy 1.016 0)
+            (xy 2.032 0.381)
+            (xy 2.032 -0.381)
+            (xy 1.016 0)
+          )
+          (stroke (width 0) (type default))
+          (fill (type outline))
+        )
+        (polyline
+          (pts
+            (xy 2.794 0.508)
+            (xy 2.921 0.381)
+            (xy 3.683 0.381)
+            (xy 3.81 0.254)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+        (polyline
+          (pts
+            (xy 3.302 0.381)
+            (xy 2.921 -0.254)
+            (xy 3.683 -0.254)
+            (xy 3.302 0.381)
+          )
+          (stroke (width 0) (type default))
+          (fill (type none))
+        )
+        (circle (center 1.651 0) (radius 2.794)
+          (stroke (width 0.254) (type default))
+          (fill (type none))
+        )
+        (circle (center 2.54 -1.778) (radius 0.254)
+          (stroke (width 0) (type default))
+          (fill (type outline))
+        )
+        (circle (center 2.54 1.778) (radius 0.254)
+          (stroke (width 0) (type default))
+          (fill (type outline))
+        )
+      )
+      (symbol "Q_NMOS_GDS_1_1_1"
+        (pin passive line (at 2.54 -5.08 90) (length 2.54)
+          (name "S" (effects (font (size 1.27 1.27))))
+          (number "1" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at 2.54 -5.08 90) (length 2.54)
+          (name "S" (effects (font (size 1.27 1.27))))
+          (number "2" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at 2.54 -5.08 90) (length 2.54)
+          (name "S" (effects (font (size 1.27 1.27))))
+          (number "3" (effects (font (size 1.27 1.27))))
+        )
+        (pin input line (at -5.08 0 0) (length 2.54)
+          (name "G" (effects (font (size 1.27 1.27))))
+          (number "4" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at 2.54 5.08 270) (length 2.54)
+          (name "D" (effects (font (size 1.27 1.27))))
+          (number "5" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at 2.54 5.08 270) (length 2.54)
+          (name "D" (effects (font (size 1.27 1.27))))
+          (number "6" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at 2.54 5.08 270) (length 2.54)
+          (name "D" (effects (font (size 1.27 1.27))))
+          (number "7" (effects (font (size 1.27 1.27))))
+        )
+        (pin passive line (at 2.54 5.08 270) (length 2.54)
+          (name "D" (effects (font (size 1.27 1.27))))
+          (number "8" (effects (font (size 1.27 1.27))))
         )
       )
     )
@@ -3022,9 +3042,6 @@
     (pin "3" (uuid 66dcabca-d190-4b85-acd7-c10dc85ff042))
     (instances
       (project "OpenUPS_ups"
-        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/cd9c4f35-7131-43cd-b33a-45cc202c7c37"
-          (reference "Q901") (unit 1)
-        )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
           (reference "Q410") (unit 1)
         )
@@ -3176,9 +3193,6 @@
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
           (reference "#PWR0312") (unit 1)
-        )
-        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/cd9c4f35-7131-43cd-b33a-45cc202c7c37"
-          (reference "#PWR0902") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
           (reference "#PWR0456") (unit 1)
@@ -3453,6 +3467,37 @@
     )
   )
 
+  (symbol (lib_id "power:GND") (at 361.95 223.52 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 3826f07f-2143-4207-9c0d-9a0e9bb58601)
+    (property "Reference" "#PWR0710" (at 361.95 229.87 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (at 361.95 227.33 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Footprint" "" (at 361.95 223.52 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Datasheet" "" (at 361.95 223.52 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (pin "1" (uuid dd0c83fb-87d8-4d5a-8286-59c72d76efa4))
+    (instances
+      (project "OpenUPS_ups"
+        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/09fcd86a-cc7e-4bce-97cb-42a94055ba63"
+          (reference "#PWR0710") (unit 1)
+        )
+        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/dfbaaed0-e564-4e21-900d-d5a65c0f1694"
+          (reference "#PWR0413") (unit 1)
+        )
+        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
+          (reference "#PWR0466") (unit 1)
+        )
+      )
+    )
+  )
+
   (symbol (lib_id "power:GND") (at 153.67 113.03 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 38b092df-0300-4e6c-96ef-55ed332404b1)
@@ -3479,39 +3524,6 @@
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
           (reference "#PWR0445") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:Q_NMOS_GDS") (at 93.98 27.94 270) (mirror x) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 3904a375-e478-457a-b2ef-3f095c7b6265)
-    (property "Reference" "Q701" (at 93.98 20.4851 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "Q_NMOS_GDS" (at 93.98 22.4061 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Package_TO_SOT_SMD:TO-263-2" (at 96.52 22.86 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 93.98 27.94 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 88b9224f-c204-4f61-b878-567b0981e21a))
-    (pin "2" (uuid c9ba65ae-0c54-43bd-a36b-92303a9bfd9c))
-    (pin "3" (uuid 7c1c1ab8-dcd3-4db5-8c6b-2cfc81fb3489))
-    (instances
-      (project "OpenUPS_ups"
-        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/09fcd86a-cc7e-4bce-97cb-42a94055ba63"
-          (reference "Q701") (unit 1)
-        )
-        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/dfbaaed0-e564-4e21-900d-d5a65c0f1694"
-          (reference "Q401") (unit 1)
-        )
-        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
-          (reference "Q408") (unit 1)
         )
       )
     )
@@ -3605,6 +3617,44 @@
     )
   )
 
+  (symbol (lib_name "Q_NMOS_GDS_1") (lib_id "Device:Q_NMOS_GDS") (at 93.98 27.94 270) (mirror x) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 3e6d9ee9-31f7-4bda-b907-655632b83b41)
+    (property "Reference" "Q701" (at 93.98 20.4851 90)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "AON7534" (at 93.98 22.4061 90)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "footprints:DFN 3x3 MOSFET" (at 96.52 22.86 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 93.98 27.94 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 536555b6-d769-4f00-abce-e50ebf875b62))
+    (pin "2" (uuid 63243d7b-6d2a-48ff-a067-e1d6c48acb76))
+    (pin "3" (uuid dc15182c-b722-42a2-9edd-b3e1ccd696e9))
+    (pin "4" (uuid 88808516-068f-47e2-8d50-d24b3fb8c581))
+    (pin "5" (uuid 8013c072-f3de-453f-920e-a23b662f7ec9))
+    (pin "6" (uuid efd2cfa8-db2b-407f-94d2-bdc96235e877))
+    (pin "7" (uuid 4afcb7de-c8b4-4945-88b5-12393234df05))
+    (pin "8" (uuid 4cf92de3-d2e3-45a4-b334-0b5ad40fe3c0))
+    (instances
+      (project "OpenUPS_ups"
+        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/09fcd86a-cc7e-4bce-97cb-42a94055ba63"
+          (reference "Q701") (unit 1)
+        )
+        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/dfbaaed0-e564-4e21-900d-d5a65c0f1694"
+          (reference "Q401") (unit 1)
+        )
+        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
+          (reference "Q408") (unit 1)
+        )
+      )
+    )
+  )
+
   (symbol (lib_id "Device:C_Small") (at 54.61 71.12 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 3fcc6fef-96b6-4956-8dd0-8c6f466b3033)
@@ -3687,9 +3737,6 @@
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
           (reference "R305") (unit 1)
-        )
-        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/cd9c4f35-7131-43cd-b33a-45cc202c7c37"
-          (reference "R902") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
           (reference "R429") (unit 1)
@@ -3846,9 +3893,6 @@
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
           (reference "R305") (unit 1)
         )
-        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/cd9c4f35-7131-43cd-b33a-45cc202c7c37"
-          (reference "R902") (unit 1)
-        )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
           (reference "R430") (unit 1)
         )
@@ -3972,34 +4016,6 @@
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
           (reference "#PWR0437") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 350.52 185.42 0) (mirror y) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 55f63ce1-60de-431e-9ab2-6478290bdf38)
-    (property "Reference" "#PWR0102" (at 350.52 191.77 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 350.52 189.23 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 350.52 185.42 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Datasheet" "" (at 350.52 185.42 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (pin "1" (uuid cbcd5fa4-fe8b-4179-9108-6d3959aeaf8d))
-    (instances
-      (project "OpenUPS_ups"
-        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502"
-          (reference "#PWR0102") (unit 1)
-        )
-        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
-          (reference "#PWR0505") (unit 1)
         )
       )
     )
@@ -4202,9 +4218,6 @@
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
           (reference "R305") (unit 1)
-        )
-        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/cd9c4f35-7131-43cd-b33a-45cc202c7c37"
-          (reference "R901") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
           (reference "R428") (unit 1)
@@ -4422,36 +4435,6 @@
     )
   )
 
-  (symbol (lib_id "Device:Q_NMOS_GDS") (at 215.9 95.25 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 660f596d-9e59-4797-907b-3b536e4ba694)
-    (property "Reference" "Q?" (at 221.107 94.4153 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "Q_NMOS_GDS" (at 221.107 96.9522 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Package_TO_SOT_SMD:TO-263-2" (at 220.98 92.71 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 215.9 95.25 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid d0f83d63-b167-4e2f-9f22-9b30ad02e167))
-    (pin "2" (uuid b2dbd762-5d0e-493b-8951-564033f97171))
-    (pin "3" (uuid ee307761-cc74-4505-8268-8dbf31c69ab5))
-    (instances
-      (project "OpenUPS_ups"
-        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/09fcd86a-cc7e-4bce-97cb-42a94055ba63"
-          (reference "Q?") (unit 1)
-        )
-        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
-          (reference "Q405") (unit 1)
-        )
-      )
-    )
-  )
-
   (symbol (lib_id "Amplifier_Current:INA181") (at 347.98 175.26 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 66bb6260-0b7a-462a-b5b0-21456a0d7315)
@@ -4537,39 +4520,6 @@
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
           (reference "C448") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:Q_NMOS_GDS") (at 176.53 66.04 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
-    (uuid 6b6e0bf9-fcac-4d92-8fbe-c997c6be2f43)
-    (property "Reference" "Q702" (at 181.737 65.2053 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "Q_NMOS_GDS" (at 181.737 67.7422 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Package_TO_SOT_SMD:TO-263-2" (at 181.61 63.5 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 176.53 66.04 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 83e30a9a-ce75-4398-9624-03fe4c3faca3))
-    (pin "2" (uuid c217d474-85da-49cc-a4fc-f525c1fdbd17))
-    (pin "3" (uuid 9cbd05af-04bb-494f-bb99-caffd3ee1cf4))
-    (instances
-      (project "OpenUPS_ups"
-        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/09fcd86a-cc7e-4bce-97cb-42a94055ba63"
-          (reference "Q702") (unit 1)
-        )
-        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/dfbaaed0-e564-4e21-900d-d5a65c0f1694"
-          (reference "Q402") (unit 1)
-        )
-        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
-          (reference "Q407") (unit 1)
         )
       )
     )
@@ -4809,9 +4759,6 @@
     (pin "6" (uuid 83d93102-d64d-4299-9f8d-5f3cf4d9672e))
     (instances
       (project "OpenUPS_ups"
-        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/cd9c4f35-7131-43cd-b33a-45cc202c7c37"
-          (reference "U901") (unit 1)
-        )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
           (reference "U404") (unit 1)
         )
@@ -4876,16 +4823,16 @@
     )
   )
 
-  (symbol (lib_id "Device:Q_NMOS_GDS") (at 176.53 53.34 0) (unit 1)
+  (symbol (lib_name "Q_NMOS_GDS_1") (lib_id "Device:Q_NMOS_GDS") (at 176.53 53.34 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 81583943-f016-40cd-9e53-dfaceff2b27e)
     (property "Reference" "Q701" (at 181.737 52.5053 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "Q_NMOS_GDS" (at 181.737 55.0422 0)
+    (property "Value" "AON7534" (at 181.737 55.0422 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Package_TO_SOT_SMD:TO-263-2" (at 181.61 50.8 0)
+    (property "Footprint" "footprints:DFN 3x3 MOSFET" (at 181.61 50.8 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 176.53 53.34 0)
@@ -4894,6 +4841,11 @@
     (pin "1" (uuid e5fec6e4-56c5-4955-a8f4-e20908e57e34))
     (pin "2" (uuid 4aa241d3-e456-4804-a669-a2fe45c39927))
     (pin "3" (uuid ebe14059-9e5d-4e26-af52-cb7d97a860e0))
+    (pin "4" (uuid 7dee0762-f095-4f5d-960f-4c41f03cd093))
+    (pin "5" (uuid 205c111d-1315-44a1-af20-fc909dd5221b))
+    (pin "6" (uuid 85f2aeda-0848-459e-b475-b98aea17b6ff))
+    (pin "7" (uuid 734b4690-ea42-4e3f-a84d-d044fb67f609))
+    (pin "8" (uuid 51bbcc33-27e4-4fae-93f3-3f638b7b87dd))
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/09fcd86a-cc7e-4bce-97cb-42a94055ba63"
@@ -5005,6 +4957,44 @@
     )
   )
 
+  (symbol (lib_name "Q_NMOS_GDS_1") (lib_id "Device:Q_NMOS_GDS") (at 176.53 66.04 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 87809496-e17c-401a-8a3d-0f9f33ead5ce)
+    (property "Reference" "Q701" (at 181.737 65.2053 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "AON7534" (at 181.737 67.7422 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "footprints:DFN 3x3 MOSFET" (at 181.61 63.5 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 176.53 66.04 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 9fa7cb60-f29c-431b-ab22-d8b71fa8d13c))
+    (pin "2" (uuid 658e2b23-63e0-44a5-8fa6-868fb279ec97))
+    (pin "3" (uuid 8531d1f5-0959-4470-bc7d-d45cf6c70e5b))
+    (pin "4" (uuid a7f339bc-0d68-42b1-9a43-c32ee66ec529))
+    (pin "5" (uuid 630ea48d-9485-46f0-a1e7-881d0e848625))
+    (pin "6" (uuid e21494dd-02ba-47cb-870d-fd02ec78d212))
+    (pin "7" (uuid 94486206-dbb4-42ae-9d74-11a3717e0e5a))
+    (pin "8" (uuid bdf64d63-fdea-48ab-aaf4-315f4d8dcd2c))
+    (instances
+      (project "OpenUPS_ups"
+        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/09fcd86a-cc7e-4bce-97cb-42a94055ba63"
+          (reference "Q701") (unit 1)
+        )
+        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/dfbaaed0-e564-4e21-900d-d5a65c0f1694"
+          (reference "Q401") (unit 1)
+        )
+        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
+          (reference "Q407") (unit 1)
+        )
+      )
+    )
+  )
+
   (symbol (lib_id "power:GND") (at 300.99 73.66 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8a121f00-ef5a-4935-be0a-b99b633cb3cd)
@@ -5062,6 +5052,37 @@
     )
   )
 
+  (symbol (lib_id "power:GND") (at 350.52 185.42 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 8ded6146-fb9a-4d92-878e-f1255a8904e4)
+    (property "Reference" "#PWR0710" (at 350.52 191.77 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (at 350.52 189.23 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Footprint" "" (at 350.52 185.42 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Datasheet" "" (at 350.52 185.42 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (pin "1" (uuid 3302d580-fc41-40e8-aa27-8c53c58e2dcd))
+    (instances
+      (project "OpenUPS_ups"
+        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/09fcd86a-cc7e-4bce-97cb-42a94055ba63"
+          (reference "#PWR0710") (unit 1)
+        )
+        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/dfbaaed0-e564-4e21-900d-d5a65c0f1694"
+          (reference "#PWR0413") (unit 1)
+        )
+        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
+          (reference "#PWR0467") (unit 1)
+        )
+      )
+    )
+  )
+
   (symbol (lib_id "power:GND") (at 351.79 73.66 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8dfc0ea3-1300-47d8-84ce-bcc6178e7a88)
@@ -5085,6 +5106,37 @@
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
           (reference "#PWR0461") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_id "power:GND") (at 255.27 227.33 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no)
+    (uuid 8e7e9c7b-b629-4a88-a000-7d7c91e1bb8f)
+    (property "Reference" "#PWR0710" (at 255.27 233.68 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Value" "GND" (at 255.27 231.14 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Footprint" "" (at 255.27 227.33 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Datasheet" "" (at 255.27 227.33 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (pin "1" (uuid fafdfe33-f1dd-47d6-ab13-b1d17468358b))
+    (instances
+      (project "OpenUPS_ups"
+        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/09fcd86a-cc7e-4bce-97cb-42a94055ba63"
+          (reference "#PWR0710") (unit 1)
+        )
+        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/dfbaaed0-e564-4e21-900d-d5a65c0f1694"
+          (reference "#PWR0413") (unit 1)
+        )
+        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
+          (reference "#PWR0465") (unit 1)
         )
       )
     )
@@ -5302,34 +5354,6 @@
     )
   )
 
-  (symbol (lib_id "power:GND") (at 255.27 227.33 0) (mirror y) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid a98ff99f-cfe2-4982-9658-65bbb792d777)
-    (property "Reference" "#PWR0102" (at 255.27 233.68 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 255.27 231.14 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 255.27 227.33 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Datasheet" "" (at 255.27 227.33 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (pin "1" (uuid 6a1ff797-233a-43cd-882e-4022ef25f974))
-    (instances
-      (project "OpenUPS_ups"
-        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502"
-          (reference "#PWR0102") (unit 1)
-        )
-        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
-          (reference "#PWR0517") (unit 1)
-        )
-      )
-    )
-  )
-
   (symbol (lib_id "power:GND") (at 48.26 74.93 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid acb6fd92-5ef2-4c87-9b99-0acd0308b231)
@@ -5356,6 +5380,44 @@
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
           (reference "#PWR0448") (unit 1)
+        )
+      )
+    )
+  )
+
+  (symbol (lib_name "Q_NMOS_GDS_1") (lib_id "Device:Q_NMOS_GDS") (at 215.9 95.25 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid b120c4ec-efed-44c5-a8ce-ca45c297ead4)
+    (property "Reference" "Q701" (at 221.107 94.4153 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "AON7534" (at 221.107 96.9522 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Footprint" "footprints:DFN 3x3 MOSFET" (at 220.98 92.71 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 215.9 95.25 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (pin "1" (uuid 469ea7c1-9f2a-4745-a2e3-9c7f427f3da3))
+    (pin "2" (uuid 01ae0914-35e5-4f82-98de-69397ca63cb8))
+    (pin "3" (uuid 912b5483-6911-4aec-ba96-0129aeb5ad7e))
+    (pin "4" (uuid 680dd06b-9e73-4119-88ac-90082b6cf837))
+    (pin "5" (uuid 163c6c7d-295d-4c00-acce-3b080a14a551))
+    (pin "6" (uuid 90c5f8cd-a6d0-4ffc-a869-5df4e78ba9a2))
+    (pin "7" (uuid 3c8c990a-cb7e-453e-aaae-3620fbbcd7cf))
+    (pin "8" (uuid 09535d30-a915-4cc3-95f5-a20eb6d6dd6a))
+    (instances
+      (project "OpenUPS_ups"
+        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/09fcd86a-cc7e-4bce-97cb-42a94055ba63"
+          (reference "Q701") (unit 1)
+        )
+        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/dfbaaed0-e564-4e21-900d-d5a65c0f1694"
+          (reference "Q401") (unit 1)
+        )
+        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
+          (reference "Q405") (unit 1)
         )
       )
     )
@@ -5754,9 +5816,6 @@
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
           (reference "#PWR0312") (unit 1)
         )
-        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/cd9c4f35-7131-43cd-b33a-45cc202c7c37"
-          (reference "#PWR0901") (unit 1)
-        )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
           (reference "#PWR0455") (unit 1)
         )
@@ -5915,34 +5974,6 @@
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
           (reference "R512") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GND") (at 361.95 223.52 0) (mirror y) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid e1ad80aa-8971-451c-a2d7-bc243c7c4f90)
-    (property "Reference" "#PWR0102" (at 361.95 229.87 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GND" (at 361.95 227.33 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 361.95 223.52 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Datasheet" "" (at 361.95 223.52 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (pin "1" (uuid bce1f80b-3786-4194-a255-43a3a7097c21))
-    (instances
-      (project "OpenUPS_ups"
-        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502"
-          (reference "#PWR0102") (unit 1)
-        )
-        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
-          (reference "#PWR0506") (unit 1)
         )
       )
     )
