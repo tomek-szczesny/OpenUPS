@@ -312,7 +312,7 @@
           (reference "R505") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/8ef22562-ae5a-4c6d-85ce-f0b1dd2b9eff"
-          (reference "R515") (unit 1)
+          (reference "R501") (unit 1)
         )
       )
     )
@@ -343,7 +343,7 @@
           (reference "#PWR0514") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/8ef22562-ae5a-4c6d-85ce-f0b1dd2b9eff"
-          (reference "#PWR0511") (unit 1)
+          (reference "#PWR0501") (unit 1)
         )
       )
     )

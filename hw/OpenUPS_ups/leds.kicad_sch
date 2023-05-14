@@ -274,7 +274,7 @@
           (reference "#PWR0312") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/b8aa7be4-778b-4031-b56b-78965635bae2"
-          (reference "#PWR01201") (unit 1)
+          (reference "#PWR01101") (unit 1)
         )
       )
     )
@@ -302,7 +302,7 @@
           (reference "#PWR0312") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/b8aa7be4-778b-4031-b56b-78965635bae2"
-          (reference "#PWR01204") (unit 1)
+          (reference "#PWR01104") (unit 1)
         )
       )
     )
@@ -330,7 +330,7 @@
           (reference "#PWR0312") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/b8aa7be4-778b-4031-b56b-78965635bae2"
-          (reference "#PWR01202") (unit 1)
+          (reference "#PWR01102") (unit 1)
         )
       )
     )
@@ -362,7 +362,7 @@
           (reference "R416") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/b8aa7be4-778b-4031-b56b-78965635bae2"
-          (reference "R1201") (unit 1)
+          (reference "R1101") (unit 1)
         )
       )
     )
@@ -371,7 +371,7 @@
   (symbol (lib_id "Device:LED_Small") (at 102.87 43.18 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4fe8213a-3218-47fa-a114-404ceaab3b74)
-    (property "Reference" "D1201" (at 100.33 46.99 0)
+    (property "Reference" "D1102" (at 100.33 46.99 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "G" (at 102.87 40.64 0)
@@ -391,7 +391,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/b8aa7be4-778b-4031-b56b-78965635bae2"
-          (reference "D1201") (unit 1)
+          (reference "D1102") (unit 1)
         )
       )
     )
@@ -419,7 +419,7 @@
           (reference "#PWR0312") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/b8aa7be4-778b-4031-b56b-78965635bae2"
-          (reference "#PWR01205") (unit 1)
+          (reference "#PWR01105") (unit 1)
         )
       )
     )
@@ -451,7 +451,7 @@
           (reference "R416") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/b8aa7be4-778b-4031-b56b-78965635bae2"
-          (reference "R1203") (unit 1)
+          (reference "R1103") (unit 1)
         )
       )
     )
@@ -483,7 +483,7 @@
           (reference "R416") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/b8aa7be4-778b-4031-b56b-78965635bae2"
-          (reference "R1205") (unit 1)
+          (reference "R1105") (unit 1)
         )
       )
     )
@@ -515,7 +515,7 @@
           (reference "R416") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/b8aa7be4-778b-4031-b56b-78965635bae2"
-          (reference "R1202") (unit 1)
+          (reference "R1102") (unit 1)
         )
       )
     )
@@ -524,7 +524,7 @@
   (symbol (lib_id "Device:LED_Small") (at 102.87 66.04 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 7a7552f0-1021-4d4c-955f-7bf9e653794d)
-    (property "Reference" "D1203" (at 100.33 69.85 0)
+    (property "Reference" "D1104" (at 100.33 69.85 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "G" (at 102.87 63.5 0)
@@ -544,7 +544,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/b8aa7be4-778b-4031-b56b-78965635bae2"
-          (reference "D1203") (unit 1)
+          (reference "D1104") (unit 1)
         )
       )
     )
@@ -553,7 +553,7 @@
   (symbol (lib_id "Device:LED_Small") (at 102.87 31.75 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8c386bd8-ad38-4645-b3d8-08d8c1531df5)
-    (property "Reference" "D1206" (at 100.33 35.56 0)
+    (property "Reference" "D1101" (at 100.33 35.56 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "G" (at 102.87 29.21 0)
@@ -573,7 +573,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/b8aa7be4-778b-4031-b56b-78965635bae2"
-          (reference "D1206") (unit 1)
+          (reference "D1101") (unit 1)
         )
       )
     )
@@ -601,7 +601,7 @@
           (reference "#PWR0312") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/b8aa7be4-778b-4031-b56b-78965635bae2"
-          (reference "#PWR01203") (unit 1)
+          (reference "#PWR01103") (unit 1)
         )
       )
     )
@@ -610,7 +610,7 @@
   (symbol (lib_id "Device:LED_Small") (at 102.87 77.47 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid bc940796-8445-48f1-b913-0452473fda2a)
-    (property "Reference" "D1204" (at 100.33 81.28 0)
+    (property "Reference" "D1105" (at 100.33 81.28 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "R" (at 102.87 74.93 0)
@@ -630,7 +630,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/b8aa7be4-778b-4031-b56b-78965635bae2"
-          (reference "D1204") (unit 1)
+          (reference "D1105") (unit 1)
         )
       )
     )
@@ -662,7 +662,7 @@
           (reference "R416") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/b8aa7be4-778b-4031-b56b-78965635bae2"
-          (reference "R1204") (unit 1)
+          (reference "R1104") (unit 1)
         )
       )
     )
@@ -671,7 +671,7 @@
   (symbol (lib_id "Device:LED_Small") (at 102.87 54.61 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid c99ad31d-90bf-4916-abae-93e75b9e3f4b)
-    (property "Reference" "D1202" (at 100.33 58.42 0)
+    (property "Reference" "D1103" (at 100.33 58.42 0)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "G" (at 102.87 52.07 0)
@@ -691,7 +691,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/b8aa7be4-778b-4031-b56b-78965635bae2"
-          (reference "D1202") (unit 1)
+          (reference "D1103") (unit 1)
         )
       )
     )

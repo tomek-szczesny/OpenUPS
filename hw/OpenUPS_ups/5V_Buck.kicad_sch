@@ -922,7 +922,7 @@
   (symbol (lib_id "Device:R_Small") (at 179.07 85.09 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 022797be-890d-4ffb-b6f6-6fd985b45392)
-    (property "Reference" "R302" (at 181.61 85.09 90)
+    (property "Reference" "R208" (at 181.61 85.09 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "15k" (at 176.53 85.09 90)
@@ -939,7 +939,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "R302") (unit 1)
+          (reference "R208") (unit 1)
         )
       )
     )
@@ -948,7 +948,7 @@
   (symbol (lib_id "Device:R_Small") (at 99.06 83.82 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 03e7d6a0-9037-401a-9736-57df116341bf)
-    (property "Reference" "R305" (at 101.6 83.82 90)
+    (property "Reference" "R203" (at 101.6 83.82 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "15k" (at 96.52 83.82 90)
@@ -965,7 +965,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "R305") (unit 1)
+          (reference "R203") (unit 1)
         )
       )
     )
@@ -974,7 +974,7 @@
   (symbol (lib_id "Device:C_Small") (at 62.23 68.58 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 0630c845-18c9-4169-8b11-37c297fcef33)
-    (property "Reference" "C305" (at 66.04 71.12 90)
+    (property "Reference" "C201" (at 66.04 71.12 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "100n 50V" (at 58.42 73.66 90)
@@ -991,7 +991,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "C305") (unit 1)
+          (reference "C201") (unit 1)
         )
       )
     )
@@ -1000,7 +1000,7 @@
   (symbol (lib_id "Device:C_Small") (at 190.5 72.39 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 0a8e3154-b844-42d6-bd6e-59438727e6aa)
-    (property "Reference" "C304" (at 194.31 74.93 90)
+    (property "Reference" "C206" (at 194.31 74.93 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "100n 10V" (at 186.69 77.47 90)
@@ -1017,7 +1017,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "C304") (unit 1)
+          (reference "C206") (unit 1)
         )
       )
     )
@@ -1026,7 +1026,7 @@
   (symbol (lib_id "power:GND") (at 138.43 87.63 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 13fc3666-bdb7-4204-aca6-9b475f1cd725)
-    (property "Reference" "#PWR0301" (at 138.43 93.98 0)
+    (property "Reference" "#PWR0207" (at 138.43 93.98 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 138.43 91.44 0)
@@ -1042,7 +1042,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "#PWR0301") (unit 1)
+          (reference "#PWR0207") (unit 1)
         )
       )
     )
@@ -1051,7 +1051,7 @@
   (symbol (lib_id "Device:C_Polarized") (at 217.17 72.39 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 1b960683-f08b-4f1e-b848-8b4f6002a865)
-    (property "Reference" "C204" (at 218.44 69.85 0)
+    (property "Reference" "C211" (at 218.44 69.85 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "16ZLG47MEFC6.3X7" (at 210.82 86.36 90)
@@ -1071,7 +1071,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "C204") (unit 1)
+          (reference "C211") (unit 1)
         )
       )
     )
@@ -1080,7 +1080,7 @@
   (symbol (lib_id "power:GND") (at 144.78 87.63 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 1dff269e-6fcb-4a75-bc28-cf88e0fe2111)
-    (property "Reference" "#PWR0313" (at 144.78 93.98 0)
+    (property "Reference" "#PWR0208" (at 144.78 93.98 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 144.78 91.44 0)
@@ -1096,7 +1096,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "#PWR0313") (unit 1)
+          (reference "#PWR0208") (unit 1)
         )
       )
     )
@@ -1105,7 +1105,7 @@
   (symbol (lib_id "Device:C_Small") (at 234.95 82.55 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 1f7d2312-8f88-4011-a907-d0e8ebb1da29)
-    (property "Reference" "C202" (at 234.95 78.74 90)
+    (property "Reference" "C212" (at 234.95 78.74 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "10u" (at 234.95 86.36 90)
@@ -1122,7 +1122,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "C202") (unit 1)
+          (reference "C212") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
           (reference "C508") (unit 1)
@@ -1134,7 +1134,7 @@
   (symbol (lib_id "Device:C_Small") (at 88.9 82.55 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 235361f0-04ce-432c-85d2-40e18d46d243)
-    (property "Reference" "C301" (at 92.71 85.09 90)
+    (property "Reference" "C202" (at 92.71 85.09 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "1u" (at 85.09 83.82 90)
@@ -1151,7 +1151,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "C301") (unit 1)
+          (reference "C202") (unit 1)
         )
       )
     )
@@ -1160,7 +1160,7 @@
   (symbol (lib_id "power:GND") (at 99.06 87.63 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 26b0608e-2022-467d-a362-0b9e6c3dd4e4)
-    (property "Reference" "#PWR0312" (at 99.06 93.98 0)
+    (property "Reference" "#PWR0204" (at 99.06 93.98 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 99.06 91.44 0)
@@ -1176,7 +1176,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "#PWR0312") (unit 1)
+          (reference "#PWR0204") (unit 1)
         )
       )
     )
@@ -1185,7 +1185,7 @@
   (symbol (lib_id "Device:C_Polarized") (at 204.47 72.39 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 27044183-6e81-4053-a8ac-8d82328f9349)
-    (property "Reference" "C203" (at 205.74 69.85 0)
+    (property "Reference" "C208" (at 205.74 69.85 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "16ZLG47MEFC6.3X7" (at 198.12 86.36 90)
@@ -1205,7 +1205,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "C203") (unit 1)
+          (reference "C208") (unit 1)
         )
       )
     )
@@ -1237,7 +1237,7 @@
           (reference "R406") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "R202") (unit 1)
+          (reference "R211") (unit 1)
         )
       )
     )
@@ -1268,7 +1268,7 @@
           (reference "#PWR0432") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "#PWR0202") (unit 1)
+          (reference "#PWR0214") (unit 1)
         )
       )
     )
@@ -1277,7 +1277,7 @@
   (symbol (lib_id "Device:C_Polarized") (at 217.17 59.69 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 2e8d7c2e-b44c-4028-b4da-6d6c9d65942e)
-    (property "Reference" "C205" (at 218.44 62.23 0)
+    (property "Reference" "C210" (at 218.44 62.23 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "16ZLG47MEFC6.3X7" (at 210.82 45.72 90)
@@ -1297,7 +1297,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "C205") (unit 1)
+          (reference "C210") (unit 1)
         )
       )
     )
@@ -1306,7 +1306,7 @@
   (symbol (lib_id "Device:R_Small") (at 99.06 73.66 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 33ebb12b-5112-42f2-9655-d447f055ff24)
-    (property "Reference" "R304" (at 101.6 73.66 90)
+    (property "Reference" "R202" (at 101.6 73.66 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "330k" (at 96.52 73.66 90)
@@ -1323,7 +1323,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "R304") (unit 1)
+          (reference "R202") (unit 1)
         )
       )
     )
@@ -1332,7 +1332,7 @@
   (symbol (lib_id "Device:C_Small") (at 207.01 107.95 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 3cbd2ef1-58e1-42d0-9f27-3e9383cfaebb)
-    (property "Reference" "C201" (at 204.47 111.76 90)
+    (property "Reference" "C209" (at 204.47 111.76 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "100n 10V" (at 201.93 104.14 90)
@@ -1349,7 +1349,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "C201") (unit 1)
+          (reference "C209") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
           (reference "C505") (unit 1)
@@ -1361,7 +1361,7 @@
   (symbol (lib_id "Device:C_Small") (at 168.91 73.66 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4215dee9-b1a0-4f50-8002-af853c88310f)
-    (property "Reference" "C303" (at 168.9163 78.9219 90)
+    (property "Reference" "C205" (at 168.9163 78.9219 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "100p" (at 168.9163 76.385 90)
@@ -1378,7 +1378,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "C303") (unit 1)
+          (reference "C205") (unit 1)
         )
       )
     )
@@ -1387,7 +1387,7 @@
   (symbol (lib_id "Device:L") (at 168.91 66.04 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 454561a6-2513-4a04-85a7-4e90b1a0f7ae)
-    (property "Reference" "L301" (at 168.91 61.214 90)
+    (property "Reference" "L201" (at 168.91 61.214 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "SRP1038C-2R2M" (at 168.91 63.5254 90)
@@ -1407,7 +1407,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "L301") (unit 1)
+          (reference "L201") (unit 1)
         )
       )
     )
@@ -1416,7 +1416,7 @@
   (symbol (lib_id "Device:R_Small") (at 179.07 69.85 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5257df7f-2b59-4d3c-8068-82ab9c1cd669)
-    (property "Reference" "R313" (at 181.61 69.85 90)
+    (property "Reference" "R206" (at 181.61 69.85 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "51R" (at 176.53 69.85 90)
@@ -1433,7 +1433,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "R313") (unit 1)
+          (reference "R206") (unit 1)
         )
       )
     )
@@ -1442,7 +1442,7 @@
   (symbol (lib_id "Device:R_Small") (at 80.01 71.12 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 55f63999-13ba-48ac-8e11-0c917ade0059)
-    (property "Reference" "R307" (at 82.55 71.12 90)
+    (property "Reference" "R201" (at 82.55 71.12 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "10k" (at 77.47 71.12 90)
@@ -1459,7 +1459,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "R307") (unit 1)
+          (reference "R201") (unit 1)
         )
       )
     )
@@ -1468,7 +1468,7 @@
   (symbol (lib_id "Device:C_Small") (at 152.4 62.23 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 6f49ea6e-dd12-41e9-9cf6-7f91f8c2d78f)
-    (property "Reference" "C302" (at 152.4063 56.9681 90)
+    (property "Reference" "C204" (at 152.4063 56.9681 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "100n 50V" (at 152.4063 59.505 90)
@@ -1485,7 +1485,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "C302") (unit 1)
+          (reference "C204") (unit 1)
         )
       )
     )
@@ -1520,7 +1520,7 @@
           (reference "R508") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "R203") (unit 1)
+          (reference "R210") (unit 1)
         )
       )
     )
@@ -1529,7 +1529,7 @@
   (symbol (lib_id "Device:R_Small") (at 142.24 62.23 90) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 757c3795-6dfc-417b-a821-3333ccfc2610)
-    (property "Reference" "R301" (at 142.24 57.15 90)
+    (property "Reference" "R204" (at 142.24 57.15 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "0R" (at 142.24 59.69 90)
@@ -1546,7 +1546,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "R301") (unit 1)
+          (reference "R204") (unit 1)
         )
       )
     )
@@ -1555,7 +1555,7 @@
   (symbol (lib_id "open-psu:TPS51397A") (at 125.73 59.69 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 7f1f674d-34c6-4a96-8c40-b52e85f5284c)
-    (property "Reference" "U301" (at 125.73 56.8071 0)
+    (property "Reference" "U201" (at 125.73 56.8071 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "TPS51397A" (at 125.73 58.7281 0)
@@ -1591,7 +1591,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "U301") (unit 1)
+          (reference "U201") (unit 1)
         )
       )
     )
@@ -1600,7 +1600,7 @@
   (symbol (lib_id "Device:C_Polarized") (at 204.47 59.69 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8a874d3c-34cd-45c6-be6c-25f885fdb591)
-    (property "Reference" "C308" (at 205.74 62.23 0)
+    (property "Reference" "C207" (at 205.74 62.23 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "16ZLG47MEFC6.3X7" (at 198.12 45.72 90)
@@ -1620,7 +1620,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "C308") (unit 1)
+          (reference "C207") (unit 1)
         )
       )
     )
@@ -1629,7 +1629,7 @@
   (symbol (lib_id "power:GND") (at 204.47 78.74 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8ba8eb8d-aef9-4a14-8f85-840374494102)
-    (property "Reference" "#PWR0308" (at 204.47 85.09 0)
+    (property "Reference" "#PWR0213" (at 204.47 85.09 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 204.47 82.55 0)
@@ -1645,7 +1645,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "#PWR0308") (unit 1)
+          (reference "#PWR0213") (unit 1)
         )
       )
     )
@@ -1654,7 +1654,7 @@
   (symbol (lib_id "Device:C_Small") (at 144.78 82.55 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 8d4d4dd1-ee12-4c7d-8740-c2ac19174ed0)
-    (property "Reference" "C310" (at 148.59 85.09 90)
+    (property "Reference" "C203" (at 148.59 85.09 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "NM" (at 140.97 83.82 90)
@@ -1671,7 +1671,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "C310") (unit 1)
+          (reference "C203") (unit 1)
         )
       )
     )
@@ -1703,7 +1703,7 @@
           (reference "R406") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "R201") (unit 1)
+          (reference "R209") (unit 1)
         )
       )
     )
@@ -1712,7 +1712,7 @@
   (symbol (lib_id "power:GND") (at 88.9 87.63 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 95d44d2b-17ea-466f-b496-6bda07fdc118)
-    (property "Reference" "#PWR0304" (at 88.9 93.98 0)
+    (property "Reference" "#PWR0203" (at 88.9 93.98 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 88.9 91.44 0)
@@ -1728,7 +1728,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "#PWR0304") (unit 1)
+          (reference "#PWR0203") (unit 1)
         )
       )
     )
@@ -1762,7 +1762,7 @@
           (reference "#PWR0445") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "#PWR0204") (unit 1)
+          (reference "#PWR0215") (unit 1)
         )
       )
     )
@@ -1800,7 +1800,7 @@
   (symbol (lib_id "Device:R_Small") (at 158.75 73.66 90) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid bf78e645-ed5b-4e91-8a04-0fdda6766123)
-    (property "Reference" "R303" (at 158.75 78.74 90)
+    (property "Reference" "R205" (at 158.75 78.74 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "0R" (at 158.75 76.2 90)
@@ -1817,7 +1817,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "R303") (unit 1)
+          (reference "R205") (unit 1)
         )
       )
     )
@@ -1826,7 +1826,7 @@
   (symbol (lib_id "power:GND") (at 179.07 88.9 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ca9dc686-bcb8-4424-ba15-80d926d07495)
-    (property "Reference" "#PWR0305" (at 179.07 95.25 0)
+    (property "Reference" "#PWR0209" (at 179.07 95.25 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 179.07 92.71 0)
@@ -1842,7 +1842,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "#PWR0305") (unit 1)
+          (reference "#PWR0209") (unit 1)
         )
       )
     )
@@ -1851,7 +1851,7 @@
   (symbol (lib_id "power:GND") (at 125.73 87.63 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid d77ae8a5-880a-462f-b204-14ce98c228c9)
-    (property "Reference" "#PWR0303" (at 125.73 93.98 0)
+    (property "Reference" "#PWR0206" (at 125.73 93.98 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 125.73 91.44 0)
@@ -1867,7 +1867,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "#PWR0303") (unit 1)
+          (reference "#PWR0206") (unit 1)
         )
       )
     )
@@ -1876,7 +1876,7 @@
   (symbol (lib_id "Device:R_Small") (at 179.07 77.47 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e20ada13-4b46-40fd-a935-614296026bf8)
-    (property "Reference" "R314" (at 181.61 77.47 90)
+    (property "Reference" "R207" (at 181.61 77.47 90)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "110k" (at 176.53 77.47 90)
@@ -1893,7 +1893,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "R314") (unit 1)
+          (reference "R207") (unit 1)
         )
       )
     )
@@ -1902,7 +1902,7 @@
   (symbol (lib_id "power:GND") (at 80.01 74.93 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e829cfcc-7fe8-49c3-8858-29a581c952e8)
-    (property "Reference" "#PWR0314" (at 80.01 81.28 0)
+    (property "Reference" "#PWR0202" (at 80.01 81.28 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 80.01 78.74 0)
@@ -1918,7 +1918,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "#PWR0314") (unit 1)
+          (reference "#PWR0202") (unit 1)
         )
       )
     )
@@ -1927,7 +1927,7 @@
   (symbol (lib_id "power:GND") (at 190.5 78.74 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ea23d807-89c3-428e-a629-5eb612c9ef8b)
-    (property "Reference" "#PWR0306" (at 190.5 85.09 0)
+    (property "Reference" "#PWR0210" (at 190.5 85.09 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 190.5 82.55 0)
@@ -1943,7 +1943,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "#PWR0306") (unit 1)
+          (reference "#PWR0210") (unit 1)
         )
       )
     )
@@ -1952,7 +1952,7 @@
   (symbol (lib_id "power:GND") (at 217.17 53.34 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid eb4d4d18-e17a-42ff-8de9-7907e95923bb)
-    (property "Reference" "#PWR0311" (at 217.17 46.99 0)
+    (property "Reference" "#PWR0216" (at 217.17 46.99 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 217.17 49.53 0)
@@ -1968,7 +1968,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "#PWR0311") (unit 1)
+          (reference "#PWR0216") (unit 1)
         )
       )
     )
@@ -1977,7 +1977,7 @@
   (symbol (lib_id "power:GND") (at 113.03 87.63 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ef0a5201-855b-46e4-a098-5255d41857f9)
-    (property "Reference" "#PWR0302" (at 113.03 93.98 0)
+    (property "Reference" "#PWR0205" (at 113.03 93.98 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 113.03 91.44 0)
@@ -1993,7 +1993,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "#PWR0302") (unit 1)
+          (reference "#PWR0205") (unit 1)
         )
       )
     )
@@ -2002,7 +2002,7 @@
   (symbol (lib_id "power:GND") (at 62.23 74.93 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ef83a0b2-3183-413f-b898-40a34528729a)
-    (property "Reference" "#PWR0307" (at 62.23 81.28 0)
+    (property "Reference" "#PWR0201" (at 62.23 81.28 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 62.23 78.74 0)
@@ -2018,7 +2018,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "#PWR0307") (unit 1)
+          (reference "#PWR0201") (unit 1)
         )
       )
     )
@@ -2027,7 +2027,7 @@
   (symbol (lib_id "power:GND") (at 200.66 107.95 270) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid efefb1a4-ad13-4a0f-97db-3da7dd30f2ed)
-    (property "Reference" "#PWR0201" (at 194.31 107.95 0)
+    (property "Reference" "#PWR0211" (at 194.31 107.95 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 196.85 107.95 0)
@@ -2043,7 +2043,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "#PWR0201") (unit 1)
+          (reference "#PWR0211") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
           (reference "#PWR0507") (unit 1)
@@ -2055,7 +2055,7 @@
   (symbol (lib_id "power:GND") (at 204.47 53.34 0) (mirror x) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid f9e2a081-a10f-4d2e-9210-9d827e683d78)
-    (property "Reference" "#PWR0310" (at 204.47 46.99 0)
+    (property "Reference" "#PWR0212" (at 204.47 46.99 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 204.47 49.53 0)
@@ -2071,7 +2071,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "#PWR0310") (unit 1)
+          (reference "#PWR0212") (unit 1)
         )
       )
     )
@@ -2080,7 +2080,7 @@
   (symbol (lib_id "power:GND") (at 217.17 78.74 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ff584fbe-caa2-4d13-a1c1-07d752029326)
-    (property "Reference" "#PWR0309" (at 217.17 85.09 0)
+    (property "Reference" "#PWR0217" (at 217.17 85.09 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 217.17 82.55 0)
@@ -2096,7 +2096,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/c1f639ea-b62e-4979-b175-523e44c4a4ee"
-          (reference "#PWR0309") (unit 1)
+          (reference "#PWR0217") (unit 1)
         )
       )
     )

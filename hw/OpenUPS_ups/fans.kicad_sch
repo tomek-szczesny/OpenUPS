@@ -757,7 +757,7 @@
           (reference "#PWR0102") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/4e3a8bef-51a9-4147-914d-0da741181736"
-          (reference "#PWR0608") (unit 1)
+          (reference "#PWR0702") (unit 1)
         )
       )
     )
@@ -785,7 +785,7 @@
           (reference "#PWR0107") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/4e3a8bef-51a9-4147-914d-0da741181736"
-          (reference "#PWR0604") (unit 1)
+          (reference "#PWR0704") (unit 1)
         )
       )
     )
@@ -794,7 +794,7 @@
   (symbol (lib_id "Transistor_FET:2N7002") (at 90.17 102.87 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 05b4cddc-cede-4cb3-a3df-1bc285a08069)
-    (property "Reference" "Q601" (at 95.377 102.2263 0)
+    (property "Reference" "Q701" (at 95.377 102.2263 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "2N7002" (at 95.377 104.1473 0)
@@ -812,7 +812,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/4e3a8bef-51a9-4147-914d-0da741181736"
-          (reference "Q601") (unit 1)
+          (reference "Q701") (unit 1)
         )
       )
     )
@@ -840,7 +840,7 @@
           (reference "#PWR0102") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/4e3a8bef-51a9-4147-914d-0da741181736"
-          (reference "#PWR0607") (unit 1)
+          (reference "#PWR0708") (unit 1)
         )
       )
     )
@@ -871,7 +871,7 @@
           (reference "#PWR0514") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/4e3a8bef-51a9-4147-914d-0da741181736"
-          (reference "#PWR0601") (unit 1)
+          (reference "#PWR0705") (unit 1)
         )
       )
     )
@@ -880,7 +880,7 @@
   (symbol (lib_id "Connector_Generic:Conn_01x03") (at 110.49 85.09 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 0be6ff86-c617-49a9-9c94-9db75d9b101e)
-    (property "Reference" "J601" (at 110.49 76.2 90)
+    (property "Reference" "J701" (at 110.49 76.2 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "0022053031" (at 114.3 76.2 90)
@@ -901,7 +901,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/4e3a8bef-51a9-4147-914d-0da741181736"
-          (reference "J601") (unit 1)
+          (reference "J701") (unit 1)
         )
       )
     )
@@ -929,7 +929,7 @@
           (reference "#PWR0107") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/4e3a8bef-51a9-4147-914d-0da741181736"
-          (reference "#PWR0603") (unit 1)
+          (reference "#PWR0701") (unit 1)
         )
       )
     )
@@ -957,7 +957,7 @@
           (reference "#PWR0107") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/4e3a8bef-51a9-4147-914d-0da741181736"
-          (reference "#PWR0605") (unit 1)
+          (reference "#PWR0706") (unit 1)
         )
       )
     )
@@ -985,7 +985,7 @@
           (reference "#PWR0102") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/4e3a8bef-51a9-4147-914d-0da741181736"
-          (reference "#PWR0609") (unit 1)
+          (reference "#PWR0703") (unit 1)
         )
       )
     )
@@ -994,7 +994,7 @@
   (symbol (lib_id "Transistor_FET:2N7002") (at 90.17 148.59 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 645e43aa-f342-4115-aae9-4f17fadd7581)
-    (property "Reference" "Q602" (at 95.377 147.9463 0)
+    (property "Reference" "Q702" (at 95.377 147.9463 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "2N7002" (at 95.377 149.8673 0)
@@ -1012,7 +1012,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/4e3a8bef-51a9-4147-914d-0da741181736"
-          (reference "Q602") (unit 1)
+          (reference "Q702") (unit 1)
         )
       )
     )
@@ -1040,7 +1040,7 @@
           (reference "#PWR0102") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/4e3a8bef-51a9-4147-914d-0da741181736"
-          (reference "#PWR0602") (unit 1)
+          (reference "#PWR0709") (unit 1)
         )
       )
     )
@@ -1049,7 +1049,7 @@
   (symbol (lib_id "Diode:BAT54C") (at 62.23 85.09 180) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8c653fa1-57e1-403e-be24-0090ce5e1117)
-    (property "Reference" "D601" (at 62.23 87.9555 0)
+    (property "Reference" "D701" (at 62.23 87.9555 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "BAT54C" (at 62.23 89.8765 0)
@@ -1067,7 +1067,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/4e3a8bef-51a9-4147-914d-0da741181736"
-          (reference "D601") (unit 1)
+          (reference "D701") (unit 1)
         )
       )
     )
@@ -1102,7 +1102,7 @@
           (reference "R511") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/4e3a8bef-51a9-4147-914d-0da741181736"
-          (reference "R513") (unit 1)
+          (reference "R701") (unit 1)
         )
       )
     )
@@ -1133,7 +1133,7 @@
           (reference "#PWR0514") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/4e3a8bef-51a9-4147-914d-0da741181736"
-          (reference "#PWR0606") (unit 1)
+          (reference "#PWR0707") (unit 1)
         )
       )
     )
@@ -1168,7 +1168,7 @@
           (reference "R511") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/4e3a8bef-51a9-4147-914d-0da741181736"
-          (reference "R601") (unit 1)
+          (reference "R703") (unit 1)
         )
       )
     )
@@ -1177,7 +1177,7 @@
   (symbol (lib_id "Connector_Generic:Conn_01x03") (at 110.49 130.81 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid c565388a-c466-4a9d-a560-11bfe77bb67a)
-    (property "Reference" "J602" (at 110.49 121.92 90)
+    (property "Reference" "J702" (at 110.49 121.92 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Value" "0022053031" (at 114.3 121.92 90)
@@ -1198,7 +1198,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/4e3a8bef-51a9-4147-914d-0da741181736"
-          (reference "J602") (unit 1)
+          (reference "J702") (unit 1)
         )
       )
     )
@@ -1233,7 +1233,7 @@
           (reference "R511") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/4e3a8bef-51a9-4147-914d-0da741181736"
-          (reference "R602") (unit 1)
+          (reference "R704") (unit 1)
         )
       )
     )
@@ -1268,7 +1268,7 @@
           (reference "R511") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/4e3a8bef-51a9-4147-914d-0da741181736"
-          (reference "R514") (unit 1)
+          (reference "R702") (unit 1)
         )
       )
     )

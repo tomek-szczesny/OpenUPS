@@ -735,7 +735,7 @@
     (property "Value" "NM" (at 121.92 77.47 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 121.92 74.93 0)
+    (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 121.92 74.93 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 121.92 74.93 0)
@@ -755,7 +755,7 @@
           (reference "R509") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/8df8d962-7936-4f05-9ed7-4d48f457f001"
-          (reference "R1004") (unit 1)
+          (reference "R904") (unit 1)
         )
       )
     )
@@ -789,7 +789,7 @@
       )
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/8df8d962-7936-4f05-9ed7-4d48f457f001"
-          (reference "J1002") (unit 1)
+          (reference "J902") (unit 1)
         )
       )
     )
@@ -824,7 +824,7 @@
           (reference "R438") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/8df8d962-7936-4f05-9ed7-4d48f457f001"
-          (reference "R1007") (unit 1)
+          (reference "R901") (unit 1)
         )
       )
     )
@@ -855,7 +855,7 @@
           (reference "#PWR0432") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/8df8d962-7936-4f05-9ed7-4d48f457f001"
-          (reference "#PWR01001") (unit 1)
+          (reference "#PWR0901") (unit 1)
         )
       )
     )
@@ -864,7 +864,7 @@
   (symbol (lib_id "OpenUPS_ups:PAI220N31") (at 121.92 45.72 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 7249c87c-d257-40b5-820b-2f4c4409c356)
-    (property "Reference" "U1001" (at 121.92 42.7101 0)
+    (property "Reference" "U901" (at 121.92 42.7101 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "π220N31" (at 121.92 44.6311 0)
@@ -890,7 +890,7 @@
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/8df8d962-7936-4f05-9ed7-4d48f457f001"
-          (reference "U1001") (unit 1)
+          (reference "U901") (unit 1)
         )
       )
     )
@@ -905,7 +905,7 @@
     (property "Value" "NM" (at 121.92 69.85 90)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Footprint" "" (at 121.92 67.31 0)
+    (property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 121.92 67.31 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 121.92 67.31 0)
@@ -925,7 +925,7 @@
           (reference "R509") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/8df8d962-7936-4f05-9ed7-4d48f457f001"
-          (reference "R1003") (unit 1)
+          (reference "R903") (unit 1)
         )
       )
     )
@@ -960,7 +960,7 @@
           (reference "R438") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/8df8d962-7936-4f05-9ed7-4d48f457f001"
-          (reference "R1001") (unit 1)
+          (reference "R906") (unit 1)
         )
       )
     )
@@ -992,7 +992,7 @@
           (reference "C508") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/8df8d962-7936-4f05-9ed7-4d48f457f001"
-          (reference "C1001") (unit 1)
+          (reference "C901") (unit 1)
         )
       )
     )
@@ -1027,7 +1027,7 @@
           (reference "R438") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/8df8d962-7936-4f05-9ed7-4d48f457f001"
-          (reference "R1002") (unit 1)
+          (reference "R905") (unit 1)
         )
       )
     )
@@ -1059,7 +1059,7 @@
           (reference "C508") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/8df8d962-7936-4f05-9ed7-4d48f457f001"
-          (reference "C1002") (unit 1)
+          (reference "C902") (unit 1)
         )
       )
     )
@@ -1090,7 +1090,7 @@
           (reference "#PWR0505") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/8df8d962-7936-4f05-9ed7-4d48f457f001"
-          (reference "#PWR01002") (unit 1)
+          (reference "#PWR0902") (unit 1)
         )
       )
     )
@@ -1125,7 +1125,7 @@
           (reference "R438") (unit 1)
         )
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/8df8d962-7936-4f05-9ed7-4d48f457f001"
-          (reference "R1008") (unit 1)
+          (reference "R902") (unit 1)
         )
       )
     )
@@ -1159,7 +1159,7 @@
       )
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/8df8d962-7936-4f05-9ed7-4d48f457f001"
-          (reference "J1001") (unit 1)
+          (reference "J901") (unit 1)
         )
       )
     )
