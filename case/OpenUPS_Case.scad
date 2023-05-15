@@ -217,7 +217,9 @@ if(view == "platter") {
     if(case_style == "3S2P") {
     }    
 }
-
+if(view == "debug") {
+    translate([-51,20,0]) rotate([0,0,0]) heatsink(heatsink_type,0);
+}
 if(view == "projection") {
 
     if(case_style == "mini" || case_style == "drivebay") {
