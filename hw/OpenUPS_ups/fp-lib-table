@@ -3,4 +3,5 @@
   (lib (name "open-psu")(type "KiCad")(uri "${KIPRJMOD}/OpenUPS_ups.pretty")(options "")(descr ""))
   (lib (name "footprints")(type "KiCad")(uri "${KIPRJMOD}/footprints")(options "")(descr ""))
   (lib (name "screw_term")(type "Eagle")(uri "${KIPRJMOD}/footprints/Eagle_WR-TBL Rising Cage Clamp (rev20a).lbr")(options "")(descr ""))
+  (lib (name "OpenUPS_ups")(type "KiCad")(uri "${KIPRJMOD}/footprints/OpenUPS_ups.pretty")(options "")(descr ""))
 )

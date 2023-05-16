@@ -223,4 +223,9 @@
     (stroke (width 0.02) (type solid)) (layer "F.SilkS") (tstamp e368a9cf-1f3b-4338-b5fb-cb9f1a3c07c4))
   (pad "" np_thru_hole circle (at 0 0) (size 2 2) (drill 3) (layers "F&B.Cu" "*.Mask") (tstamp 6cde20a3-a594-427d-95ea-d77ef3bc7989))
   (pad "" np_thru_hole circle (at 51 20) (size 2 2) (drill 3) (layers "F&B.Cu" "*.Mask") (tstamp 22a65271-da4f-4716-8130-5ca90199c3b8))
+  (model "${KIPRJMOD}/3d/heatsink_c4_oem.wrl"
+    (opacity 0.4000)    (offset (xyz 51 -20 1))
+    (scale (xyz 0.3937 0.3937 0.3937))
+    (rotate (xyz 0 0 0))
+  )
 )
