@@ -1668,8 +1668,8 @@ module xt30(style) {
             difference() {
                 union() {
                     color(concolor) cube([width, depth, height]);        
-                    color(concolor) translate([-0.25,0,5]) rotate([270,0,0]) cylinder(d=1.6, h=3.4);
-                    color(concolor) translate([10.5,0,5]) rotate([270,0,0]) cylinder(d=1.6, h=3.4);
+                    color(concolor) translate([-0.25,0,6]) rotate([270,0,0]) cylinder(d=1.6, h=3.4);
+                    color(concolor) translate([10.5,0,6]) rotate([270,0,0]) cylinder(d=1.6, h=3.4);
                 }
                 difference() {
                     color(concolor) translate([.5,.5,1]) cube([width-1, depth-1, height]);
@@ -1692,7 +1692,7 @@ module xt30(style) {
             }
             color("gold") translate([2.6,depth/2,-2.25]) cylinder(d=pin_osize, h=2.25);
             color("gold") translate([2.6,-2,-4.2]) rotate([270,0,0]) cylinder(d=pin_isize, h=2.7);
-            rotate([0,90,0]) translate([2.22,.6,2.6]) color("gold") 
+            rotate([0,90,0]) translate([2.205,.6,2.6]) color("gold") 
                 rotate_extrude(angle=90, convexity = 10) translate([2, 0, 0]) circle(d = 1.6, $fn = 100);
             difference() {
                 color("gold") translate([7.6,depth/2,0]) cylinder(d=pin_osize, h=height-.5);
@@ -1702,11 +1702,11 @@ module xt30(style) {
             }
             color("gold") translate([7.6,depth/2,-2.25]) cylinder(d=pin_osize, h=2.25);
             color("gold") translate([7.6,-2,-4.2]) rotate([270,0,0]) cylinder(d=pin_isize, h=2.7);
-            rotate([0,90,0]) translate([2.22,.6,7.6]) color("gold") 
+            rotate([0,90,0]) translate([2.205,.6,7.6]) color("gold") 
                 rotate_extrude(angle=90, convexity = 10) translate([2, 0, 0]) circle(d = 1.6, $fn = 100);
             
-            color("silver") translate([-0.35,-2,5]) rotate([270,0,0]) cylinder(d=.8, h=5.5);
-            color("silver") translate([10.65,-2,5]) rotate([270,0,0]) cylinder(d=.8, h=5.5);
+            color("silver") translate([-0.4,-2,6]) rotate([270,0,0]) cylinder(d=.8, h=5.5);
+            color("silver") translate([10.65,-2,6]) rotate([270,0,0]) cylinder(d=.8, h=5.5);
         }
     }
 }
