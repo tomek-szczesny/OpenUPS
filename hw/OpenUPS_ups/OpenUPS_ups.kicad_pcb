@@ -982,10 +982,10 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model "${KICAD7_3DMODEL_DIR}/Inductor_SMD.3dshapes/L_TDK_SLF10165.wrl"
-      (offset (xyz 0 0 0))
+    (model "${KIPRJMOD}/3d/SRP1038C-3R3M.stp"
+      (offset (xyz 0 0 2.5))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 -90))
     )
   )
 
@@ -6262,10 +6262,10 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model "${KICAD7_3DMODEL_DIR}/Inductor_SMD.3dshapes/L_TDK_SLF10165.wrl"
-      (offset (xyz 0 0 0))
+    (model "${KIPRJMOD}/3d/SRP1038C-3R3M.stp"
+      (offset (xyz 0 0 2.5))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 90))
     )
   )
 
@@ -7129,10 +7129,10 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model "${KICAD7_3DMODEL_DIR}/Inductor_SMD.3dshapes/L_TDK_SLF10165.wrl"
-      (offset (xyz 0 0 0))
+    (model "${KIPRJMOD}/3d/SRP1038C-3R3M.stp"
+      (offset (xyz 0 0 2.5))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 -90))
     )
   )
 
@@ -13446,10 +13446,10 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model "${KICAD7_3DMODEL_DIR}/Inductor_SMD.3dshapes/L_TDK_SLF10165.wrl"
-      (offset (xyz 0 0 0))
+    (model "${KIPRJMOD}/3d/SRP1038C-3R3M.stp"
+      (offset (xyz 0 0 2.5))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 0 180 90))
     )
   )
 
