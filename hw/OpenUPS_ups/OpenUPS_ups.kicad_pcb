@@ -16592,7 +16592,7 @@
       (rotate (xyz 0 0 0))
     )
     (model "${KIPRJMOD}/3d/XT30PW-M.wrl" hide
-      (offset (xyz -7.6 4.2 0))
+      (offset (xyz -7.5 4 0))
       (scale (xyz 0.3937 0.3937 0.3937))
       (rotate (xyz 0 0 0))
     )
@@ -19579,7 +19579,7 @@
       (rotate (xyz 0 0 0))
     )
     (model "${KIPRJMOD}/3d/XT30PW-M.wrl"
-      (offset (xyz -7.6 4.2 0))
+      (offset (xyz -7.5 4 0))
       (scale (xyz 0.3937 0.3937 0.3937))
       (rotate (xyz 0 0 0))
     )
