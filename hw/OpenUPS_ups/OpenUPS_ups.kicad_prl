@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 31,
+    "active_layer": 0,
     "active_layer_preset": "",
     "auto_track_width": true,
     "hidden_netclasses": [],
@@ -19,9 +19,9 @@
       "dimensions": false,
       "footprints": true,
       "graphics": false,
-      "keepouts": false,
-      "lockedItems": false,
-      "otherItems": false,
+      "keepouts": true,
+      "lockedItems": true,
+      "otherItems": true,
       "pads": false,
       "text": false,
       "tracks": true,
