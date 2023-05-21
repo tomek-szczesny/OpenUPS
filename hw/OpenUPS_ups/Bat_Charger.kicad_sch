@@ -2907,14 +2907,14 @@
     (property "Datasheet" "https://www.tme.eu/Document/f617947f937affdcef3d2ac1a885827c/AON7423-DTE.pdf" (at 247.65 95.25 0)
       (effects (font (size 1.27 1.27)) hide)
     )
+    (pin "1" (uuid b4fa0ed3-2da1-4329-a7ac-7de579c734f8))
+    (pin "2" (uuid ee269c00-ccf3-4781-bdec-de33c444d30f))
+    (pin "3" (uuid 66dcabca-d190-4b85-acd7-c10dc85ff042))
+    (pin "4" (uuid 43c59bfb-7f5e-4cad-8338-acfd94485d37))
     (pin "5" (uuid e671e8dd-9f67-41c7-8962-2d8b1d8eaf5f))
     (pin "6" (uuid 5c4a2a5f-897e-4fc5-8e85-ba953374a2ca))
     (pin "7" (uuid 6a395225-11b2-44bf-988b-b0916e69d09e))
     (pin "8" (uuid 24ead2bf-e95d-48c9-a938-61d8acdd59f9))
-    (pin "1" (uuid b4fa0ed3-2da1-4329-a7ac-7de579c734f8))
-    (pin "3" (uuid 66dcabca-d190-4b85-acd7-c10dc85ff042))
-    (pin "2" (uuid ee269c00-ccf3-4781-bdec-de33c444d30f))
-    (pin "4" (uuid 43c59bfb-7f5e-4cad-8338-acfd94485d37))
     (instances
       (project "OpenUPS_ups"
         (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502/0bd99307-a15c-41e8-997b-077d576f806c"
