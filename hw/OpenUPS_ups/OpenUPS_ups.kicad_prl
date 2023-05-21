@@ -19,14 +19,14 @@
       "dimensions": false,
       "footprints": true,
       "graphics": false,
-      "keepouts": true,
-      "lockedItems": true,
-      "otherItems": true,
+      "keepouts": false,
+      "lockedItems": false,
+      "otherItems": false,
       "pads": false,
       "text": false,
       "tracks": true,
       "vias": true,
-      "zones": true
+      "zones": false
     },
     "visible_items": [
       0,
