@@ -8,13 +8,13 @@
 
 GCC=avr-gcc
 DEVICE=avr128da48
-GCCFLAGS= -g -Os -DF_CPU=24000000UL -mmcu=${DEVICE} -B Atmel.AVR-Dx_DFP.2.2.253.atpack/gcc/dev/${DEVICE} -isystem Atmel.AVR-Dx_DFP.2.2.253.atpack/include
+GCCFLAGS= -g -Os -DF_CPU=24000000UL --param=min-pagesize=0 -mmcu=${DEVICE} -B Atmel.AVR-Dx_DFP.2.2.253.atpack/gcc/dev/${DEVICE} -isystem Atmel.AVR-Dx_DFP.2.2.253.atpack/include
 LDFLAGS= -g -Os -mmcu=${DEVICE} -B Atmel.AVR-Dx_DFP.2.2.253.atpack/gcc/dev/${DEVICE}
 NAME=openups_avr
-SRC=$(NAME).c
+SRC=$(NAME).c twi.c
 ELF=$(NAME).elf
 BIN=$(NAME).hex
-OBJECTS = $(NAME).o 
+OBJECTS = $(NAME).o twi.o
 
 none:
 	@echo ""
