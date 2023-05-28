@@ -2622,6 +2622,30 @@
     )
   )
 
+  (symbol (lib_id "Mechanical:MountingHole") (at 383.54 243.84 0) (unit 1)
+    (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
+    (uuid 3b62f751-bd53-4ba8-9733-bea66da0f6e5)
+    (property "Reference" "H105" (at 386.08 243.1963 0)
+      (effects (font (size 1.27 1.27)) (justify left))
+    )
+    (property "Value" "MountingHole" (at 386.08 245.1173 0)
+      (effects (font (size 1.27 1.27)) (justify left) hide)
+    )
+    (property "Footprint" "MountingHole:MountingHole_3.2mm_M3_DIN965" (at 383.54 243.84 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Datasheet" "~" (at 383.54 243.84 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "OpenUPS_ups"
+        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502"
+          (reference "H105") (unit 1)
+        )
+      )
+    )
+  )
+
   (symbol (lib_id "Mechanical:MountingHole") (at 370.84 232.41 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 3c994d3b-d60c-4c05-8599-3d1dad318889)
