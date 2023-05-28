@@ -61,7 +61,7 @@ uint8_t twi_init(uint8_t TWI_MODE, uint8_t TWIPORT, uint8_t BAUD) {
                     return(1);
                 }
             case TWI1_I2C :
-                // if used set SDAHOLD, FMPEN bits in TWI0_MCTRLA here
+                // if used set SDAHOLD, FMPEN bits in TWI1_MCTRLA here
 
                 // set baud rate
                 TWI1_MBAUD = BAUD;
@@ -96,7 +96,7 @@ uint8_t twi_init(uint8_t TWI_MODE, uint8_t TWIPORT, uint8_t BAUD) {
                 TWI0_SCTRLA &= 0b00000001;
                 
                 // set BUSSTATE to force idle
-                TWI1_MSTATUS = 0x1;
+                TWI0_MSTATUS = 0x1;
                 
                 // check for idle state
                 if(TWI0_MSTATUS > 0) {

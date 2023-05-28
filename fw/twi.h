@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2023 Edward Kisiel hominoid@cablemi.com All rights reserved.
  *
- * File:    twi.c
+ * File:    twi.h
  * Date:    May 27, 2023
  * Author:  Edward Kisiel
  *
