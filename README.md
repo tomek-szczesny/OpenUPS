@@ -12,7 +12,7 @@ More up-to-date information available on Odroid forum:
 
 License:
 
-![Image](case/OpenUPS_PCB.png)
+![Image](assets/OpenUPS.png)
 
 ### Install
 ```
@@ -33,3 +33,6 @@ License:
 -  Expandable 3S1P Battery Capacity
 -  18650, 20700 or 21700 Cell Support
 -  Easy Battery Maintenance
+
+
+![Image](assets/OpenUPS_Diagram.png)
