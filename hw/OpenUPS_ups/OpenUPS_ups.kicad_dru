@@ -1,0 +1,4 @@
+(version 1)
+(rule pad-to-track
+	(constraint clearance (min 0.2mm))
+	(condition "A.Type == 'Pad' && B.Type == 'Track'"))

@@ -4022,6 +4022,26 @@
     )
   )
 
+  (sheet (at 99.06 109.22) (size 27.94 22.86) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 61a2f923-9a9e-4138-95d0-52fecb3d1a29)
+    (property "Sheetname" "BMS" (at 99.06 108.5084 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "bms.kicad_sch" (at 99.06 132.6646 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (property "Field2" "" (at 99.06 109.22 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (instances
+      (project "OpenUPS_ups"
+        (path "/f77faec3-eac4-47f3-a2de-ec4a039f4502" (page "12"))
+      )
+    )
+  )
+
   (sheet (at 208.28 17.78) (size 24.13 12.7) (fields_autoplaced)
     (stroke (width 0.1524) (type solid))
     (fill (color 0 0 0 0.0000))
