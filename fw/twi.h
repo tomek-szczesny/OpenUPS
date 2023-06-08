@@ -2,45 +2,42 @@
  * Copyright (c) 2023 Edward Kisiel hominoid@cablemi.com All rights reserved.
  *
  * File:    twi.h
- * Date:    May 27, 2023
  * Author:  Edward Kisiel
+ * License: GNU GPLv3
  *
- * Description:
+ * Description: AVRDx TWI driver for I2C interface.
  *
- * AVRDx TWI driver to control the processor's I2C interface.
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
-
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- * Code released under GPLv3: http://www.gnu.org/licenses/gpl.html
 */
+
+#define F_CPU                           24000000UL
+#define CLK_PER                         24000000UL
+
+/* TWI PINS */
+#define TWI_PINS_DEFAULT                0
+#define TWI_PINS_ALT1                   1
+#define TWI_PINS_ALT2                   2
  
 /* TWI0 setttings */
-#define TWI0_I2C            0
-#define TWI0_ADDR           0x00
-#define TWI0_BAUD           128
+#define TWI0_I2C                        0
+#define TWI0_ADDR                       0x72
+#define TWI0_BAUD                       400000
+#define TWI0_BAUDRATE(F_SCL, T_RISE)    ((((((float)CLK_PER / (float)F_SCL)) - 10 - ((float)CLK_PER * T_RISE))) / 2)
 
 /* TWI1 setttings */
-#define TWI1_I2C            1
-#define TWI1_ADDR           0x69
-#define TWI1_BAUD           128
+#define TWI1_I2C                        1
+#define TWI1_ADDR                       0x68
+#define TWI1_BAUD                       100000
+#define TWI1_BAUDRATE(F_SCL, T_RISE)    ((((((float)CLK_PER / (float)F_SCL)) - 10 - ((float)CLK_PER * T_RISE))) / 2)
 
-#define TWI_MODE_HOST       0
-#define TWI_MODE_CLIENT     1
-#define TWI_READ_ACK        1
-#define TWI_READ_NACK       0
+#define TWI_MODE_HOST                   0
+#define TWI_MODE_CLIENT                 1
+#define TWI_MODE_DUAL                   1
+#define TWI_READ_ACK                    1
+#define TWI_READ_NACK                   0
 
 /* error messages */
-#define TWI_ERROR_NOHOST    10
+#define TWI_ERROR_NOHOST                10
 
-uint8_t twi_init(uint8_t TWI_MODE, uint8_t TWIPORT, uint8_t BAUD);
+uint8_t twi_init(uint8_t TWIPORT, uint8_t TWI_PINS, uint8_t TWI_MODE, uint32_t BAUD, bool TWI_SMART);
 
 void error(uint8_t num);
