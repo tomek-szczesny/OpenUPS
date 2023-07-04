@@ -41,9 +41,9 @@
  *
  */
  
-uint8_t twi_init(uint8_t TWIPORT, uint8_t TWI_MODE, uint32_t FREQ, struct twi_bus *twi_bus) {
+uint8_t twi_init(struct twi_bus *twi_bus) {
 
-    if(TWIPORT == TWI0_PORT) {   
+    if(twi_bus->port == TWI0_PORT) {   
         // set twi pin mux
         switch(twi_bus->pins) {
             case TWI_PINS_ALT1 :
@@ -66,7 +66,7 @@ uint8_t twi_init(uint8_t TWIPORT, uint8_t TWI_MODE, uint32_t FREQ, struct twi_bu
                 break;
         }
 
-        if(TWI_MODE != TWI_MODE_DUAL) {
+        if(twi_bus->mode != TWI_MODE_DUAL) {
             // configure INPUTLVL
             switch(twi_bus->bustype) {
                 case TWI_I2C :
@@ -93,12 +93,12 @@ uint8_t twi_init(uint8_t TWIPORT, uint8_t TWI_MODE, uint32_t FREQ, struct twi_bu
                 break;
         }
         
-        if(TWI_MODE == TWI_MODE_HOST) {               
+        if(twi_bus->port == TWI_MODE_HOST) {               
             // enable smart mode
             if(twi_bus->smart) TWI0_MCTRLA = TWI_SMEN_bm;          
             
             // set SM, FM or FM+ based on FREQ
-            if(FREQ == 1000000UL) {
+            if(twi_bus->freq == 1000000UL) {
                 TWI0_CTRLA = TWI_FMPEN_ON_gc;
             }
             else {
@@ -106,7 +106,7 @@ uint8_t twi_init(uint8_t TWIPORT, uint8_t TWI_MODE, uint32_t FREQ, struct twi_bu
             }
 
             // set FREQ rate
-            TWI0_MBAUD = TWI0_BAUDRATE(FREQ, 350);
+            twim_baud(TWI0_PORT, F_CPU, twi_bus->freq);
             
             // configure TIMEOUT
             switch(twi_bus->timeout) {
@@ -141,7 +141,7 @@ uint8_t twi_init(uint8_t TWIPORT, uint8_t TWI_MODE, uint32_t FREQ, struct twi_bu
             }
         }
         
-        if(TWI_MODE == TWI_MODE_CLIENT) {
+        if(twi_bus->mode == TWI_MODE_CLIENT) {
 
             // enable smart mode
             if(twi_bus->smart) TWI0_SCTRLA = TWI_SMEN_bm;
@@ -168,7 +168,7 @@ uint8_t twi_init(uint8_t TWIPORT, uint8_t TWI_MODE, uint32_t FREQ, struct twi_bu
             return(SUCCESS);
         }
         
-        if(TWI_MODE == TWI_MODE_DUAL) {
+        if(twi_bus->mode == TWI_MODE_DUAL) {
             // configure INPUTLVL
             switch(twi_bus->bustype) {
                 case TWI_I2C :
@@ -202,7 +202,7 @@ uint8_t twi_init(uint8_t TWIPORT, uint8_t TWI_MODE, uint32_t FREQ, struct twi_bu
         }
     }
     
-    if(TWIPORT == TWI1_PORT) { 
+    if(twi_bus->port == TWI1_PORT) { 
         // set twi pin mux
         switch(twi_bus->pins) {
             case TWI_PINS_ALT1 :
@@ -224,7 +224,7 @@ uint8_t twi_init(uint8_t TWIPORT, uint8_t TWI_MODE, uint32_t FREQ, struct twi_bu
                 break;
         }
 
-        if(TWI_MODE != TWI_MODE_DUAL) {
+        if(twi_bus->mode != TWI_MODE_DUAL) {
             // configure INPUTLVL
             switch(twi_bus->bustype) {
                 case TWI_I2C :
@@ -250,12 +250,12 @@ uint8_t twi_init(uint8_t TWIPORT, uint8_t TWI_MODE, uint32_t FREQ, struct twi_bu
                 break;
         }
         
-        if(TWI_MODE == TWI_MODE_HOST) {           
+        if(twi_bus->mode == TWI_MODE_HOST) {           
             // enable smart mode
             if(twi_bus->smart) TWI1_MCTRLA = TWI_SMEN_bm;          
             
             // set SM, FM or FM+ based on FREQ
-            if(FREQ == 1000000UL) {
+            if(twi_bus->freq == 1000000UL) {
                 TWI1_CTRLA = TWI_FMPEN_ON_gc;
             }
             else {
@@ -263,7 +263,7 @@ uint8_t twi_init(uint8_t TWIPORT, uint8_t TWI_MODE, uint32_t FREQ, struct twi_bu
             }
 
             // set FREQ rate
-            TWI1_MBAUD = TWI1_BAUDRATE(FREQ, 0);
+            twim_baud(TWI1_PORT, F_CPU, twi_bus->freq);
             
             // configure TIMEOUT
             switch(twi_bus->timeout) {
@@ -298,7 +298,7 @@ uint8_t twi_init(uint8_t TWIPORT, uint8_t TWI_MODE, uint32_t FREQ, struct twi_bu
             }
         }
         
-        if(TWI_MODE == TWI_MODE_CLIENT) {
+        if(twi_bus->mode == TWI_MODE_CLIENT) {
         
             // enable smart mode
             if(twi_bus->smart) TWI1_SCTRLA = TWI_SMEN_bm;
@@ -325,7 +325,7 @@ uint8_t twi_init(uint8_t TWIPORT, uint8_t TWI_MODE, uint32_t FREQ, struct twi_bu
             return(SUCCESS);                                
         }
         
-        if(TWI_MODE == TWI_MODE_DUAL) {
+        if(twi_bus->mode == TWI_MODE_DUAL) {
             // configure INPUTLVL
             switch(twi_bus->bustype) {
                 case TWI_I2C :
@@ -362,9 +362,35 @@ uint8_t twi_init(uint8_t TWIPORT, uint8_t TWI_MODE, uint32_t FREQ, struct twi_bu
 
 
 /* 
+ *  DESCRIPTION: set twi baud rate
+ *   
+ *         NAME: twi_baud (uint8_t TWIPORT, uint32_t cpuHz, uint32_t twiHz)
+ *
+ *   PARAMETERS: TWIPORT = TWI0_PORT, TWI1_PORT
+ *                 cpuHz = uint32_t
+ *                twi_Hz = uint32_t
+ *
+ *       RETURN: NONE
+ *
+ *         TODO: WIP
+ */
+ 
+void twim_baud(uint8_t TWIPORT, uint32_t cpuHz, uint32_t twiHz) {
+    if(TWIPORT == TWI0_PORT) {
+        int32_t b = cpuHz/twiHz/2 - 5;
+        TWI0_MBAUD = b >= 0 ? b : 0;
+    }
+    if(TWIPORT == TWI1_PORT) {
+        int32_t b = cpuHz/twiHz/2 - 5;
+        TWI1_MBAUD = b >= 0 ? b : 0;
+    }
+}
+                    
+
+/* 
  *  DESCRIPTION: wait for read/write and returns bus state
  *   
- *         NAME: uint8_t twi_wait(uint8_t TWI_PORT, mode)
+ *         NAME: uint8_t twi_wait(uint8_t TWIPORT, mode)
  *
  *   PARAMETERS: TWIPORT = TWI0_PORT, TWI1_PORT
  *               mode = TWI_READ, TWI_WRITE

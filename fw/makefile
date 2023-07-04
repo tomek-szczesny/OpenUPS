@@ -8,7 +8,7 @@
 
 GCC=avr-gcc
 DEVICE=avr128da48
-GCCFLAGS= -g -Os -DF_CPU=4000000UL --param=min-pagesize=0 -mmcu=${DEVICE} -B Atmel.AVR-Dx_DFP.2.2.253.atpack/gcc/dev/${DEVICE} -isystem Atmel.AVR-Dx_DFP.2.2.253.atpack/include
+GCCFLAGS= -g -Os -DF_CPU=24000000UL --param=min-pagesize=0 -mmcu=${DEVICE} -B Atmel.AVR-Dx_DFP.2.2.253.atpack/gcc/dev/${DEVICE} -isystem Atmel.AVR-Dx_DFP.2.2.253.atpack/include
 LDFLAGS= -g -Os -ml -mmcu=${DEVICE} -B Atmel.AVR-Dx_DFP.2.2.253.atpack/gcc/dev/${DEVICE}
 NAME=openups_avr
 SRC=$(NAME).c peripherals/TWI/twi.c devices/MCP9808/MCP9808.c

@@ -21,13 +21,13 @@
 void init (void) {	/* Initialization routine */
 
     // setup cpu clock
-    _PROTECTED_WRITE(CLKCTRL.OSCHFCTRLA, CLKCTRL_FRQSEL_4M_gc); 
+    _PROTECTED_WRITE(CLKCTRL_OSCHFCTRLA, CLKCTRL_FRQSEL_24M_gc); 
 
     // setup sleep controller to standby
     SLPCTRL_CTRLA = SLPCTRL_SMODE_STDBY_gc | SLPCTRL_SEN_bm;
 
     // setup twi port 0 as i2c host
-    if(twi_init(TWI0_PORT, TWI_MODE_HOST, TWI0_BAUD, &i2c_bus0) == FAIL) error(TWI_ERROR_NOHOST);
+    if(twi_init(&i2c_bus0) == FAIL) error(TWI_ERROR_NOHOST);
 
     // setup curiosity nano builtin led
     PORTC_DIRSET = 0x40;
@@ -50,7 +50,7 @@ int main (void)
 
 void flash_led(uint8_t num) {
     PORTC_DIRSET = 0x40;
-    for (int i = num; i > 0; i--) {
+    for (uint8_t i = num; i > 0; i--) {
         PORTC_OUTCLR = 0x40;
         _delay_ms(500);
         PORTC_OUTSET = 0x40;
@@ -64,7 +64,7 @@ void error(uint8_t num)
 {
     num &= 0x7F;
     PORTC_DIRSET = 0x40;
-    for (int i = 0; i <= num-1; i++) {
+    for (uint8_t i = 0; i <= num-1; i++) {
         PORTC_OUTSET = 0x40;
         _delay_ms(100);
         PORTC_OUTCLR = 0x40;
